@@ -1,0 +1,54 @@
+@@include('_tpl_layout_head.html', {
+	"title": "Главная",
+	"pageClass": ""
+})
+
+@@include('_tpl_PAGE_WRAP.html', {"pageWrap": "START" })
+
+<!--HEADER-->
+@@include('_tpl_layout_header.html', {
+	"currentItem": "Главная"
+})
+<!--HEADER end-->
+
+<script>
+	var myEnglishWords = @@include('includes/json/takeOff.json');
+</script>
+
+<!--MAIN-->
+<div class="main">
+	<div class="max-wrap layout">
+		<div class="main__holder">
+			<!--CONTENT-->
+			<div class="content-wrap">
+				<div class="content user-content">
+					<section class="words words-js words_invert">
+						<div class="words__cards">
+							<div class="words__card words__card_front words__card_front-js">&nbsp;</div>
+							<div class="words__card words__card_back words__card_back-js">&nbsp;</div>
+						</div>
+						<div class="words__note words__note-js">
+							<ul>
+								<li>&nbsp;</li>
+							</ul>
+						</div>
+					</section>
+				</div>
+			</div>
+			<!--CONTENT end-->
+
+			<!--SIDEBAR-->
+			@@include('_tpl_layout_sidebar.html')
+			<!--SIDEBAR-->
+		</div>
+	</div>
+</div>
+<!--MAIN end-->
+
+<!--FOOTER-->
+@@include('_tpl_layout_footer.html')
+<!--FOOTER end-->
+
+@@include('_tpl_PAGE_WRAP.html', {"pageWrap": "END" })
+
+@@include('_tpl_layout_foot.html')

@@ -1,0 +1,22 @@
+{
+	"minify": true,
+	"options": [
+		"domPrefixes",
+		"prefixed",
+		"testAllProps",
+		"testProp",
+		"html5shiv",
+		"setClasses"
+	],
+	"feature-detects": [
+		"test/svg",
+		"test/touchevents",
+		"test/css/backgroundsize",
+		"test/css/flexbox",
+		"test/css/flexwrap",
+		"test/css/gradients",
+		"test/css/multiplebgs",
+		"test/css/objectfit",
+		"test/css/transitions"
+	]
+}

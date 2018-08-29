@@ -1,0 +1,117 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+/* bitrix default search page
+.search-page
+	font-size: round-float($font-size*0.85, 1)
+	margin-bottom: $bottom-space--large
+
+	.pagination-wrap
+		margin-bottom: $bottom-space
+		& + br
+			display: none
+
+	.p-nav-title
+		+font(2.0rem, 1.4)
+		+font-alt-bold
+		margin-bottom: $bottom-space
+
+	.pagination
+		margin-bottom: $bottom-space
+		+clear
+
+	.p-nav
+		display: inline-block
+		+size((round-float($font-size*$line-height*1.25, 1)))
+		position: relative
+		box-shadow: inset 0 0 0 1px lightgray
+		border-radius: 50%
+		z-index: 10
+
+		.no-touchevents &:hover
+			background: lightgray
+
+		&.disabled
+			opacity: 0.25
+			cursor: default
+			pointer-events: none
+
+		.icon
+			position: absolute
+			left: 50%
+			top: 50%
+			width: 16px
+			height: 16px
+			+margin($top: -(round(16px/2)), $left: -(round(16px/2)))
+			background-repeat: no-repeat
+			background-position: center center
+			background-size: contain
+				
+			&.icon-angle-left
+				background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAoCAYAAAD6xArmAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTMyIDc5LjE1OTI4NCwgMjAxNi8wNC8xOS0xMzoxMzo0MCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MzE1MTVGRjAxNDVFMTFFN0FERkZCNzNGOTg3QzA3QkQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MzE1MTVGRjExNDVFMTFFN0FERkZCNzNGOTg3QzA3QkQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDozMTUxNUZFRTE0NUUxMUU3QURGRkI3M0Y5ODdDMDdCRCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDozMTUxNUZFRjE0NUUxMUU3QURGRkI3M0Y5ODdDMDdCRCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pj0voocAAAFPSURBVHjatNdPK0RxFMbxSZowMxFqFjIpCzXlVXkDNlZSFkppMgtNDRkLUqNsUBY2UsrCn6ZpIjSEiIWFbLDhWcwt6T6/xXmOX303s/h0u9177plEwu+U0CM6QENe6Bb6/tWJB7r5B42SzgZBtxW0StA66rKiqwQ9R51WdIWg1yhjRZcCaI8VXSTojYIuEPQe9VnRIkGfUNaKzgfQAStaIOiLgs4Q9BXlrOg0Qd/QsBWdCqAjVnSSoO8KOkHQD5S3omMBdFQZf58x6BUaVNA21B7z+xd6UL8C44E50K/i7IW4U4ZMdGYJfutx5XMBvFfF2Zhsom4VZ4P9EqVVvBz4EmdUfJngFyil4hWCN1CHirMFpYaSKr5O8FMPnO1rZ2TmuKytx62h5rpoRx15LNw7BD/0uOe7BK96XPnef/xViM5+zExxO2voufV05H8EGABd2PB1TJvhSAAAAABJRU5ErkJggg==')
+				
+			&.icon-angle-right
+				background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAoCAYAAAD6xArmAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTMyIDc5LjE1OTI4NCwgMjAxNi8wNC8xOS0xMzoxMzo0MCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6M0VDMkIwMTgxNDVFMTFFN0I2Q0VFRENBRTlBNEY1MkIiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6M0VDMkIwMTkxNDVFMTFFN0I2Q0VFRENBRTlBNEY1MkIiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDozRUMyQjAxNjE0NUUxMUU3QjZDRUVEQ0FFOUE0RjUyQiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDozRUMyQjAxNzE0NUUxMUU3QjZDRUVEQ0FFOUE0RjUyQiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PhzOMNEAAAFKSURBVHjatNfPR8NxHMfxj8lUW0pFh2miQ4z+qv6BLp0SHWIk7ZCo2TqUsehS0aFLIjr0Q5LNZKVR6rBDunQo6xUbyff1OXxe7314Xh8+Pr6fH1/nnMugC/SKdpzhqKHWn06s4FZExxZwmeBHKhxHZwQ/tJj5OcH3VTjW/jqi8D0V70HXBC9brPkVwUsW+A3Bt1W8F90RvKjiCVQleEHFB1CF4Bsqnow4UzqtqfggqhM8p+LD6JHgyyo+6sGzKj6Cngi+ZDHzBsFnLU7FqE30HRPR8fb2/z++FHQafZKlmAlFMx50LhSdQh8EnVfQd4IuhKKTHnQxFE2jpvWGSKE3gq4o6AtBV0PRMQ+aUw6ZhvXBPoQeCLqpoPcEzSuXJkO3QtE+z00c/EDpR7fdeK8dEHS3G78K8rP1d1xaP7Q7YwKdome0boX+CDAA4lrvlBc5n98AAAAASUVORK5CYII=')
+
+		span
+			+hide-text
+
+	.p-prev
+		float: left
+		margin-right: 10px
+
+	.p-next
+		float: right
+		margin-left: 10px
+
+	ul
+		overflow: hidden
+		text-align: center
+		cursor: default
+		margin: 0
+
+		li
+			display: inline-block
+			margin: 0 0 0.5em
+			padding: 0 2px
+			text-align: center
+
+			&::before
+				content: none
+
+		a
+			display: inline-block
+			vertical-align: top
+			color: $base-color
+			text-decoration: none
+			cursor: pointer
+
+		span
+			display: inline-block
+			vertical-align: top
+			min-width: round-float($font-size*$line-height*1.25, 1)
+			height: round-float($font-size*$line-height*1.25, 1)
+			line-height: round-float($font-size*$line-height*1.25, 1)
+			padding: 0 4px
+			border-radius: 50%
+			transition-property: color, background-color
+			transition-duration: $animation-speed
+
+		.active
+			cursor: default
+
+			span
+				color: white !important
+				background-color: $base-color !important
+
+		.no-touchevents & a:hover span
+			background-color: lightgray
+
+	p
+		+margin-vertical(round-float(($bottom-space/2), 1))
+
+	small
+		color: $text-color-light
+
+/* bitrix default search page end

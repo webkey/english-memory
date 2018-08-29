@@ -1,0 +1,260 @@
+<script>
+	'use strict';
+
+	function get_cookie(cookie_name) {
+		var results = document.cookie.match('(^|;) ?' + cookie_name + '=([^;]*)(;|$)');
+
+		if (results)
+			return ( unescape(results[2]) );
+		else
+			return null;
+	}
+
+	var nav = document.createElement('div');
+	var list = document.createElement('ul');
+	nav.className = "navigationByTypographyElements";
+	document.body.appendChild(nav);
+	nav.appendChild(list);
+
+	var opener = document.createElement('a');
+	opener.innerHTML = "Меню";
+	opener.className = "navigationByTypographyOpener";
+	nav.insertBefore(opener, nav.firstChild);
+
+	var toLeftBtn = document.createElement('a');
+	toLeftBtn.innerHTML = "Прикрепить слева";
+	toLeftBtn.className = "navigationByTypographyToLeft";
+	nav.insertBefore(toLeftBtn, nav.firstChild);
+
+	for(var i = 0; i < document.querySelectorAll('.hashAnchor').length; i++){
+		var elem = document.querySelectorAll('.hashAnchor');
+		var a = document.createElement('a');
+		var li = document.createElement('li');
+
+		a.innerHTML = elem[i].closest('h4, h3').textContent.trim();
+		if(elem[i].closest('h4')){
+//										elem[i].closest('h4').setAttribute("class", "blah");
+			li.className = 'navigationByTypographySubItem';
+		}
+		a.setAttribute('href', '#' + elem[i].id);
+
+		li.appendChild(a);
+		list.appendChild(li);
+	}
+
+	// navigation toggle
+	var cookieNavBTIsHide = "navigationByTypographyIsHide";
+
+	if(get_cookie ( cookieNavBTIsHide ) === 'true') {
+		list.style.display = "none";
+		nav.setAttribute('data-toggle', 'hide');
+	}
+
+	opener.onclick = function() {
+		list.style.display = (list.style.display !== "none") ? "none" : "block";
+		if(list.style.display === "none") {
+			document.cookie = cookieNavBTIsHide + "=true";
+			nav.setAttribute('data-toggle', 'hide');
+		} else {
+			document.cookie = cookieNavBTIsHide + "=false";
+			nav.setAttribute('data-toggle', 'show')
+		}
+	};
+
+	// navigation move to left/right
+	var toLeftAttr = 'data-to-left';
+	var cookieIsLeftPos = "navigationByTypographyIsLeft";
+
+	if(get_cookie ( cookieIsLeftPos ) === 'true') {
+		nav.setAttribute(toLeftAttr, 'true');
+	}
+
+	toLeftBtn.onclick = function() {
+		if(!nav.hasAttribute(toLeftAttr)) {
+			document.cookie = cookieIsLeftPos + "=true";
+			nav.setAttribute(toLeftAttr, 'true');
+		} else {
+			document.cookie = cookieIsLeftPos + "=false";
+			nav.removeAttribute(toLeftAttr);
+		}
+	}
+</script>
+<style>
+	.navigationByTypographyElements{
+		position: fixed;
+		right: 20px;
+		top: 20px;
+		width: 240px;
+		background-color: white;
+		box-shadow: 2px 2px 35px rgba(0, 0, 0, 0.2);
+		z-index: 99999;
+		font-size: 14px;
+		line-height: 1.4;
+		/*counter-reset: items;*/
+		-webkit-transition-property: transform;
+		transition-property: transform;
+		-webkit-transition-duration: 0.2s;
+		transition-duration: 0.2s;
+		-webkit-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+		user-select: none;
+	}
+	.navigationByTypographyElements[data-toggle="hide"]{
+		width: 42px;
+	}
+	.navigationByTypographyElements[data-to-left]{
+		transform: translateX(calc(-100vw + 240px + 60px));
+	}
+	.navigationByTypographyElements ul{
+		display: block;
+		list-style: none;
+		margin: 0;
+		height: calc(100vh - 100px);
+		overflow-x: hidden;
+		overflow-y: auto;
+		padding: 0 20px 18px;
+	}
+	.navigationByTypographyElements ul::-webkit-scrollbar {
+		width: 0.4em;
+	}
+	.navigationByTypographyElements ul::-webkit-scrollbar-track {
+		-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	}
+	.navigationByTypographyElements ul::-webkit-scrollbar-thumb {
+		background-color: darkgrey;
+		outline: 1px solid slategrey;
+	}
+	.navigationByTypographyElements ul li{
+		margin-bottom: 12px;
+		/*counter-increment: items;*/
+	}
+	.navigationByTypographyElements ul li:last-child{
+		margin: 0;
+	}
+	.navigationByTypographyElements ul li::before{
+		/*content: counter(items) '. ';*/
+		color: tomato;
+		content: '';
+		display: inline-block;
+		vertical-align: top;
+		margin-top: 7px;
+		margin-right: 8px;
+		height: 6px;
+		width: 6px;
+		background-color: tomato;
+	}
+	.navigationByTypographyElements ul .navigationByTypographySubItem{
+		font-size: 0.8em;
+		padding-left: 15px;
+	}
+	.navigationByTypographyElements ul .navigationByTypographySubItem::before{
+		border-radius: 50%;
+		margin-top: 4px;
+	}
+	.navigationByTypographyElements ul a{
+		color: darkslategray;
+		text-decoration: none;
+		padding-top: 5px;
+	}
+	.navigationByTypographyElements ul a:hover{
+		text-decoration: underline;
+	}
+
+	h3, h4{
+		position: relative;
+	}
+	h3 a, h4 a {
+		display: inline-block;
+		vertical-align: top;
+		color: inherit;
+		text-decoration: none;
+		-webkit-transition: border-color 0.2s;
+		transition: border-color 0.2s;
+	}
+	h3 a span, h4 a span {
+		text-decoration: underline;
+	}
+	h4 a{
+		border-bottom-color: #909090;
+	}
+	h4 a .mark{
+		color: #909090;
+	}
+	h4 .hashAnchor::before{
+		width: 18px;
+		height: 18px;
+		top: 6px;
+	}
+	.hashAnchor:hover::before{
+		opacity: 0.5;
+	}
+
+	.navigationByTypographyOpener{
+		position: relative;
+		display: block;
+		padding: 18px 35px 18px 20px;
+		cursor: pointer;
+		font-size: 16px;
+		line-height: 15px;
+		font-weight: bold;
+		text-align: center;
+	}
+	.navigationByTypographyElements[data-toggle="hide"] .navigationByTypographyOpener{
+		font-size: 0;
+		line-height: 0;
+		padding: 11px 5px;
+	}
+	.navigationByTypographyOpener::after{
+		content: '-';
+		display: block;
+		position: absolute;
+		right: 20px;
+		top: 50%;
+		width: 16px;
+		height: 16px;
+		font-size: 16px;
+		line-height: 15px;
+		background-color: rgba(0, 0, 0, 0.2);
+		text-align: center;
+		-webkit-transform: translate(0, -50%);
+		-ms-transform: translate(0, -50%);
+		transform: translate(0, -50%);
+	}
+	.navigationByTypographyElements[data-toggle="hide"] .navigationByTypographyOpener::after{
+		right: 3px;
+	}
+	.navigationByTypographyOpener:hover::after{
+		background-color: rgba(0, 0, 0, 0.4);
+	}
+	[data-toggle*="hide"] .navigationByTypographyOpener::after{
+		content: '+';
+	}
+
+	.navigationByTypographyToLeft{
+		position: absolute;
+		top: 3px;
+		left: 3px;
+		font-size: 0;
+		line-height: 0;
+		letter-spacing: -4px;
+		text-align: center;
+		cursor: pointer;
+		width: 16px;
+		height: 16px;
+		background-color: rgba(0, 0, 0, 0.2);
+		z-index: 5;
+	}
+	.navigationByTypographyToLeft:hover{
+		background-color: rgba(0, 0, 0, 0.4);
+	}
+	.navigationByTypographyToLeft:before{
+		content: '<';
+		display: inline-block;
+		font-size: 18px;
+		line-height: 16px;
+		letter-spacing: normal;
+	}
+	[data-to-left] .navigationByTypographyToLeft:before{
+		content: '>';
+	}
+</style>

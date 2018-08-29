@@ -1,0 +1,203 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+/* forms layout
+.form-row, .input-wrap
+	position: relative // Важно! Для позицирования отметки подтверждения полей формы
+	margin-bottom: $form-bottom-space
+	z-index: 1 // Важно! Отметка подтверждения полей формы имеет z-index: -1
+
+.form-row:last-child
+	margin-bottom: 0
+
+.input-holder
+	position: relative // Важно! Для позицирования отметки подтверждения полей формы
+	z-index: 1 // Важно! Отметка подтверждения полей формы имеет z-index: -1
+
+.label-holder, label
+	+font-normal
+	+font($font-size, $line-height)
+	color: $text-color-light
+	margin-bottom: 7px
+
+label, .label
+	+display-inline-block-top
+	user-select: none
+	-webkit-tap-highlight-color: transparent !important
+
+	.label-holder &
+		margin-bottom: 0
+
+.form-mark
+	+display-inline-block-top
+	position: relative
+	margin-left: -15px
+	left: 15px
+	color: $mark-color
+
+	.form-note &
+		margin-left: 0
+		left: auto
+
+.form-row
+	+margin-horizontal(-#{round($form-gap*0.5)})
+	font-size: 0
+	letter-spacing: -4px
+
+	.input-wrap
+		+display-inline-block-top
+		width: calc(100% * 0.5 - #{$form-gap})
+		+margin-horizontal(#{round($form-gap*0.5)})
+		margin-bottom: 0
+
+		font-size: $font-size
+		letter-spacing: normal
+
+		+media('<mob-lg')
+			display: block
+			width: auto
+			margin-bottom: $form-bottom-space--mob
+
+	label
+		+truncate(100%)
+
+// some column
+.form-columnize
+	column-count: 2
+
+.form-columnize--3
+	column-count: 3
+
+.form-columnize, .form-columnize--3
+	column-gap: $form-gap
+
+	+media('<mob-lg')
+		column-count: 1
+		column-gap: 0
+
+	label
+		+truncate(100%)
+
+	.input-wrap
+		display: inline-block
+		vertical-align: top
+		width: 100%
+
+/* forms layout end
+
+// Input Fields
+// input[type="text"]
+// input[type="password"]
+// input[type="email"]
+// input[type="search"]
+// textarea
+
+#{$inputs-list}
+	display: block
+	padding: $form-input-space-vt $form-input-space-h $form-input-space-vb
+	width: 100%
+	height: $form-input-height
+	background-color: $form-bg-color
+	box-shadow: none
+	border: $form-border-width solid $form-border-color
+	cursor: pointer
+
+	// Стили для текста полей ввода прописываем отдельно через миксин,
+	// чтобы была возможность добавить медиа развилки через тот же миксин
+	&
+		+inputs-font
+
+	// Стили вертикальных отступов для полей ввода прописываем отдельно через миксин,
+	// чтобы была возможность добавить медиа развилки через тот же миксин
+	&
+		+forms-space
+
+	// Стили для полей ввода, которые лежат в специальной обертке
+	// И для тех, которые являются последними в родительском контейнере
+	.input-wrap &, &:last-child
+		margin-bottom: 0
+
+textarea
+	$lines: 2
+	$height: round($form-line-height*$lines) + $form-input-space-vt + $form-input-space-vb + round($form-border-width*2)
+	min-height: $height
+	height: $height
+	resize: vertical
+
+// Placeholder
+input, textarea
+	+placeholder
+		color: $form-placeholder-color
+		transition: $animation-speed opacity
+
+	//form placeholder hide on focus
+	+placeholder-focus
+		opacity: 0
+
+// States
+#{$inputs-list}
+	&[disabled]
+		cursor: default
+		color: $form-text-color--disabled
+		background-color: $form-bg-color--disabled
+		border-color: $form-border-color--disabled
+
+		+placeholder
+			color: $form-text-color--disabled
+
+	&:not([disabled]):not(.error):not(.success):not(.input--has-value)
+		//form hover
+		&:hover
+			border-color: $form-border-color--focus
+
+		//form focus
+		&:focus
+			border-color: $form-border-color--focus
+			cursor: text
+
+	// has value (js)
+	//style for label
+	@at-root label
+		&.input--has-value
+			+form-has-value
+
+	&.input--has-value:not([disabled])
+		+form-has-value
+
+	// on focus (js)
+	//&.input--focus
+		+form-on-focus
+
+	//form success
+	//style for label
+	@at-root label
+		&.success
+			+form-success
+
+	&.success:not([disabled])
+		+form-success
+
+		//form success placeholder
+		+placeholder
+			color: $form-success-color
+
+	//form error
+	@at-root label
+		&.error
+			+form-error
+
+	&.error:not([disabled])
+		+form-error
+
+		//form error placeholder
+		+placeholder
+			color: $form-error-color
+
+/* inputs states end
+
+@import checkboxes
+@import selects
+@import select2
+@import validation
+@import captcha

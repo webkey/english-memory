@@ -1,0 +1,11 @@
+@@if(!context.placeholder || context.placeholder == "@@placeholder"){
+<!--Important! First option should have value ""-->
+<option value="">-Choose one of the options-</option>}
+<option value="1"@@if(context.value == "1" || context.value == "true"){ selected}>Option 1</option>
+<option value="2"@@if(context.value == "2"){ selected}>Option 2</option>
+<option value="3"@@if(context.value == "3"){ selected}>Option 3 we have to add a lot of text for testing to make sure the correctness of cutting this text</option>
+<option value="4"@@if(context.value == "4"){ selected}>Option 4</option>
+<option value="5"@@if(context.value == "5"){ selected}>Option 5</option>
+<option value="6"@@if(context.value == "6"){ selected}>Option 6</option>
+<option value="7"@@if(context.value == "7"){ selected}>Option 7</option>
+<option value="8"@@if(context.value == "8"){ selected}>Option 8</option>

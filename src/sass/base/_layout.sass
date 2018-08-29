@@ -1,0 +1,313 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+html
+	font-size: 62.5%
+
+	// блокировка скролла
+	&.css-scroll-fixed:not(.open-only-mob)
+		+scroll-blocked
+
+	&.css-scroll-fixed.open-only-mob
+		+media('<tab-lg')
+			+scroll-blocked
+
+/* === LAYOUT ===
+.max-wrap
+	max-width: #{$page-layout-width +  nth($page-layout-space, 2)*2}
+
+.layout
+	+padding-horizontal(nth($page-layout-space, 2))
+	+push-auto
+
+// выравнивание текстовых элементов на странице статьи (контент обернут в .layout-article)
+// и их максимальная ширина
+.layout-article
+	padding: $text-layout-space
+
+	+media('<tab-lg')
+		padding: $text-layout-space--md
+
+	+media('<tab-sm')
+		padding: $text-layout-space--sm
+
+	& > p, & > ul, & > ol, & > h1, & > h2, & > h3, & > h4, & > h5, & > h6, & > hr, & > blockquote, & > .layout-text, .imgc figcaption
+		max-width: $text-layout-width
+		+padding-horizontal(0)
+		+push-auto
+
+	.layout-flood
+		max-width: $flood-layout-width
+		+padding-horizontal(0)
+		+push-auto
+
+	// элеметы без отступов по бокам
+	// минусовые маржины по горизонтале имеют значение только внутри .layout-article
+	.layout-full-width, .layout-wide
+
+		+margin-horizontal(-#{nth($text-layout-space, 2)})
+
+		+media('<tab-lg')
+			+margin-horizontal(-#{nth($text-layout-space--md, 2)})
+
+		+media('<tab-sm')
+			+margin-horizontal(-#{nth($text-layout-space--sm, 2)})
+
+// максимальная ширина текстовых элементов на внутренней (текстовой) странице
+.max-wrap-text
+	//max-width: #{$text-layout-width + (nth($text-layout-space, 2))*2}
+	max-width: $text-layout-width
+
+	//+media('<tab-lg')
+		max-width: #{$text-layout-width + (nth($text-layout-space--md, 2))*2}
+
+	//+media('<tab-sm')
+		max-width: #{$text-layout-width + (nth($text-layout-space--sm, 2))*2}
+
+// выравнивание текстовых элементов на внутренней (текстовой) странице
+// и их максимальная ширина
+.layout-text
+	max-width: #{$text-layout-width + (nth($text-layout-space, 2))*2}
+	+padding-horizontal(nth($text-layout-space, 2))
+	+push-auto
+
+	+media('<tab-lg')
+		max-width: #{$text-layout-width + (nth($text-layout-space--md, 2))*2}
+		+padding-horizontal(nth($text-layout-space--md, 2))
+
+	+media('<tab-sm')
+		max-width: #{$text-layout-width + (nth($text-layout-space--sm, 2))*2}
+		+padding-horizontal(nth($text-layout-space--sm, 2))
+
+// максимальная ширина альтернативных элементов на внутренней (текстовой) странице
+.max-wrap-flood
+	//max-width: #{$flood-layout-width + (nth($text-layout-space, 2))*2}
+	max-width: $flood-layout-width
+
+	//+media('<tab-lg')
+		max-width: #{$flood-layout-width + (nth($text-layout-space--md, 2))*2}
+
+	//+media('<tab-sm')
+		max-width: #{$flood-layout-width + (nth($text-layout-space--mob, 2))*2}
+
+// выравнивание альтернативных элементов на внутренней (текстовой) странице
+// и их максимальная ширина
+.layout-flood
+	max-width: #{$flood-layout-width + (nth($text-layout-space, 2))*2}
+	+padding-horizontal((nth($text-layout-space, 2)))
+	+push-auto
+
+	+media('<tab-lg')
+		max-width: #{$flood-layout-width + (nth($text-layout-space--md, 2))*2}
+		+padding-horizontal((nth($text-layout-space--md, 2)))
+
+	+media('<tab-sm')
+		max-width: #{$flood-layout-width + (nth($text-layout-space--sm, 2))*2}
+		+padding-horizontal((nth($text-layout-space--sm, 2)))
+
+	p, ul, ol, h1, h2, h3, h4, h5, h6, hr
+		max-width: none
+
+// элеметы с отступами по бокам
+.layout-wide
+	+padding-horizontal((nth($text-layout-space, 2)))
+
+	+media('<tab-lg')
+		+padding-horizontal((nth($text-layout-space--md, 2)))
+
+	+media('<tab-sm')
+		+padding-horizontal((nth($text-layout-space--sm, 2)))
+
+	p, ul, ol, h1, h2, h3, h4, h5, h6, hr
+		max-width: none
+
+// элеметы без отступов по бокам
+.layout-full-width
+
+	p, ul, ol, h1, h2, h3, h4, h5, h6, hr
+		max-width: none
+
+// выравнивание по центру блочных элементов
+.push-auto
+	margin-left: auto
+	margin-right: auto
+
+// лэяут страницы
+.wrapper
+	display: flex
+	flex-direction: column
+	justify-content: space-between
+	align-items: stretch
+	margin: 0 auto
+	//min-height: 100vh
+	//min-height: 100% // not support ie
+	//height: 100%
+	//overflow: hidden
+	//height: 100vh
+	min-height: 100vh
+	position: relative
+
+/* === LAYOUT end ===
+
+/* === CONTENT ===
+.main
+	flex-shrink: 1
+	flex-grow: 1
+	position: relative
+	clear: both
+	z-index: 4
+
+.main__holder
+	width: 100%
+	+clear
+
+.content-wrap
+	float: left
+	width: 100%
+
+.content
+	margin: 0 200px 0 300px
+	min-height: 50px
+
+	background-color: whitesmoke
+
+	+media('<desk-lg')
+		margin-right: 0
+
+	+media('<tab-lg')
+		margin-left: 0
+
+/* === CONTENT end ===
+
+/* === HEADER ===
+.header
+	position: relative
+	//background-color: lightgreen
+
+.header__holder
+	position: relative
+	padding: 10px 0
+	z-index: 5
+	+clear
+
+/* logo
+.logo
+	position: relative
+	float: left
+	z-index: 5
+
+/* logo end
+/* === HEADER end ===
+
+/* === NAVIGATION ===
+.nav
+	position: relative
+
+.nav__list
+	+clear
+
+	li
+		position: relative
+
+		&.has-drop
+			padding-right: 2rem
+
+			.nav__angle
+				position: absolute
+				right: 0
+				top: 50%
+				transform: translate(0, -50%)
+				line-height: 0
+				pointer-events: none
+
+	a
+		display: block
+
+	& > li
+		float: left
+		margin-right: 2rem
+
+		&.has-drop > .nav__tab .nav__angle i
+			display: inline-block
+			vertical-align: top
+			+triangle(bottom, tomato, 5px, 2)
+
+.nav__drop
+	position: absolute
+	left: 0
+	top: 100%
+	background-color: white
+	border: 1px solid $border-color
+	padding: 2rem
+	width: $page-layout-min
+	opacity: 0
+	visibility: hidden
+	z-index: 10
+
+	li:hover > &
+		opacity: 1
+		visibility: visible
+
+	li
+		margin-bottom: 1rem
+		font-size: 1.4rem
+		line-height: 1.5
+
+		&.has-drop > .nav__tab .nav__angle i
+			display: inline-block
+			vertical-align: top
+			+triangle(right, tomato, 5px, 2)
+
+
+	.nav__drop
+		top: 0
+		left: 100%
+
+/* === NAVIGATION end ===
+
+/* === SIDEBAR ===
+.sidebar
+	display: inline
+	float: left
+	margin: 0 0 0 -100%
+	width: $sidebar-width
+
+	background-color: sandybrown
+
+	+media('<tab-lg')
+		display: none
+
+/* === SIDEBAR end ===
+
+/* === ASIDE ===
+.aside
+	display: inline
+	float: right
+	margin: 0 0 0 -#{$aside-width}
+	width: $aside-width
+	background-color: sandybrown
+
+	+media('<desk-lg')
+		display: none
+
+/* === ASIDE end ===
+
+/* === FOOTER ===
+.footer
+	//margin: 0 auto
+	position: relative
+	clear: both
+	z-index: 5
+	+font(16px, round-float(24/16, 3))
+	color: $text-color
+	border-top: 1px solid $border-color
+
+	//background-color: lightgreen
+
+.footer__holder
+	overflow: hidden
+	cursor: default
+	padding: 20px 0
+
+/* === FOOTER end ===

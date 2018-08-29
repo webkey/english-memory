@@ -1,0 +1,792 @@
+@@include('_tpl_layout_head.html', {
+	"title": "Forms",
+	"pageClass": ""
+})
+
+@@include('_tpl_PAGE_WRAP.html', {"pageWrap": "START" })
+
+<!--HEADER-->
+@@include('_tpl_layout_header.html', {
+	"currentItem": ""
+})
+<!--HEADER end-->
+
+<!--MAIN-->
+<div class="main">
+	<div class="max-wrap layout">
+		<div class="main__holder">
+			<!--CONTENT-->
+			<div class="content-wrap">
+				<div class="content user-content">
+
+					<div class="layout-article">
+						<style>
+							h3 + div {
+								border-bottom: 2px solid #ffa43f;
+								padding-top: 40px;
+								padding-bottom: 40px;
+							}
+							form > div:not(.input-wrap):not(.form-row):not(.form-footer){
+								padding-top: 40px;
+								padding-bottom: 40px;
+								border-top: 1px dashed #ffa43f;
+							}
+							form > div:not(.input-wrap):not(.form-row):not(.form-footer):first-child{
+								padding-top: 0;
+								border: none;
+							}
+							form > div:not(.input-wrap):not(.form-row):not(.form-footer):last-child{
+								padding-bottom: 0;
+							}
+							h3, h4{
+								position: relative;
+								padding-right: 40px !important;
+							}
+							h3{
+								margin-top: 3rem;
+							}
+							h3 label, h4 label{
+								position: absolute;
+								right: 0;
+								top: 50%;
+								display: block;
+								float: right;
+								width: 30px;
+								height: 30px;
+								border: 1px solid #000;
+								cursor: pointer;
+								margin: -15px 0 0;
+								-webkit-user-select: none;
+								-moz-user-select: none;
+								-ms-user-select: none;
+								user-select: none;
+							}
+							h3 label::before, h4 label::before{
+								content: "–";
+								position: relative;
+								display: block;
+								font-size: 24px;
+								line-height: 1;
+								text-align: center;
+								top: -1px;
+							}
+							.accordionOpener:checked + h3,
+							.accordionOpener:checked + h4{
+								margin-bottom: 0;
+							}
+							.accordionOpener:checked + h3 label::before,
+							.accordionOpener:checked + h4 label::before{
+								content: "+";
+							}
+							.accordionOpener:checked + h3 + div,
+							.accordionOpener:checked + h4 + div{
+								display: none;
+							}
+						</style>
+
+						<h1>Forms</h1>
+
+						<!--===============forms default===============-->
+						@@include('_tpl_title-anchor.html', {
+							"taId": "formElementsDef",
+							"taText": "Fields of forms without wrappers (recommended)",
+							"openerId": "0_01"
+						})
+
+						<div class="layout-text">
+							<form action="#" method="post">
+								<div>
+									@@include('_tpl_title-anchor.html', {
+										"taTag": "h4",
+										"taId": "inputTextTpl",
+										"taText": "Example input field",
+										"openerId": "0_01_tpl"
+									})
+
+									<div>
+										@@loop("_tpl_forms_field.html", [{
+												"wrap": "",
+												"type": "text",
+												"value": "",
+												"ph": "Placeholder",
+												"id": "id",
+												"classes": "field-js",
+												"label": "Label:",
+												"labelClasses": "",
+												"readonly": "",
+												"disabled": "",
+												"required": "true",
+												"valid": "true",
+												"error": "",
+												"success": ""
+											}
+										])
+									</div>
+								</div>
+
+								<!--===================================================-->
+								<!--===================================================-->
+								
+								<div>
+									@@include('_tpl_title-anchor.html', {
+										"taTag": "h4",
+										"taId": "inputText",
+										"taText": "Input type 'text'",
+										"openerId": "0_01_text"
+									})
+
+									<div class="columns">
+										<div class="column">
+											<p><b>Without js</b></p>
+											@@loop("_tpl_forms_field.html", [
+												{
+													"type": "text",
+													"ph": "Placeholder",
+													"id": "f-base",
+													"label": "Text input:"
+												},{
+													"type": "text",
+													"ph": "Placeholder",
+													"id": "f-base-disabled",
+													"label": "Text input - disabled:",
+													"disabled": "true"
+												},{
+													"type": "text",
+													"value": "Value",
+													"ph": "Value placeholder",
+													"id": "f-fit",
+													"label": "Text input - has value:"
+												},{
+													"type": "text",
+													"value": "Value disabled",
+													"ph": "Value placeholder disabled",
+													"id": "f-fit-disabled",
+													"label": "Text input - has value - disabled:",
+													"disabled": "true"
+												},{
+													"type": "text",
+													"ph": "Validation",
+													"id": "f-validation",
+													"label": "Text input - validation:",
+													"valid": "true"
+												},{
+													"type": "text",
+													"ph": "Error",
+													"id": "f-err",
+													"classes": "error",
+													"label": "Text input - error:",
+													"labelClasses": "error",
+													"valid": "true"
+												},{
+													"type": "text",
+													"ph": "Success",
+													"id": "f-suc",
+													"classes": "success",
+													"label": "Text input - success:",
+													"labelClasses": "success",
+													"valid": "true"
+												}
+											])
+										</div>
+										<div class="column">
+											<p><b>With js</b></p>
+											@@loop("_tpl_forms_field.html", [
+												{
+													"type": "text",
+													"ph": "Placeholder",
+													"id": "f-base-js",
+													"classes": "field-js",
+													"label": "Text input:"
+												},{
+													"type": "text",
+													"ph": "Placeholder",
+													"id": "f-base-disabled-js",
+													"classes": "field-js",
+													"label": "Text input - disabled:",
+													"disabled": "true"
+												},{
+													"type": "text",
+													"value": "Value",
+													"ph": "Value placeholder",
+													"id": "f-fit-js",
+													"classes": "field-js",
+													"label": "Text input - has value:"
+												},{
+													"type": "text",
+													"value": "Value disabled",
+													"ph": "Value placeholder disabled",
+													"id": "f-fit-disabled-js",
+													"classes": "field-js",
+													"label": "Text input - has value - disabled:",
+													"disabled": "true"
+												},{
+													"type": "text",
+													"ph": "Validation",
+													"id": "f-validation-js",
+													"classes": "field-js",
+													"label": "Text input - validation:",
+													"valid": "true"
+												},{
+													"type": "text",
+													"ph": "Error",
+													"id": "f-err-js",
+													"classes": "field-js error",
+													"label": "Text input - error:",
+													"labelClasses": "error",
+													"valid": "true"
+												},{
+													"type": "text",
+													"ph": "Success",
+													"id": "f-suc-js",
+													"classes": "field-js success",
+													"label": "Text input - success:",
+													"labelClasses": "success",
+													"valid": "true"
+												}
+											])
+										</div>
+									</div>
+								</div>
+								
+								<!--===================================================-->
+								<!--===================================================-->
+
+								<div>
+									@@include('_tpl_title-anchor.html', {
+										"taTag": "h4",
+										"taId": "textareaDef",
+										"taText": "Textarea",
+										"openerId": "0_01_textarea",
+										"checked": ""
+									})
+
+									<div class="columns">
+										<div class="column">
+											<p><b>Without js</b></p>
+											@@loop("_tpl_forms_field.html", [
+												{
+													"type": "textarea",
+													"ph": "Placeholder",
+													"id": "f-ta-base",
+													"label": "Textarea:"
+												},{
+													"type": "textarea",
+													"ph": "Placeholder",
+													"id": "f-ta-base-disabled",
+													"label": "Textarea - disabled:",
+													"disabled": "true"
+												},{
+													"type": "textarea",
+													"value": "Value",
+													"ph": "Value placeholder",
+													"id": "f-ta-fit",
+													"label": "Textarea - has value:"
+												},{
+													"type": "textarea",
+													"value": "Value disabled",
+													"ph": "Value placeholder disabled",
+													"id": "f-ta-fit-disabled",
+													"label": "Textarea - has value - disabled:",
+													"disabled": "true"
+												},{
+													"type": "textarea",
+													"ph": "Validation",
+													"id": "f-ta-validation",
+													"label": "Textarea - validation:",
+													"valid": "true"
+												},{
+													"type": "textarea",
+													"ph": "Error",
+													"id": "f-ta-err",
+													"classes": "error",
+													"label": "Textarea - error:",
+													"labelClasses": "error",
+													"valid": "true"
+												},{
+													"type": "textarea",
+													"ph": "Success",
+													"id": "f-ta-suc",
+													"classes": "success",
+													"label": "Textarea - success:",
+													"labelClasses": "success",
+													"valid": "true"
+												}
+											])
+										</div>
+										<div class="column">
+											<p><b>With js</b></p>
+											@@loop("_tpl_forms_field.html", [
+												{
+													"type": "textarea",
+													"ph": "Placeholder",
+													"id": "f-ta-base-js",
+													"classes": "field-js",
+													"label": "Textarea:"
+												},{
+													"type": "textarea",
+													"ph": "Placeholder",
+													"id": "f-ta-base-disabled-js",
+													"classes": "field-js",
+													"label": "Textarea - disabled:",
+													"disabled": "true"
+												},{
+													"type": "textarea",
+													"value": "Value",
+													"ph": "Value placeholder",
+													"id": "f-ta-fit-js",
+													"classes": "field-js",
+													"label": "Textarea - has value:"
+												},{
+													"type": "textarea",
+													"value": "Value disabled",
+													"ph": "Value placeholder disabled",
+													"id": "f-ta-fit-disabled-js",
+													"classes": "field-js",
+													"label": "Textarea - has value - disabled:",
+													"disabled": "true"
+												},{
+													"type": "textarea",
+													"ph": "Validation",
+													"id": "f-ta-validation-js",
+													"classes": "field-js",
+													"label": "Textarea - validation:",
+													"valid": "true"
+												},{
+													"type": "textarea",
+													"ph": "Error",
+													"id": "f-ta-err-js",
+													"classes": "field-js error",
+													"label": "Textarea - error:",
+													"labelClasses": "error",
+													"valid": "true"
+												},{
+													"type": "textarea",
+													"ph": "Success",
+													"id": "f-ta-suc-js",
+													"classes": "field-js success",
+													"label": "Textarea - success:",
+													"labelClasses": "success",
+													"valid": "true"
+												}
+											])
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+						<!--===============forms default end===============-->
+
+						<!--===============forms with wrapper===============-->
+						@@include('_tpl_title-anchor.html', {
+							"taId": "formElementsWrap",
+							"taText": "Fields of forms with wrappers (optional)",
+							"openerId": "0_02"
+						})
+
+						<div class="layout-text">
+							<form action="#" method="post">
+								<div>
+									@@include('_tpl_title-anchor.html', {
+										"taTag": "h4",
+										"taId": "inputTextWrap",
+										"taText": "Input type 'text'",
+										"openerId": "0_02_text"
+									})
+
+									<div class="columns">
+										<div class="column">
+											<p><b>Without js</b></p>
+											@@loop("_tpl_forms_field.html", [
+												{
+													"wrap": "true",
+													"type": "text",
+													"ph": "Placeholder",
+													"id": "f-wrap-base",
+													"label": "Text input:"
+												},{
+													"wrap": "true",
+													"type": "text",
+													"ph": "Placeholder",
+													"id": "f-wrap-base-disabled",
+													"label": "Text input - disabled:",
+													"disabled": "true"
+												},{
+													"wrap": "true",
+													"type": "text",
+													"value": "Value",
+													"ph": "Value placeholder",
+													"id": "f-wrap-fit",
+													"label": "Text input - has value:"
+												},{
+													"wrap": "true",
+													"type": "text",
+													"value": "Value disabled",
+													"ph": "Value placeholder disabled",
+													"id": "f-wrap-fit-disabled",
+													"label": "Text input - has value - disabled:",
+													"disabled": "true"
+												},{
+													"wrap": "true",
+													"type": "text",
+													"ph": "Validation",
+													"id": "f-wrap-validation",
+													"label": "Text input - validation:",
+													"valid": "true"
+												},{
+													"wrap": "true",
+													"type": "text",
+													"ph": "Error",
+													"id": "f-wrap-err",
+													"classes": "error",
+													"label": "Text input - error:",
+													"labelClasses": "error",
+													"valid": "true"
+												},{
+													"wrap": "true",
+													"type": "text",
+													"ph": "Success",
+													"id": "f-wrap-suc",
+													"classes": "success",
+													"label": "Text input - success:",
+													"labelClasses": "success",
+													"valid": "true"
+												}
+											])
+										</div>
+										<div class="column">
+											<p><b>With js</b></p>
+											@@loop("_tpl_forms_field.html", [
+												{
+													"wrap": "true",
+													"type": "text",
+													"ph": "Placeholder",
+													"id": "f-wrap-base-js",
+													"classes": "field-js",
+													"label": "Text input:"
+												},{
+													"wrap": "true",
+													"type": "text",
+													"ph": "Placeholder",
+													"id": "f-wrap-base-disabled-js",
+													"classes": "field-js",
+													"label": "Text input - disabled:",
+													"disabled": "true"
+												},{
+													"wrap": "true",
+													"type": "text",
+													"value": "Value",
+													"ph": "Value placeholder",
+													"id": "f-wrap-fit-js",
+													"classes": "field-js",
+													"label": "Text input - has value:"
+												},{
+													"wrap": "true",
+													"type": "text",
+													"value": "Value disabled",
+													"ph": "Value placeholder disabled",
+													"id": "f-wrap-fit-disabled-js",
+													"classes": "field-js",
+													"label": "Text input - has value - disabled:",
+													"disabled": "true"
+												},{
+													"wrap": "true",
+													"type": "text",
+													"ph": "Validation",
+													"id": "f-wrap-validation-js",
+													"classes": "field-js",
+													"label": "Text input - validation:",
+													"valid": "true"
+												},{
+													"wrap": "true",
+													"type": "text",
+													"ph": "Error",
+													"id": "f-wrap-err-js",
+													"classes": "field-js error",
+													"label": "Text input - error:",
+													"labelClasses": "error",
+													"valid": "true"
+												},{
+													"wrap": "true",
+													"type": "text",
+													"ph": "Success",
+													"id": "f-wrap-suc-js",
+													"classes": "field-js success",
+													"label": "Text input - success:",
+													"labelClasses": "success",
+													"valid": "true"
+												}
+											])
+										</div>
+									</div>
+								</div>
+
+								<!--===================================================-->
+								<!--===================================================-->
+
+								<div>
+									@@include('_tpl_title-anchor.html', {
+										"taTag": "h4",
+										"taId": "textareaWrap",
+										"taText": "Textarea",
+										"openerId": "0_02_textarea",
+										"checked": ""
+									})
+
+									<div class="columns">
+										<div class="column">
+											<p><b>Without js</b></p>
+											@@loop("_tpl_forms_field.html", [
+												{
+													"wrap": "true",
+													"type": "textarea",
+													"ph": "Placeholder",
+													"id": "f-wrap-ta-base",
+													"label": "Textarea:"
+												},{
+													"wrap": "true",
+													"type": "textarea",
+													"ph": "Placeholder",
+													"id": "f-wrap-ta-base-disabled",
+													"label": "Textarea - disabled:",
+													"disabled": "true"
+												},{
+													"wrap": "true",
+													"type": "textarea",
+													"value": "Value",
+													"ph": "Value placeholder",
+													"id": "f-wrap-ta-fit",
+													"label": "Textarea - has value:"
+												},{
+													"wrap": "true",
+													"type": "textarea",
+													"value": "Value disabled",
+													"ph": "Value placeholder disabled",
+													"id": "f-wrap-ta-fit-disabled",
+													"label": "Textarea - has value - disabled:",
+													"disabled": "true"
+												},{
+													"wrap": "true",
+													"type": "textarea",
+													"ph": "Validation",
+													"id": "f-wrap-ta-validation",
+													"label": "Textarea - validation:",
+													"valid": "true"
+												},{
+													"wrap": "true",
+													"type": "textarea",
+													"ph": "Error",
+													"id": "f-wrap-ta-err",
+													"classes": "error",
+													"label": "Textarea - error:",
+													"labelClasses": "error",
+													"valid": "true"
+												},{
+													"wrap": "true",
+													"type": "textarea",
+													"ph": "Success",
+													"id": "f-wrap-ta-suc",
+													"classes": "success",
+													"label": "Textarea - success:",
+													"labelClasses": "success",
+													"valid": "true"
+												}
+											])
+										</div>
+										<div class="column">
+											<p><b>With js</b></p>
+											@@loop("_tpl_forms_field.html", [
+												{
+													"wrap": "true",
+													"type": "textarea",
+													"ph": "Placeholder",
+													"id": "f-wrap-ta-base-js",
+													"classes": "field-js",
+													"label": "Textarea:"
+												},{
+													"wrap": "true",
+													"type": "textarea",
+													"ph": "Placeholder",
+													"id": "f-wrap-ta-base-disabled-js",
+													"classes": "field-js",
+													"label": "Textarea - disabled:",
+													"disabled": "true"
+												},{
+													"wrap": "true",
+													"type": "textarea",
+													"value": "Value",
+													"ph": "Value placeholder",
+													"id": "f-wrap-ta-fit-js",
+													"classes": "field-js",
+													"label": "Textarea - has value:"
+												},{
+													"wrap": "true",
+													"type": "textarea",
+													"value": "Value disabled",
+													"ph": "Value placeholder disabled",
+													"id": "f-wrap-ta-fit-disabled-js",
+													"classes": "field-js",
+													"label": "Textarea - has value - disabled:",
+													"disabled": "true"
+												},{
+													"wrap": "true",
+													"type": "textarea",
+													"ph": "Validation",
+													"id": "f-wrap-ta-validation-js",
+													"classes": "field-js",
+													"label": "Textarea - validation:",
+													"valid": "true"
+												},{
+													"wrap": "true",
+													"type": "textarea",
+													"ph": "Error",
+													"id": "f-wrap-ta-err-js",
+													"classes": "field-js error",
+													"label": "Textarea - error:",
+													"labelClasses": "error",
+													"valid": "true"
+												},{
+													"wrap": "true",
+													"type": "textarea",
+													"ph": "Success",
+													"id": "f-wrap-ta-suc-js",
+													"classes": "field-js success",
+													"label": "Textarea - success:",
+													"labelClasses": "success",
+													"valid": "true"
+												}
+											])
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+						<!--===============forms with wrapper end===============-->
+
+						<!--===============selects===============-->
+						@@include('_tpl_title-anchor.html', {
+							"taId": "selectsDefGroup",
+							"taText": "Selects (without js customization)",
+							"openerId": "0_03"
+						})
+
+						<div class="layout-text">
+							@@include('_tpl_forms_selects.html')
+						</div>
+						<!--===============selects end===============-->
+
+						<!--===============custom selects - select2===============-->
+						@@include('_tpl_title-anchor.html', {
+							"taId": "select2Group",
+							"taText": "Select2 - Selects (with js customization)",
+							"openerId": "0_04"
+						})
+						<div class="layout-text">
+							@@include('_tpl_forms_select2.html')
+						</div>
+						<!--===============selects end===============-->
+
+						<!--===============checkbox and radio===============-->
+						@@include('_tpl_title-anchor.html', {
+							"taId": "formCheckboxExample",
+							"taText": "Checkboxes and Radio Buttons",
+							"openerId": "0_05"
+						})
+						<div class="layout-text">
+							@@include('_tpl_forms_checks.html')
+						</div>
+						<!--===============checkbox and radio end===============-->
+
+						<!--===============columnize===============-->
+						@@include('_tpl_title-anchor.html', {
+							"taId": "fcColumnsCustom",
+							"taText": "Two columns",
+							"openerId": "0_06"
+						})
+						<div class="layout-text">
+							<form action="#" method="post">
+								<div class="form-row">
+									<div class="input-wrap">
+										<label for="f-columns-01" title="Текстовое поле">Текстовое поле:</label>
+										<input type="text" placeholder="Текстовое поле" id="f-columns-01" />
+										@@include('_tpl_forms_valid.html')
+									</div>
+									<!--===================================================-->
+									<div class="input-wrap">
+										<label for="f-columns-02" title="Сладкая точка — это обычно точка, в которой большинство штрихов соответствуют пиксельной сетке — пиксельные шрифты, если вы помните их, работали только в этой сладкой точке">Сладкая точка — это обычно точка, в которой большинство штрихов соответствуют пиксельной сетке — пиксельные шрифты, если вы помните их, работали только в этой сладкой точке</label>
+										<input type="text" placeholder="Текстовое поле" id="f-columns-02" />
+										@@include('_tpl_forms_valid.html')
+									</div>
+								</div>
+								<!--===================================================-->
+								<div class="form-row">
+									<div class="input-wrap">
+										<label for="f-columns-03">Текстовое поле:</label>
+										<input type="text" placeholder="Текстовое поле" id="f-columns-03" />
+										@@include('_tpl_forms_valid.html')
+									</div>
+									<!--===================================================-->
+									<div class="input-wrap">
+										<label for="f-columns-04">Текстовое поле:</label>
+										<input type="text" placeholder="Текстовое поле" id="f-columns-04" />
+										@@include('_tpl_forms_valid.html')
+									</div>
+								</div>
+								<!--===================================================-->
+								<div class="form-row">
+									<div class="input-wrap">
+										<label for="f-columns-05" title="Как результат, вам не стоит делать текст по центру больше двух или трех раз на общее количество текста.">Как результат, вам не стоит делать текст по центру больше двух или трех раз на общее количество текста.</label>
+										<select name="select-name" id="f-columns-05">
+											@@include('_tpl_forms_options.html')
+										</select>
+										@@include('_tpl_forms_valid.html')
+									</div>
+									<!--===================================================-->
+									<div class="input-wrap">
+										<label for="f-columns-06">Селект:</label>
+										<select name="select-name" id="f-columns-06">
+											@@include('_tpl_forms_options.html')
+										</select>
+										@@include('_tpl_forms_valid.html')
+									</div>
+								</div>
+								<!--===================================================-->
+							</form>
+						</div>
+						<!--===============columnize end===============-->
+						
+						<!--===============user form===============-->
+						@@include('_tpl_title-anchor.html', {
+							"taId": "userFormExample",
+							"taText": "Validation form",
+							"openerId": "0_07"
+						})
+						<div>
+							@@include('_tpl_forms_user-form.html', { "title": "Title of Form" })
+						</div>
+						<!--===============user form end===============-->
+					</div>
+
+					@@include('_tpl_typography_nav.html')
+				</div>
+			</div>
+			<!--CONTENT end-->
+
+			<!--SIDEBAR-->
+			@@include('_tpl_layout_sidebar.html')
+			<!--SIDEBAR-->
+
+			<!--ASIDE-->
+			@@include('_tpl_layout_aside.html')
+			<!--ASIDE end-->
+		</div>
+	</div>
+</div>
+<!--MAIN end-->
+
+<!--FOOTER-->
+@@include('_tpl_layout_footer.html')
+<!--FOOTER end-->
+
+@@include('_tpl_PAGE_WRAP.html', {"pageWrap": "END" })
+
+@@include('_tpl_layout_foot.html')

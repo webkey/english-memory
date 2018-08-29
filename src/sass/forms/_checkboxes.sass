@@ -1,0 +1,256 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+/* forms checkbox and radiobutton
+input[type="checkbox"] ~ label, input[type="radio"] ~ label, .check-label, .radio-label
+	+display-inline-block-top
+	+font-normal
+	+font(16px, 22px)
+	letter-spacing: 0.025em
+	color: $text-color
+	text-transform: none
+	cursor: pointer
+	position: relative
+	user-select: none
+	white-space: normal !important
+	text-overflow: clip !important
+
+	// hover
+	.no-touchevents &:hover
+		color: $checkbox-color
+
+		input[type="checkbox"]:not(:disabled) ~ i
+			&::before
+				border-color: $checkbox-color
+
+input[type="checkbox"],
+input[type="radio"]
+	float: left
+	+size(16px)
+	padding: 0
+	margin: 0
+	display: none
+
+	& ~ label > span,
+	& ~ span
+		display: inline-block
+		vertical-align: top
+		position: relative
+		padding: 0 0 0 34px
+		z-index: 2
+
+	& ~ i
+		+font(0, 0)
+		position: absolute
+		left: 0
+		top: 50%
+
+.no-touchevents .check-label:hover
+
+	input[type="checkbox"]:not(:disabled) ~ i
+		&::before
+			border-color: $checkbox-color
+
+.no-touchevents .radio-label:hover
+
+	input[type="radio"]:not(:disabled) ~ span
+		&::before
+			border-color: $checkbox-color
+
+//checkbox
+input[type="checkbox"]
+
+	& ~ label,
+	& ~ i
+		&::before,
+		&::after
+			content: ''
+			+size(22px)
+			position: absolute
+			left: 0
+			top: 50%
+			margin-top: -11px
+			border-radius: 0
+
+		&::before
+			border: 2px solid $checkbox-color
+			background-color: transparent
+
+		&::after
+			content: none
+
+	& ~ label > span,
+	& ~ span
+		&::before,
+		&::after
+			content: ''
+			position: absolute
+			+size(0, 4px)
+			left: 0
+			top: 50%
+			border-radius: 0
+			background: white
+
+		&::before
+			transform: rotate(45deg)
+			transform-origin: 0 10px
+			z-index: 1
+
+		&::after
+			transform: rotate(-50deg)
+			transform-origin: 0 10px
+			left: 22px
+
+	// checkbox checked
+	&:checked
+		& ~ label,
+		& ~ i
+			&::before
+				border-color: $checkbox-color
+				background-color: $checkbox-color
+
+		& ~ label > span,
+		& ~ span
+			&::before
+				width: 7px
+				margin: -5px 0 0 0
+				backface-visibility: hidden
+
+			&::after
+				width: 11px
+				margin: 0 0 0 -7px
+				backface-visibility: hidden
+
+	// checkbox disabled
+	&:disabled
+		& ~ label,
+		& ~ span
+			color: #bdbdbd !important
+			cursor: default
+
+		& ~ label,
+		& ~ i
+			&::before
+				border-color: #d6d6d6
+				background-color: #f3f3f3
+
+		& ~ label > span,
+		& ~ span
+			&:before,
+			&:after
+				background: #d6d6d6
+
+// radio
+input[type="radio"]
+
+	& ~ label,
+	& ~ span
+		&::before, &::after
+			content: ''
+			+size(22px)
+			position: absolute
+			left: 0
+			top: 50%
+			margin-top: -11px
+			border-radius: 50px
+
+		&::before
+			border: 2px solid $checkbox-color
+
+		&::after
+			background: none
+
+	& ~ label > span,
+	& ~ i
+		&::after
+			content: ''
+			+size(12px)
+			position: absolute
+			top: 50%
+			left: 5px
+			margin-top: -6px
+			border-radius: 50%
+			overflow: hidden
+			background: $checkbox-color
+			animation: bounceout 0s
+			animation-iteration-count: 1
+			animation-fill-mode: forwards
+			opacity: 0
+
+	& ~ i
+		z-index: 3
+
+	// radio checked
+	&:checked
+		& ~ label,
+		& ~ span
+			&::before
+				border-color: $checkbox-color
+
+		& ~ label > span,
+		& ~ i
+			&::after
+				animation: bounce 0.3s
+				animation-iteration-count: 1
+				opacity: 1
+				background-color: $checkbox-color
+
+	@keyframes bounce
+		0%
+			transform: scale(0.8)
+			opacity: 0.4
+
+		50%
+			transform: scale(1.4)
+			opacity: 1
+
+		100%
+			transform: scale(1)
+			opacity: 1
+
+	@keyframes bounceout
+		0%
+			transform: scale(0)
+			opacity: 1
+
+		50%
+			transform: scale(1.4)
+			opacity: 1
+
+		100%
+			transform: scale(0)
+			opacity: 0.4
+
+	// radio disabled
+	&:disabled
+		& ~ label,
+		& ~ label > span,
+		& ~ span
+			color: #bdbdbd
+			cursor: default
+
+			&::before
+				border-color: #d6d6d6
+				background-color: #f3f3f3
+
+		& ~ label > span,
+		& ~ i
+			&::after
+				background: #b9b9b9
+
+.check-list
+	+font(16px, 20px)
+
+	&, .#{$user-content} &
+		margin: 0
+		padding: 0
+
+		li
+			margin: 0 0 20px
+			padding-left: 0
+
+			&::before
+				content: none
+
+/* forms checkbox and radiobutton end

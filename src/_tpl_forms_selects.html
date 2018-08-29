@@ -1,0 +1,513 @@
+<form action="#" method="post">
+	<div>
+		@@include('_tpl_title-anchor.html', {
+			"taTag": "h4",
+			"taId": "selectTpl",
+			"taText": "Example template of select",
+			"openerId": "0_03_tpl"
+		})
+
+		<div>
+			@@loop("_tpl_forms_field.html", [{
+					"wrap": "",
+					"type": "select",
+					"value": "",
+					"ph": "",
+					"id": "s-id",
+					"classes": "field-js",
+					"label": "Label:",
+					"labelClasses": "",
+					"disabled": "",
+					"required": "",
+					"valid": "",
+					"error": "",
+					"success": ""
+				}
+			])
+		</div>
+	</div>
+
+	<!--===================================================-->
+	<!--===================================================-->
+
+	<div>
+		@@include('_tpl_title-anchor.html', {
+			"taTag": "h4",
+			"taId": "selectsDef",
+			"taText": "Selects without a wrapper. Default arrow (recommended)",
+			"openerId": "0_03_default"
+		})
+
+		<div class="columns">
+			<div class="column">
+				<p><b>Without js</b></p>
+				@@loop("_tpl_forms_field.html", [
+					{
+						"type": "select",
+						"id": "s-base",
+						"label": "Select:"
+					},{
+						"type": "select",
+						"id": "s-base-disabled",
+						"label": "Select - disabled:",
+						"disabled": "true"
+					},{
+						"type": "select",
+						"value": "2",
+						"id": "s-fit",
+						"label": "Select - selected:"
+					},{
+						"type": "select",
+						"value": "3",
+						"id": "s-fit-disabled",
+						"label": "Select - selected - disabled:",
+						"disabled": "true"
+					},{
+						"type": "select",
+						"id": "s-validation",
+						"label": "Select - validation:",
+						"valid": "true"
+					},{
+						"type": "select",
+						"id": "s-err",
+						"classes": "error",
+						"label": "Select - error:",
+						"labelClasses": "error",
+						"valid": "true"
+					},{
+						"type": "select",
+						"id": "s-suc",
+						"classes": "success",
+						"label": "Select - success:",
+						"labelClasses": "success",
+						"valid": "true"
+					}
+				])
+			</div>
+			<div class="column">
+				<p><b>With js</b></p>
+				@@loop("_tpl_forms_field.html", [
+					{
+						"type": "select",
+						"id": "s-base-js",
+						"classes": "field-js",
+						"label": "Select:"
+					},{
+						"type": "select",
+						"id": "s-base-disabled-js",
+						"classes": "field-js",
+						"label": "Select - disabled:",
+						"disabled": "true"
+					},{
+						"type": "select",
+						"value": "2",
+						"id": "s-fit-js",
+						"classes": "field-js",
+						"label": "Select - selected:"
+					},{
+						"type": "select",
+						"value": "3",
+						"id": "s-fit-disabled-js",
+						"classes": "field-js",
+						"label": "Select - selected - disabled:",
+						"disabled": "true"
+					},{
+						"type": "select",
+						"id": "s-validation-js",
+						"classes": "field-js",
+						"label": "Select - validation:",
+						"valid": "true"
+					},{
+						"type": "select",
+						"id": "s-err-js",
+						"classes": "field-js error",
+						"label": "Select - error:",
+						"labelClasses": "error",
+						"valid": "true"
+					},{
+						"type": "select",
+						"id": "s-suc-js",
+						"classes": "field-js success",
+						"label": "Select - success:",
+						"labelClasses": "success",
+						"valid": "true"
+					}
+				])
+			</div>
+		</div>
+	</div>
+
+	<!--===================================================-->
+	<!--===================================================-->
+
+	<div>
+		@@include('_tpl_title-anchor.html', {
+			"taTag": "h4",
+			"taId": "selectsArrows",
+			"taText": "Selects without a wrapper. Custom arrow",
+			"openerId": "0_03_arrows",
+			"checked": ""
+		})
+
+		<div>
+			<div><code class="mark">select</code> необходимо завернуть в <code class="mark">div</code> с классом <code class="mark">.select</code></div>
+			<div>Элементы валидаци поместить в <code class="mark">.select</code> после тэга <code class="mark">select</code></div>
+			<div>Если элементы валидаци поместить после <code class="mark">.select</code>, то классы валидации необходимо добавлять и на <code class="mark">.select</code></div>
+			<div class="user-spacer"></div>
+
+			<div class="columns">
+				<div class="column">
+					<p><b>Without js</b></p>
+					@@loop("_tpl_forms_field.html", [
+						{
+							"type": "selectMod",
+							"id": "sm-base",
+							"label": "Select:"
+						},{
+							"type": "selectMod",
+							"id": "sm-base-disabled",
+							"label": "Select - disabled:",
+							"disabled": "true"
+						},{
+							"type": "selectMod",
+							"value": "2",
+							"id": "sm-fit",
+							"label": "Select - selected:"
+						},{
+							"type": "selectMod",
+							"value": "3",
+							"id": "sm-fit-disabled",
+							"label": "Select - selected - disabled:",
+							"disabled": "true"
+						},{
+							"type": "selectMod",
+							"id": "sm-validation",
+							"label": "Select - validation:",
+							"valid": "true"
+						},{
+							"type": "selectMod",
+							"id": "sm-err",
+							"classes": "error",
+							"label": "Select - error:",
+							"labelClasses": "error",
+							"valid": "true"
+						},{
+							"type": "selectMod",
+							"id": "sm-suc",
+							"classes": "success",
+							"label": "Select - success:",
+							"labelClasses": "success",
+							"valid": "true"
+						}
+					])
+				</div>
+				<div class="column">
+					<p><b>With js</b></p>
+					@@loop("_tpl_forms_field.html", [
+						{
+							"type": "selectMod",
+							"id": "sm-base-js",
+							"classes": "field-js",
+							"label": "Select:"
+						},{
+							"type": "selectMod",
+							"id": "sm-base-disabled-js",
+							"classes": "field-js",
+							"label": "Select - disabled:",
+							"disabled": "true"
+						},{
+							"type": "selectMod",
+							"value": "2",
+							"id": "sm-fit-js",
+							"classes": "field-js",
+							"label": "Select - selected:"
+						},{
+							"type": "selectMod",
+							"value": "3",
+							"id": "sm-fit-disabled-js",
+							"classes": "field-js",
+							"label": "Select - selected - disabled:",
+							"disabled": "true"
+						},{
+							"type": "selectMod",
+							"id": "sm-validation-js",
+							"classes": "field-js",
+							"label": "Select - validation:",
+							"valid": "true"
+						},{
+							"type": "selectMod",
+							"id": "sm-err-js",
+							"classes": "field-js error",
+							"label": "Select - error:",
+							"labelClasses": "error",
+							"valid": "true"
+						},{
+							"type": "selectMod",
+							"id": "sm-suc-js",
+							"classes": "field-js success",
+							"label": "Select - success:",
+							"labelClasses": "success",
+							"valid": "true"
+						}
+					])
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--===================================================-->
+	<!--===================================================-->
+
+	<div>
+		@@include('_tpl_title-anchor.html', {
+			"taTag": "h4",
+			"taId": "selectsDefWrap",
+			"taText": "Select has a wrapper. Default arrow",
+			"openerId": "0_03_default_wrap"
+		})
+
+		<div class="columns">
+			<div class="column">
+				<p><b>Without js</b></p>
+				@@loop("_tpl_forms_field.html", [
+					{
+						"wrap": "true",
+						"type": "select",
+						"id": "sw-base",
+						"label": "Select:"
+					},{
+						"wrap": "true",
+						"type": "select",
+						"id": "sw-base-disabled",
+						"label": "Select - disabled:",
+						"disabled": "true"
+					},{
+						"wrap": "true",
+						"type": "select",
+						"value": "2",
+						"id": "sw-fit",
+						"label": "Select - selected:"
+					},{
+						"wrap": "true",
+						"type": "select",
+						"value": "3",
+						"id": "sw-fit-disabled",
+						"label": "Select - selected - disabled:",
+						"disabled": "true"
+					},{
+						"wrap": "true",
+						"type": "select",
+						"id": "sw-validation",
+						"label": "Select - validation:",
+						"valid": "true"
+					},{
+						"wrap": "true",
+						"type": "select",
+						"id": "sw-err",
+						"classes": "error",
+						"label": "Select - error:",
+						"labelClasses": "error",
+						"valid": "true"
+					},{
+						"wrap": "true",
+						"type": "select",
+						"id": "sw-suc",
+						"classes": "success",
+						"label": "Select - success:",
+						"labelClasses": "success",
+						"valid": "true"
+					}
+				])
+			</div>
+			<div class="column">
+				<p><b>With js</b></p>
+				@@loop("_tpl_forms_field.html", [
+					{
+						"wrap": "true",
+						"type": "select",
+						"id": "sw-base-js",
+						"classes": "field-js",
+						"label": "Select:"
+					},{
+						"wrap": "true",
+						"type": "select",
+						"id": "sw-base-disabled-js",
+						"classes": "field-js",
+						"label": "Select - disabled:",
+						"disabled": "true"
+					},{
+						"wrap": "true",
+						"type": "select",
+						"value": "2",
+						"id": "sw-fit-js",
+						"classes": "field-js",
+						"label": "Select - selected:"
+					},{
+						"wrap": "true",
+						"type": "select",
+						"value": "3",
+						"id": "sw-fit-disabled-js",
+						"classes": "field-js",
+						"label": "Select - selected - disabled:",
+						"disabled": "true"
+					},{
+						"wrap": "true",
+						"type": "select",
+						"id": "sw-validation-js",
+						"classes": "field-js",
+						"label": "Select - validation:",
+						"valid": "true"
+					},{
+						"wrap": "true",
+						"type": "select",
+						"id": "sw-err-js",
+						"classes": "field-js error",
+						"label": "Select - error:",
+						"labelClasses": "error",
+						"valid": "true"
+					},{
+						"wrap": "true",
+						"type": "select",
+						"id": "sw-suc-js",
+						"classes": "field-js success",
+						"label": "Select - success:",
+						"labelClasses": "success",
+						"valid": "true"
+					}
+				])
+			</div>
+		</div>
+	</div>
+
+	<!--===================================================-->
+	<!--===================================================-->
+
+	<div>
+		@@include('_tpl_title-anchor.html', {
+			"taTag": "h4",
+			"taId": "selectsArrowsWrap",
+			"taText": "Select has a wrapper. Custom arrow",
+			"openerId": "0_03_arrows_wrap",
+			"checked": ""
+		})
+
+		<div>
+			<div><code class="mark">select</code> необходимо завернуть в <code class="mark">div</code> с классом <code class="mark">.select</code></div>
+			<div>Элементы валидаци поместить в <code class="mark">.select</code> после тэга <code class="mark">select</code></div>
+			<div>Если элементы валидаци поместить после <code class="mark">.select</code>, то классы валидации необходимо добавлять и на <code class="mark">.select</code></div>
+			<div class="user-spacer"></div>
+
+			<div class="columns">
+				<div class="column">
+					<p><b>Without js</b></p>
+					@@loop("_tpl_forms_field.html", [
+						{
+							"wrap": "true",
+							"type": "selectMod",
+							"id": "smw-base",
+							"label": "Select:"
+						},{
+							"wrap": "true",
+							"type": "selectMod",
+							"id": "smw-base-disabled",
+							"label": "Select - disabled:",
+							"disabled": "true"
+						},{
+							"wrap": "true",
+							"type": "selectMod",
+							"value": "2",
+							"id": "smw-fit",
+							"label": "Select - selected:"
+						},{
+							"wrap": "true",
+							"type": "selectMod",
+							"value": "3",
+							"id": "smw-fit-disabled",
+							"label": "Select - selected - disabled:",
+							"disabled": "true"
+						},{
+							"wrap": "true",
+							"type": "selectMod",
+							"id": "smw-validation",
+							"label": "Select - validation:",
+							"valid": "true"
+						},{
+							"wrap": "true",
+							"type": "selectMod",
+							"id": "smw-err",
+							"classes": "error",
+							"label": "Select - error:",
+							"labelClasses": "error",
+							"valid": "true"
+						},{
+							"wrap": "true",
+							"type": "selectMod",
+							"id": "smw-suc",
+							"classes": "success",
+							"label": "Select - success:",
+							"labelClasses": "success",
+							"valid": "true"
+						}
+					])
+				</div>
+				<div class="column">
+					<p><b>With js</b></p>
+					@@loop("_tpl_forms_field.html", [
+						{
+							"wrap": "true",
+							"type": "selectMod",
+							"id": "smw-base-js",
+							"classes": "field-js",
+							"label": "Select:"
+						},{
+							"wrap": "true",
+							"type": "selectMod",
+							"id": "smw-base-disabled-js",
+							"classes": "field-js",
+							"label": "Select - disabled:",
+							"disabled": "true"
+						},{
+							"wrap": "true",
+							"type": "selectMod",
+							"value": "2",
+							"id": "smw-fit-js",
+							"classes": "field-js",
+							"label": "Select - selected:"
+						},{
+							"wrap": "true",
+							"type": "selectMod",
+							"value": "3",
+							"id": "smw-fit-disabled-js",
+							"classes": "field-js",
+							"label": "Select - selected - disabled:",
+							"disabled": "true"
+						},{
+							"wrap": "true",
+							"type": "selectMod",
+							"id": "smw-validation-js",
+							"classes": "field-js",
+							"label": "Select - validation:",
+							"valid": "true"
+						},{
+							"wrap": "true",
+							"type": "selectMod",
+							"id": "smw-err-js",
+							"classes": "field-js error",
+							"label": "Select - error:",
+							"labelClasses": "error",
+							"valid": "true"
+						},{
+							"wrap": "true",
+							"type": "selectMod",
+							"id": "smw-suc-js",
+							"classes": "field-js success",
+							"label": "Select - success:",
+							"labelClasses": "success",
+							"valid": "true"
+						}
+					])
+				</div>
+			</div>
+		</div>
+	</div>
+</form>

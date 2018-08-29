@@ -1,0 +1,79 @@
+@@if(context.type != "textarea" && context.type != "select" && context.type != "selectMod"){
+@@if(context.wrap){<div class="input-wrap">}
+@@if(context.id && !context.wrap){<label}@@if(context.id && context.wrap){<div class="label-holder"><label}@@if(context.labelClasses){ class="@@labelClasses"}@@if(context.id){ for="@@id"}>@@label@@if(context.valid){ <span class="form-mark">*</span>}@@if(context.id && !context.wrap){</label>}@@if(context.id && context.wrap){</label></div>}
+@@if(!context.wrap){<input}@@if(context.wrap){
+<div class="input-holder">
+	<input}
+	@@if(context.classes){ class="@@classes"}@@if(context.id){ id="@@id"} name="@@id"@@if(context.ph){ placeholder="@@ph"} type="@@type"@@if(context.value){ value="@@value"}@@if(context.multiple){ multiple="multiple"}@@if(context.readonly){ readonly}@@if(context.disabled){ disabled}@@if(context.required){ required}
+@@if(!context.wrap){
+	/>
+	@@if(context.valid){@@include('_tpl_forms_valid.html', {"error": "@@error", "success": "@@success"})}
+}@@if(context.wrap){/>
+	@@if(context.valid){@@include('_tpl_forms_valid.html', {"error": "@@error", "success": "@@success"})}
+</div>}
+@@if(context.wrap){</div>}
+}
+
+
+
+@@if(context.type == "textarea"){
+@@if(context.wrap){<div class="input-wrap">}
+@@if(context.id && !context.wrap){<label}@@if(context.id && context.wrap){<div class="label-holder"><label}@@if(context.labelClasses){ class="@@labelClasses"}@@if(context.id){ for="@@id"}>@@label@@if(context.valid){ <span class="form-mark">*</span>}@@if(context.id && !context.wrap){</label>}@@if(context.id && context.wrap){</label></div>}
+@@if(!context.wrap){<textarea}@@if(context.wrap){
+<div class="input-holder">
+	<textarea}
+	@@if(context.classes){ class="@@classes"}@@if(context.id){ id="@@id"} name="@@id"@@if(context.ph){ placeholder="@@ph"}@@if(context.readonly){ readonly}@@if(context.disabled){ disabled}@@if(context.required){ required}
+@@if(!context.wrap){
+	>@@if(context.value){@@value}</textarea>
+	@@if(context.valid){@@include('_tpl_forms_valid.html', {"error": "@@error", "success": "@@success"})}
+}@@if(context.wrap){>@@if(context.value){@@value}</textarea>
+	@@if(context.valid){@@include('_tpl_forms_valid.html', {"error": "@@error", "success": "@@success"})}
+</div>}
+@@if(context.wrap){</div>}
+}
+
+
+
+@@if(context.type == "select"){
+@@if(context.wrap){<div class="input-wrap">}
+@@if(context.id && !context.wrap){<label}@@if(context.id && context.wrap){<div class="label-holder"><label}@@if(context.labelClasses){ class="@@labelClasses"}@@if(context.id){ for="@@id"}>@@label@@if(context.valid){ <span class="form-mark">*</span>}@@if(context.id && !context.wrap){</label>}@@if(context.id && context.wrap){</label></div>}
+@@if(!context.wrap){<select}@@if(context.wrap){
+<div class="input-holder">
+	<select}
+	@@if(context.classes){ class="@@classes"}@@if(context.id){ id="@@id"} name="@@id"@@if(context.ph){ placeholder="@@ph"}@@if(context.readonly){ readonly}@@if(context.disabled){ disabled}@@if(context.required){ required}
+@@if(!context.wrap){
+	>@@include('_tpl_forms_options.html', {"placeholder": "@@placeholder", "value": "@@value"})
+</select>
+	@@if(context.valid){@@include('_tpl_forms_valid.html', {"error": "@@error", "success": "@@success"})}
+}@@if(context.wrap){>@@include('_tpl_forms_options.html', {"placeholder": "@@placeholder", "value": "@@value"})
+</select>
+	@@if(context.valid){@@include('_tpl_forms_valid.html', {"error": "@@error", "success": "@@success"})}
+</div>}
+@@if(context.wrap){</div>}
+}
+
+
+
+@@if(context.type == "selectMod"){
+@@if(context.wrap){<div class="input-wrap">}
+@@if(context.id && !context.wrap){<label}@@if(context.id && context.wrap){<div class="label-holder"><label}@@if(context.labelClasses){ class="@@labelClasses"}@@if(context.id){ for="@@id"}>@@label@@if(context.valid){ <span class="form-mark">*</span>}@@if(context.id && !context.wrap){</label>}@@if(context.id && context.wrap){</label></div>}
+@@if(!context.wrap){
+<div class="select">
+<select}@@if(context.wrap){
+<div class="input-holder">
+<div class="select">
+<select}
+	@@if(context.classes){ class="@@classes"}@@if(context.id){ id="@@id"} name="@@id"@@if(context.ph){ placeholder="@@ph"}@@if(context.readonly){ readonly}@@if(context.disabled){ disabled}@@if(context.required){ required}
+@@if(!context.wrap){
+	>@@include('_tpl_forms_options.html', {"placeholder": "@@placeholder", "value": "@@value"})
+</select>
+	@@if(context.valid){@@include('_tpl_forms_valid.html', {"error": "@@error", "success": "@@success"})}
+</div>
+}@@if(context.wrap){>@@include('_tpl_forms_options.html', {"placeholder": "@@placeholder", "value": "@@value"})
+</select>
+	@@if(context.valid){@@include('_tpl_forms_valid.html', {"error": "@@error", "success": "@@success"})}
+</div>
+</div>}
+@@if(context.wrap){</div>}
+}
+<!--===================================================-->

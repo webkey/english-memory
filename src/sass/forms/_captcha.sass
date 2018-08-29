@@ -1,0 +1,49 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+/* captcha
+.captcha
+	position: relative // Важно! Для позицирования отметки подтверждения полей формы
+	z-index: 1 // Важно! Отметка подтверждения полей формы имеет z-index: -1
+	+clear-spacing
+
+	input
+		text-align: center
+
+	img
+		$space-right: 20px
+		display: inline-block
+		vertical-align: middle
+		width: 180px
+		max-width: 50%
+		margin-right: $space-right
+		+font(12px, round-float(16/12, 2))
+		letter-spacing: $letter-spacing
+
+		& + input
+			display: inline-block
+			vertical-align: middle
+			width: 180px
+			max-width: calc(50% - #{$space-right})
+			margin: 0
+
+	.captcha-refresh
+		+font(14px, round-float(18/14, 2))
+		letter-spacing: $letter-spacing
+		margin-bottom: 0.5em
+
+		a
+			color: $text-color
+			text-decoration: none
+
+			span
+				border-bottom: 1px dotted $text-color
+
+			&:hover
+				color: $link-color
+
+				span
+					border-color: $link-color
+
+/* captcha end

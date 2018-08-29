@@ -1,0 +1,29 @@
+@@include('_tpl_layout_head.html', {
+	"title": "List of pages",
+	"pageClass": ""
+})
+
+@@include('_tpl_PAGE_WRAP.html', {"pageWrap": "START" })
+
+<!--MAIN-->
+<div class="main">
+	<div class="max-wrap layout user-content">
+		<ul>
+			<li><a href="index.html">index.html</a></li>
+			<li><a href="typography.html">typography.html</a></li>
+			<li><a href="inner.html">inner.html</a></li>
+			<li><a href="forms.html">forms.html</a></li>
+			<li><a href="test-mixins.html">test-mixins.html</a></li>
+			<li><a href="404.html">404.html</a></li>
+		</ul>
+	</div>
+</div>
+<!--MAIN end-->
+
+<!--FOOTER-->
+@@include('_tpl_layout_footer.html')
+<!--FOOTER end-->
+
+@@include('_tpl_PAGE_WRAP.html', {"pageWrap": "END" })
+
+@@include('_tpl_layout_foot.html')

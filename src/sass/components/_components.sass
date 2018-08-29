@@ -1,0 +1,550 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+/* user form
+.user-form
+	margin-bottom: $bottom-space
+
+	&:last-child
+		margin-bottom: 0
+
+	.form-title
+		display: block
+		+font-alt-bold
+		color: $title-color
+		text-align: center
+		margin-bottom: $bottom-space
+
+		// font size
+		&
+			+font-h2
+
+	form
+		display: block
+
+	.input-wrap
+		&:last-child
+			margin-bottom: 0
+
+	textarea
+		height: 130px
+		max-height: 130px
+		resize: none
+
+	.form-buttons
+		float: left
+		margin-right: 30px
+
+		+media('<mob-lg')
+			float: none
+			margin: 0
+
+		[class*="btn-"]
+			+media('<mob-lg')
+				display: block
+				width: 100%
+				margin-top: $bottom-space--small
+
+				&:first-child
+					margin-top: 0
+
+	.form-note
+		overflow: hidden
+		min-height: $btn-height
+		+clear-spacing
+		line-height: 25px
+
+		&::before
+			content: ''
+			display: inline-block
+			vertical-align: middle
+			min-height: inherit
+
+	.form-note__item
+		display: inline-block
+		vertical-align: middle
+		width: calc(100% - 6px)
+		+font($font-size--small, $line-height--small)
+		letter-spacing: $letter-spacing
+
+/* user form end
+
+/* slick sliders
+// slider
+.slick-slide
+	-webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important
+	-webkit-focus-ring-color: rgba(255, 255, 255, 0) !important
+	outline: none !important
+
+// arrows
+.slick-arrow
+	+size(40px)
+	display: block
+	position: absolute
+	border: none
+	border-radius: 0
+	background: none
+	outline: none
+	box-shadow: none
+	opacity: 1
+	z-index: 6
+	transition-property: background, opacity, visibility
+	transition-duration: 0.2s
+
+	.no-touchevents &:hover
+		opacity: 1
+		background: #e6e6e6
+
+	&.slick-disabled, .no-touchevents &.slick-disabled
+		opacity: 0.25
+		-ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=25)
+		filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=25)
+		cursor: default
+
+		&::before
+			opacity: 1
+
+	&::before
+		content: none
+
+	&::after
+		top: 50%
+		content: ""
+		position: absolute
+		opacity: 1
+		pointer-events: none
+		+size(12px)
+		transform: rotate(45deg)
+		border: 0 solid #000
+
+.slick-prev
+	left: 0
+
+	&::after
+		left: 50%
+		border-width: 0 0 2px 2px
+		margin: -6px 0 0 -4px
+
+.slick-next
+	right: 0
+
+	&::after
+		right: 50%
+		border-width: 2px 2px 0 0
+		margin: -6px -4px 0 0
+
+// dots
+.slick-dots
+	margin: 0
+	line-height: 0
+
+	.#{$user-content} &
+		margin: 0
+		max-width: none
+
+	li
+		vertical-align: top
+		width: auto
+		height: auto
+		margin: 0
+
+		&, .#{$user-content} &
+			padding: 4px 10px
+			margin: 0
+
+			&::before
+				content: none
+
+		button
+			width: 12px
+			height: 12px
+			padding: 0
+			border-radius: 50%
+			background: $base-color
+			position: relative
+			transition-property: background, border, box-shadow, transform
+			transition-duration: 0.6s
+
+			&::before
+				content: ''
+				position: absolute
+				left: 2px
+				top: 2px
+				height: 8px
+				width: 8px
+				background: #fff
+				border-radius: 50%
+				opacity: 1
+				box-shadow: 0 2px 3px rgba(0, 0, 0, 0.20)
+				transition-property: transform, opacity
+				transition-duration: $animation-speed
+
+		&.slick-active button::before
+			opacity: 0
+
+//.no-touchevents &:hover button::before
+/* slick sliders end
+
+/* images slider
+.images-slider
+	position: relative
+	margin-bottom: $bottom-space
+
+	+media('<tab-lg')
+		margin-bottom: $bottom-space--large
+
+.images-slider__list, .slick-dotted.images-slider__list
+	padding-bottom: $bottom-space
+	margin-bottom: 0
+	position: relative
+	z-index: 2
+
+.images-slider__item
+	float: none
+	display: inline-block
+	vertical-align: top
+	opacity: 0
+	white-space: normal
+	overflow: hidden
+	position: relative
+	background-color: transparent
+
+	.slick-initialized &
+		display: block
+		float: left
+		opacity: 1
+
+	.no-js &
+		display: block
+		width: 100%
+		opacity: 1
+		margin-bottom: $bottom-space
+
+	&::before
+		content: ''
+		display: block
+		+ratio(16, 9)
+
+		.no-js &
+			content: none
+
+	img
+		position: absolute
+		+position(0)
+		text-align: center
+		max-width: none
+		width: 100%
+		height: 100%
+		+object-fit(contain)
+
+		.no-js &[data-lazy]
+			display: none
+
+		.no-js &
+			position: relative
+			+position(auto)
+			width: auto
+			height: auto
+			+object-fit(fill)
+			margin-bottom: 1rem
+
+	.caption
+		display: none
+
+		.no-js &
+			display: block
+
+.images-slider
+
+	.slick-arrow
+		right: 0
+		left: auto
+		top: 100%
+		transform: translate(0, 0)
+
+	.slick-prev
+		right: 40px
+
+	// slider counter
+	.slider-counter
+		position: absolute
+		left: 0
+		top: 100%
+		color: $text-color-light
+
+		.slide-curr
+			color: $text-color
+
+	.slick-dots, .#{$user-content} & .slick-dots
+		position: absolute
+		bottom: $bottom-space + 1
+
+		li
+			+padding-horizontal(7px)
+
+			button
+				width: 6px
+				height: 6px
+				border-radius: 50%
+				background-color: white
+				opacity: 0.5
+				transition-property: opacity, transform
+				transition-duration: $animation-speed
+
+				&::before
+					content: none
+
+			&.slick-active button
+				opacity: 1
+
+			.no-touchevents &:hover button
+				opacity: 1
+				transform: scale(2)
+
+/* images slider end
+
+/* flashes
+.flashes
+	padding: 0 90px
+
+.flashes__item, .images-slider__item .caption
+	+font(1.4rem, 1.5)
+	color: $text-color-light
+
+	& > *:last-child
+		margin-bottom: 0
+
+/* flashes end
+
+/* breadcrumbs
+.breadcrumbs
+	color: $text-color-light
+	margin-bottom: $bottom-space--large
+
+	+media('<desk-lg')
+		margin-bottom: $bottom-space--middle
+
+	&:last-child
+		margin-bottom: 0
+
+.breadcrumbs__list
+	&, .#{$user-content} &
+		padding: 0
+		margin: 0
+		list-style: none
+
+		li
+			padding: 0 6px 0 0
+			margin: 0
+
+			&::before, &:first-child::before
+				content: none
+
+	cursor: default
+	overflow: hidden
+	+font($font-size--small, $line-height--small)
+
+	.layout-article &
+		max-width: none
+
+	li
+		display: inline
+		position: relative
+
+		&::after
+			display: inline-block
+			vertical-align: baseline
+			content: '•'
+			border: none
+			color: $base-color
+			padding-left: 10px
+
+		&:last-child::after
+			content: none
+
+	a
+		padding-top: 0.5em
+		color: $text-color
+		text-decoration: none
+		cursor: pointer
+
+		span
+			border-bottom: 1px solid rgba(white, 0.3)
+
+		.no-touchevents &:hover
+			color: $base-color
+
+			span
+				border-color: rgba($base-color, 0.3)
+
+/* breadcrumbs end
+
+/* files links
+.file
+	$file-icon-size: 42px
+	+display-inline-block-top
+	min-height: $file-icon-size
+	padding: 0.5em
+	+font(16px, 20px)
+	color: $text-color
+	text-decoration: none
+
+	+clear
+
+	svg
+		float: left
+		+size($file-icon-size)
+
+	& > span, & > em
+		display: block
+		margin-left: #{$file-icon-size}
+		padding-left: 1em
+
+	& > em
+		display: block
+		font-size: 1.4rem
+		color: $text-color-light
+
+	.no-touchevents &:hover
+		background-color: $base-color
+
+		& > em
+			color: $bg-color
+
+.st-bg
+	fill: #e2e5e7
+
+.st-corner
+	fill: #b0b7bd
+
+.st-shadow
+	fill: #cad1d8
+
+.st-text
+	fill: #fff
+
+/* files links end
+
+/* feature list
+.feature-list
+	margin-bottom: $bottom-space--medium
+
+	&:last-child
+		margin-bottom: 0
+
+.feature-list__item
+	margin-bottom: $bottom-space
+	+clear
+
+	&:last-child
+		margin-bottom: 0
+
+.feature-list__img
+	float: left
+	width: 25%
+	margin: 0.3em $bottom-space $bottom-space--small 0
+
+	+media("<mob-lg")
+		width: auto
+		float: none
+		margin-right: 0
+
+.feature-list__content
+	overflow: hidden
+
+	h3, p
+		margin-bottom: $bottom-space--small
+
+		&:last-child
+			margin-bottom: 0
+
+/* feature list end
+
+/*=================================
+
+/* words
+.words
+	position: relative
+	display: flex
+	justify-content: flex-start
+	align-items: flex-start
+	padding: 10px
+
+.words__cards
+	display: flex
+	justify-content: stretch
+	align-items: stretch
+	border: 2px solid #000
+	border-radius: 10px
+	width: 420px
+	height: 480px
+	padding: 40px 20px 20px
+	cursor: pointer
+	user-select: none !important
+	-webkit-tap-highlight-color: transparent !important
+	background-color: lightgreen
+
+	.active &
+		background-color: lightskyblue
+
+.words__card
+	position: relative
+	padding: 20px
+	background-color: whitesmoke
+	border: 2px solid #000
+	border-radius: 10px
+	display: flex
+	flex-shrink: 0
+	flex-grow: 0
+	flex-basis: 100%
+	justify-content: center
+	align-items: center
+	+font(24px, 30px)
+
+	&::before
+		content: ''
+		display: block
+		position: absolute
+		left: -2px
+		bottom: 100%
+		+font(16px, 20px)
+		font-weight: bold
+		margin-bottom: 5px
+
+.words__card_front
+	//background-color: lightskyblue
+	font-weight: bold
+
+	.words_invert &
+		font-weight: normal
+		font-style: italic
+
+	.words.active &
+		display: none
+
+	&::before
+		content: '? Вопрос'
+
+.words__card_back
+	//background-color: lightgreen
+	font-style: italic
+
+	.words_invert &
+		font-weight: bold
+		font-style: normal
+
+	.words:not(.active) &
+		display: none
+
+	&::before
+		content: '! Ответ'
+
+.words__note
+	padding: 20px
+
+	.words:not(.active) &
+		display: none
+
+
+/* words end

@@ -1,0 +1,63 @@
+<div class="user-form">
+	<div class="form-title max-wrap-text push-auto">@@title</div>
+	<form action="#!" method="post" class="max-wrap-text push-auto">
+		@@loop("_tpl_forms_field.html", [
+			{
+				"wrap": "true",
+				"type": "text",
+				"ph": "Enter Your Name",
+				"id": "uf-name",
+				"label": "Name:",
+				"required": "true",
+				"valid": "true",
+				"error": "Please enter your name, please"
+			}, {
+				"wrap": "true",
+				"type": "email",
+				"ph": "Enter Your Email",
+				"id": "uf-email",
+				"label": "Email:",
+				"required": "true",
+				"valid": "true",
+				"error": "Please enter a valid email address"
+			}, {
+				"wrap": "true",
+				"type": "textarea",
+				"ph": "Enter Message",
+				"id": "uf-message",
+				"label": "Message:",
+				"required": ""
+			}
+		])
+		@@include("_tpl_forms_field.html", {
+			"wrap": "true",
+			"type": "file",
+			"id": "uf-file",
+			"label": "Load files:",
+			"multiple": "multiple"
+		})
+		<div class="input-wrap">
+			<div class="label-holder">
+				<label for="form-captcha">Security Check:<span class="form-mark">*</span></label>
+			</div>
+			<div class="input-holder">
+				<div class="captcha">
+					<img src="img/captcha.jpg" alt="captcha" />
+					<input type="text" id="form-captcha" required>
+					@@include('_tpl_forms_valid.html', {"error": "Enter text in this image", "success": "The verification was successful!"})
+					<div class="captcha-refresh"><a href="#"><span>Try another text</span></a></div>
+				</div>
+			</div>
+		</div>
+		<br>
+		<div class="input-wrap">
+			<div class="form-buttons">
+				<button class="btn-default">Send</button>
+				<input class="btn-default-alt" type="reset" value="Clear">
+			</div>
+			<div class="form-note">
+				<div class="form-note__item"><span class="form-mark">*</span> Поля обязательны для заполнения</div>
+			</div>
+		</div>
+	</form>
+</div>

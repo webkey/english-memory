@@ -1,0 +1,254 @@
+<form action="#" method="post">
+	<div>
+		@@include('_tpl_title-anchor.html', {
+			"taTag": "h4",
+			"taId": "fcSelectCustom",
+			"taText": "Select2. Without a wrapper",
+			"openerId": "0_04_01"
+		})
+
+		<div>
+			<div>На <code class="mark">select</code> добавляем класс <code class="mark">.cselect</code></div>
+			<div class="user-spacer"></div>
+
+			<label for="form-clear-c-select-base">Селект - без js-классов:</label>
+			<select class="cselect" data-placeholder="- Выбрать -" name="select-name" id="form-clear-c-select-base">
+				@@include('_tpl_forms_options.html')
+			</select>
+			@@include('_tpl_forms_valid.html')
+			<!--===================================================-->
+			<label for="form-clear-c-select">Селект - значение не выбрано:</label>
+			<select class="cselect field-js" data-placeholder="- Выбрать -" name="select-name" id="form-clear-c-select">
+				@@include('_tpl_forms_options.html')
+			</select>
+			@@include('_tpl_forms_valid.html')
+			<!--===================================================-->
+			<label for="form-clear-c-select-fit">Селект - значение выбрано по умолчанию:</label>
+			<select class="cselect field-js" name="select-name" id="form-clear-c-select-fit">
+				@@include('_tpl_forms_options.html', {"placeholder":"false"})
+			</select>
+			@@include('_tpl_forms_valid.html')
+			<!--===================================================-->
+			<label class="error" for="form-clear-c-select-err">Селект - невалидный :</label>
+			<select class="cselect field-js error" data-placeholder="- Выбрать -" name="select-name" id="form-clear-c-select-err">
+				@@include('_tpl_forms_options.html')
+			</select>
+			@@include('_tpl_forms_valid.html')
+			<!--===================================================-->
+			<label class="success" for="form-clear-c-select-suc">Селект - валидный:</label>
+			<select class="cselect field-js success" data-placeholder="- Выбрать -" name="select-name" id="form-clear-c-select-suc">
+				@@include('_tpl_forms_options.html')
+			</select>
+			@@include('_tpl_forms_valid.html')
+		</div>
+	</div>
+
+	<!--===================================================-->
+	<!--===================================================-->
+
+	<div>
+		@@include('_tpl_title-anchor.html', {
+			"taTag": "h4",
+			"taId": "fcMultiselectCustom",
+			"taText": "Select2. Multiselect. Without a wrapper",
+			"openerId": "0_04_02"
+		})
+
+		<div>
+			<label for="form-clear-c-mSelect-base">Селект - без js-классов:</label>
+			<select class="cselect" data-placeholder="- Выберите несколько вариантов -" name="select-name" multiple id="form-clear-c-mSelect-base">
+				@@include('_tpl_forms_options.html')
+			</select>
+			@@include('_tpl_forms_valid.html')
+			<!--===================================================-->
+			<label for="form-clear-c-mSelect">Селект - значение не выбрано:</label>
+			<select class="cselect field-js" data-placeholder="- Выбрать -" name="select-name" multiple id="form-clear-c-mSelect">
+				@@include('_tpl_forms_options.html')
+			</select>
+			@@include('_tpl_forms_valid.html')
+			<!--===================================================-->
+			<label for="form-clear-c-mSelect-fit">Селект - значение выбрано по умолчанию:</label>
+			<select class="cselect field-js" name="select-name" multiple id="form-clear-c-mSelect-fit">
+				<option value="1">Размер</option>
+				<option value="2" selected>Вес</option>
+				<option value="3">Цвет</option>
+				<option value="4">Позицию (расположение)</option>
+				<option value="5">Опшин очень-очень-очень-очень длинный</option>
+				<option value="6">Контраст</option>
+				<option value="7">Сочетание</option>
+				<option value="8">Расстояние</option>
+			</select>
+			@@include('_tpl_forms_valid.html')
+			<!--===================================================-->
+			<label class="error" for="form-clear-c-mSelect-err">Селект - невалидный :</label>
+			<select class="cselect field-js error" data-placeholder="- Выбрать -" name="select-name" multiple id="form-clear-c-mSelect-err">
+				@@include('_tpl_forms_options.html')
+			</select>
+			@@include('_tpl_forms_valid.html')
+			<!--===================================================-->
+			<label class="success" for="form-clear-c-mSelect-suc">Селект - валидный:</label>
+			<select class="cselect field-js success" data-placeholder="- Выбрать -" name="select-name" multiple id="form-clear-c-mSelect-suc">
+				@@include('_tpl_forms_options.html')
+			</select>
+			@@include('_tpl_forms_valid.html')
+		</div>
+	</div>
+
+	<!--===================================================-->
+	<!--===================================================-->
+
+	<div>
+		@@include('_tpl_title-anchor.html', {
+			"taTag": "h4",
+			"taId": "fdSelectCustom",
+			"taText": "Select2. It has a wrapper",
+			"openerId": "0_04_03"
+		})
+
+		<div>
+			<div>На <code class="mark">select</code> добавляем класс <code class="mark">.cselect</code></div>
+			<div class="user-spacer"></div>
+
+			<div class="input-wrap">
+				<div class="label-holder">
+					<label for="form-cover-c-select-base">Селект - без js-классов:</label>
+				</div>
+				<div class="input-holder">
+					<select class="cselect" data-placeholder="- Выбрать -" name="select-name" id="form-cover-c-select-base">
+						@@include('_tpl_forms_options.html')
+					</select>
+					@@include('_tpl_forms_valid.html')
+				</div>
+			</div>
+			<!--===================================================-->
+			<div class="input-wrap">
+				<div class="label-holder">
+					<label for="form-cover-c-select">Селект - значение не выбрано:</label>
+				</div>
+				<div class="input-holder">
+					<select class="cselect field-js" data-placeholder="- Выбрать -" name="select-name" id="form-cover-c-select">
+						@@include('_tpl_forms_options.html')
+					</select>
+					@@include('_tpl_forms_valid.html')
+				</div>
+			</div>
+			<!--===================================================-->
+			<div class="input-wrap">
+				<div class="label-holder">
+					<label for="form-cover-c-select-fit">Селект - значение выбрано по умолчанию:</label>
+				</div>
+				<div class="input-holder">
+					<select class="cselect field-js" name="select-name" id="form-cover-c-select-fit">
+						@@include('_tpl_forms_options.html', {"placeholder":"false"})
+					</select>
+					@@include('_tpl_forms_valid.html')
+				</div>
+			</div>
+			<!--===================================================-->
+			<div class="input-wrap">
+				<div class="label-holder">
+					<label class="error" for="form-cover-c-select-err">Селект - невалидный :</label>
+				</div>
+				<div class="input-holder">
+					<select class="cselect field-js error" data-placeholder="- Выбрать -" name="select-name" id="form-cover-c-select-err">
+						@@include('_tpl_forms_options.html')
+					</select>
+					@@include('_tpl_forms_valid.html')
+				</div>
+			</div>
+			<!--===================================================-->
+			<div class="input-wrap">
+				<div class="label-holder">
+					<label class="success" for="form-cover-c-select-suc">Селект - валидный:</label>
+				</div>
+				<div class="input-holder">
+					<select class="cselect field-js success" data-placeholder="- Выбрать -" name="select-name" id="form-cover-c-select-suc">
+						@@include('_tpl_forms_options.html')
+					</select>
+					@@include('_tpl_forms_valid.html')
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--===================================================-->
+	<!--===================================================-->
+
+	<div>
+		@@include('_tpl_title-anchor.html', {
+			"taTag": "h4",
+			"taId": "fdMultiselectCustom",
+			"taText": "Select2. It has a wrapper. Multiselect",
+			"openerId": "0_04_04"
+		})
+
+		<div>
+			<div class="input-wrap">
+				<div class="label-holder">
+					<label for="form-cover-c-mSelect-base">Селект - без js-классов:</label>
+				</div>
+				<div class="input-holder">
+					<select class="cselect" data-placeholder="- Выберите несколько вариантов -" name="select-name" multiple id="form-cover-c-mSelect-base">
+						@@include('_tpl_forms_options.html')
+					</select>
+					@@include('_tpl_forms_valid.html')
+				</div>
+			</div>
+			<!--===================================================-->
+			<div class="input-wrap">
+				<div class="label-holder">
+					<label for="form-cover-c-mSelect">Селект - значение не выбрано:</label>
+				</div>
+				<div class="input-holder">
+					<select class="cselect field-js" data-placeholder="- Выбрать -" name="select-name" multiple id="form-cover-c-mSelect">
+						@@include('_tpl_forms_options.html')
+					</select>
+					@@include('_tpl_forms_valid.html')
+				</div>
+			</div>
+			<!--===================================================-->
+			<div class="input-wrap">
+				<div class="label-holder">
+					<label for="form-cover-c-mSelect-fit">Селект - значение выбрано по умолчанию:</label>
+				</div>
+				<div class="input-holder">
+					<select class="cselect field-js" name="select-name" multiple id="form-cover-c-mSelect-fit">
+						<option value="1">Размер</option>
+						<option value="2" selected>Вес</option>
+						<option value="3">Цвет</option>
+						<option value="4">Позицию (расположение)</option>
+						<option value="5">Опшин очень-очень-очень-очень длинный</option>
+						<option value="6">Контраст</option>
+						<option value="7">Сочетание</option>
+						<option value="8">Расстояние</option>
+					</select>
+					@@include('_tpl_forms_valid.html')
+				</div>
+			</div>
+			<!--===================================================-->
+			<div class="input-wrap">
+				<div class="label-holder">
+					<label class="error" for="form-cover-c-mSelect-err">Селект - невалидный :</label>
+				</div>
+				<div class="input-holder">
+					<select class="cselect field-js error" data-placeholder="- Выбрать -" name="select-name" multiple id="form-cover-c-mSelect-err">
+						@@include('_tpl_forms_options.html')
+					</select>
+					@@include('_tpl_forms_valid.html')
+				</div>
+			</div>
+			<!--===================================================-->
+			<div class="input-wrap">
+				<div class="label-holder">
+					<label class="success" for="form-cover-c-mSelect-suc">Селект - валидный:</label>
+				</div>
+				<div class="input-holder">
+					<select class="cselect field-js success" data-placeholder="- Выбрать -" name="select-name" multiple id="form-cover-c-mSelect-suc">
+						@@include('_tpl_forms_options.html')
+					</select>
+					@@include('_tpl_forms_valid.html')
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
