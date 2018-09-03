@@ -471,6 +471,9 @@
 	align-items: flex-start
 	padding: 10px
 
+	+media('<tab-lg')
+		flex-direction: column
+
 .words__cards
 	display: flex
 	justify-content: stretch
@@ -478,73 +481,86 @@
 	border: 2px solid #000
 	border-radius: 10px
 	width: 420px
+	max-width: 420px
 	height: 480px
 	padding: 40px 20px 20px
 	cursor: pointer
 	user-select: none !important
 	-webkit-tap-highlight-color: transparent !important
-	background-color: lightgreen
 
-	.active &
-		background-color: lightskyblue
+	perspective: 1200px
 
-.words__card
+	+media('<tab-lg')
+		max-width: 100%
+
+.words__cards__frame
 	position: relative
-	padding: 20px
-	background-color: whitesmoke
-	border: 2px solid #000
-	border-radius: 10px
 	display: flex
 	flex-shrink: 0
 	flex-grow: 0
 	flex-basis: 100%
+	justify-content: stretch
+	align-items: stretch
+
+	transform-style: preserve-3d
+	transform: rotateY(0)
+
+.words__card
+	position: absolute
+	left: 0
+	top: 0
+	+size(100%)
+	padding: 20px
+	background-color: rgba(lightslategray, 0.3)
+	border: 2px solid #000
+	border-radius: 10px
+	display: flex
 	justify-content: center
 	align-items: center
 	+font(24px, 30px)
-
-	&::before
-		content: ''
-		display: block
-		position: absolute
-		left: -2px
-		bottom: 100%
-		+font(16px, 20px)
-		font-weight: bold
-		margin-bottom: 5px
+	text-align: center
 
 .words__card_front
-	//background-color: lightskyblue
 	font-weight: bold
+	background-color: lightgreen
 
 	.words_invert &
 		font-weight: normal
 		font-style: italic
 
-	.words.active &
-		display: none
-
-	&::before
-		content: '? Вопрос'
-
 .words__card_back
-	//background-color: lightgreen
 	font-style: italic
+	background-color: lightblue
+	transform: rotateY(-180deg)
 
 	.words_invert &
 		font-weight: bold
 		font-style: normal
 
-	.words:not(.active) &
-		display: none
-
-	&::before
-		content: '! Ответ'
-
 .words__note
 	padding: 20px
+	max-width: calc(100% - 420px)
 
 	.words:not(.active) &
 		display: none
+
+	+media('<tab-lg')
+		max-width: 100%
+
+// animation
+//.words__card,
+.words__cards__frame
+	$prop: transform, opacity
+	transition:
+		property: $prop
+		duration: 0s
+		timing-function: ease-in-out
+
+.words__cards__frame
+	.active &
+		transform: rotateY(0.5turn)
+		transition:
+			duration: $animation-speed * 2
 
 
 /* words end

@@ -302,10 +302,16 @@ $columns-gap: 2em
 		padding: 0
 		list-style: none
 
+		&:last-child
+			margin-bottom: 0
+
 		li
 			padding-left: $list-space
 			margin: 0 0 round($bottom-space*0.5)
 			position: relative
+
+			&:last-child
+				margin-bottom: 0
 
 	ul > li::before
 		content: ''

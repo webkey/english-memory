@@ -1,40 +1,10 @@
-/**
- * !Resize only width
- * */
-var resizeByWidth = true;
-
-var prevWidth = -1;
-$(window).resize(function () {
-	var currentWidth = $('body').outerWidth();
-	resizeByWidth = prevWidth !== currentWidth;
-	if (resizeByWidth) {
-		$(window).trigger('resizeByWidth');
-		prevWidth = currentWidth;
-	}
-});
+'use strict';
 
 /**
  * !Detected touchscreen devices
  * */
 var TOUCH = Modernizr.touchevents;
 var DESKTOP = !TOUCH;
-
-/**
- * !Add placeholder for old browsers
- * */
-function placeholderInit() {
-	$('[placeholder]').placeholder();
-}
-
-/**
- * !Show print page by click on the button
- * */
-function printShow() {
-	$('.view-print').on('click', function (e) {
-		e.preventDefault();
-		window.print();
-	})
-}
 
 /**
  * !Toggle class on a form elements on focus
@@ -82,15 +52,7 @@ function inputHasValueClass() {
 		var $selectWrap = $('.select');
 		var classHasValue = 'input--has-value';
 
-		$.each($inputs, function () {
-			switchHasValue.call(this);
-		});
-
-		$inputs.on('keyup change', function () {
-			switchHasValue.call(this);
-		});
-
-		function switchHasValue() {
+		var switchHasValue = function () {
 			var $currentField = $(this);
 			var $currentFieldWrap = $currentField.closest($fieldWrap);
 
@@ -108,196 +70,173 @@ function inputHasValueClass() {
 				$currentFieldWrap.addClass(classHasValue);
 				$currentFieldWrap.find('label').addClass(classHasValue);
 			}
-		}
-	}
-}
+		};
 
-/**
- * !Initial custom select for cross-browser styling
- * */
-function customSelect(select) {
-	$.each(select, function () {
-		var $thisSelect = $(this);
-		// var placeholder = $thisSelect.attr('data-placeholder') || '';
-		$thisSelect.select2({
-			language: "ru",
-			width: '100%',
-			containerCssClass: 'cselect-head',
-			dropdownCssClass: 'cselect-drop'
-			// , placeholder: placeholder
+		$.each($inputs, function () {
+			switchHasValue.call(this);
 		});
-	})
-}
 
-/**
- * !Initial sliders on the project
- * */
-function slidersInit() {
-	//images carousel
-	var $imagesCarousel = $('.images-slider-js');
-
-	if($imagesCarousel.length){
-		var slideCounterTpl = '' +
-			'<div class="slider-counter">' +
-				'<span class="slide-curr">0</span>/<span class="slide-total">0</span>' +
-			'</div>';
-
-		var titleListTpl = $('<div class="flashes"></div>');
-
-		$imagesCarousel.each(function () {
-			var $curSlider = $(this);
-			var $imgList = $curSlider.find('.images-slider__list');
-			var $imgListItem = $imgList.find('.images-slider__item');
-			var dur = 200;
-
-			// create titles
-			$imgList.after(titleListTpl.clone());
-			var $titleList = $curSlider.find('.flashes');
-			$.each($imgListItem, function () {
-				var $this = $(this);
-				$titleList.append($('<div class="flashes__item">' + $this.find('.caption').html() + '</div>'));
-			});
-
-			// initialized slider of titles
-			$titleList.slick({
-				fade: true,
-				speed: dur,
-				slidesToShow: 1,
-				slidesToScroll: 1,
-				infinite: true,
-				asNavFor: $imgList,
-				dots: false,
-				arrows: false,
-
-				swipe: false,
-				touchMove: false,
-				draggable: false
-			});
-
-			// initialized slider of images
-			$imgList.on('init', function (event, slick) {
-				$(slick.$slider).append($(slideCounterTpl).clone());
-
-				$('.slide-total', $(slick.$slider)).text(slick.$slides.length);
-				$('.slide-curr', $(slick.$slider)).text(slick.currentSlide + 1);
-			}).slick({
-				fade: false,
-				speed: dur,
-				slidesToShow: 1,
-				slidesToScroll: 1,
-				asNavFor: $titleList,
-				lazyLoad: 'ondemand',
-				infinite: true,
-				dots: true,
-				arrows: true
-			}).on('beforeChange', function (event, slick, currentSlide, nextSlider) {
-				$('.slide-curr', $(slick.$slider)).text(nextSlider + 1);
-			});
-
+		$inputs.on('keyup change', function () {
+			switchHasValue.call(this);
 		});
 	}
 }
-
-/**
- * !Form validation
- * */
-function formValidation() {
-	$('.user-form form').validate({
-		errorClass: "error",
-		validClass: "success",
-		errorElement: false,
-		errorPlacement: function(error,element) {
-			return true;
-		},
-		highlight: function(element, errorClass, successClass) {
-			$(element)
-				.removeClass(successClass)
-				.addClass(errorClass)
-				.closest('form').find('label[for="' + $(element).attr('id') + '"]')
-				.removeClass(successClass)
-				.addClass(errorClass);
-		},
-		unhighlight: function(element, errorClass, successClass) {
-			$(element)
-				.removeClass(errorClass)
-				.addClass(successClass)
-				.closest('form').find('label[for="' + $(element).attr('id') + '"]')
-				.removeClass(errorClass)
-				.addClass(successClass);
-		}
-	});
-}
-
 
 /**
  * !Cards of English words
  * */
-function wordsCards() {
-	var $words = $('.words-js'),
-		$front = $('.words__card_front-js'),
-		$back = $('.words__card_back-js'),
-		$note = $('.words__note-js'),
-		activeClass = 'active';
+(function($){
+	'use strict';
 
-	function getRandomInt(min, max) {
-		return Math.floor(Math.random() * (max - min)) + min;
-		// return Math.round(Math.random() * (max - min)) + min;
-	}
+	let Words = function (element, config) {
+		let self,
+			$body = $('body'),
+			$element = $(element),
+			pref = 'oo-words',
+			pluginClasses = {
+				initClass: pref + '--initialized',
+				switcher: pref + '__switcher'
+			};
 
-	var randomPair = function () {
+		let callbacks = function () {
+			/** track events */
+			$.each(config, function (key, value) {
+				if (typeof value === 'function') {
+					$element.on('words.' + key, function (e, param) {
+						return value(e, $element, param);
+					});
+				}
+			});
+		}, toggleClass = function (elements) {
+			// Первый аргумент функции (elements) - один или несколько ([]) елементов, на которые добуаляется/удаляется класс.
+			// Второй аргумент функции указыает удалять класс (false) или добавлять (true - указыать не обязательно).
+			// Пример использования: toggleClass([$elem1, $elem2, $('.class', $elem2), $('.class'), '.class'], false);
+			if (!elements)
+				return;
 
-		var pair = myEnglishWords[getRandomInt(0, myEnglishWords.length)];
-		// $front.html(pair.front);
-		// $back.html(pair.back);
-		$front.html(pair.back);
-		$back.html(pair.front);
-		pair.note && $('li', $note).html('<em>-</em>').html(pair.note[0]);
+			let condRemove = (arguments[1] === undefined) ? true : !!arguments[1],
+				$elements = (typeof elements === "object") ? elements : $(elements);
+
+			$.each($elements, function () {
+				let currentElem = this;
+				if ($.isArray(currentElem)) {
+					// Если массив, то запускаем функицию повторно
+					toggleClass(currentElem, condRemove);
+				} else {
+					// Если второй аргумент false, то удаляем класс
+					// Если второй аргумент не false, то добавляем класс
+					$(currentElem).toggleClass(config.modifiers.activeClass, !!condRemove)
+				}
+			});
+		}, getRandomInt = function (max, min) {
+			return Math.floor(Math.random() * (max - min)) + min;
+		}, randomPair = function () {
+			let obj = $.data($element, 'tasks-object');
+			let task = obj[getRandomInt(0, obj.length)];
+			// $front.html(task.front);
+			// $back.html(task.back);
+			$(config.front).html(task.back);
+			$(config.back).html(task.front);
+			task.note && $('li', $(config.note)).html('<em>-</em>').html(task.note[0]);
+		}, saveTasksObj = function () {
+			if (typeof config.tasksObj === 'string'){
+				$.getJSON(config.tasksObj, function( data ) {
+					$.data($element, 'tasks-object', data);
+				}).done(function () {
+					randomPair();
+				});
+			}
+			if (typeof config.tasksObj === 'object'){
+				$.data($element, 'tasks-object', config.tasksObj);
+				randomPair();
+			}
+		}, main = function () {
+			$body.on(config.event, '.' + pluginClasses.switcher, function (event) {
+				let $currentCard = $(this);
+
+				if ($currentCard.hasClass(config.modifiers.activeClass)) {
+					$currentCard.removeClass(config.modifiers.activeClass);
+					randomPair();
+				} else {
+					$currentCard.addClass(config.modifiers.activeClass);
+				}
+
+				event.preventDefault();
+			});
+		}, init = function () {
+
+			$element.addClass(pluginClasses.switcher + ' ' + pluginClasses.initClass).addClass(config.modifiers.initClass);
+
+			saveTasksObj();
+
+			$element.trigger('words.afterInit');
+		};
+
+		self = {
+			callbacks: callbacks,
+			main: main,
+			init: init
+		};
+
+		return self;
 	};
 
-	randomPair();
-
-	$words.on('click', function (e) {
-		e.preventDefault();
-
-		var $currentCard = $(this);
-
-		if ($currentCard.hasClass(activeClass)) {
-			$currentCard.removeClass(activeClass);
-			randomPair();
-		} else {
-			$currentCard.addClass(activeClass);
+	$.fn.words = function () {
+		let elem = this,
+			opt = arguments[0],
+			args = Array.prototype.slice.call(arguments, 1),
+			l = elem.length,
+			i,
+			ret;
+		for (i = 0; i < l; i++) {
+			if (typeof opt === 'object' || typeof opt === 'undefined') {
+				elem[i].words = new Words(elem[i], $.extend(true, {}, $.fn.words.defaultOptions, opt));
+				elem[i].words.init();
+				elem[i].words.callbacks();
+				elem[i].words.main();
+			}
+			else {
+				ret = elem[i].words[opt].apply(elem[i].words, args);
+			}
+			if (typeof ret !== 'undefined') {
+				return ret;
+			}
 		}
+		return elem;
+	};
 
-	});
+	$.fn.words.defaultOptions = {
+		tasksObj: [{'front': 'back!', 'back': 'front!', 'note': ['This one is for an example']}],
+		front: '.words__card_front-js',
+		back: '.words__card_back-js',
+		note: '.words__note-js',
+		event: 'click',
+		modifiers: {
+			initClass: null,
+			activeClass: 'active'
+		}
+	}
 
-	// myEnglishWords.forEach(function(item, i, arr) {
-	// 	console.log(arr[i].eng);
-	// 	console.log(arr[i].ru);
-	// });
+})(jQuery);
+
+function wordsCards() {
+	var $words = $('.words-js');
+
+	if ($words.length) {
+		$words.words({
+			// tasksObj: myEnglishWords
+			tasksObj: "includes/json/takeOff.json"
+		});
+	}
 }
 
 /**
  * =========== !ready document, load/resize window ===========
  */
-
-$(window).on('load', function () {
-	// add functions
-});
-
-$(window).on('debouncedresize', function () {
-	// $(document.body).trigger("sticky_kit:recalc");
-});
-
 $(document).ready(function () {
-	placeholderInit();
-	printShow();
 	inputFocusClass();
 	inputHasValueClass();
-	customSelect($('select.cselect'));
-	slidersInit();
 	objectFitImages(); // object-fit-images initial
 
 	wordsCards();
-
-	formValidation();
 });
