@@ -130,7 +130,7 @@ function inputHasValueClass() {
 			});
 		}, getRandomInt = function (max, min) {
 			return Math.floor(Math.random() * (max - min)) + min;
-		}, randomPair = function () {
+		}, createTaskRandomly = function () {
 			let obj = $.data($element, 'tasks-object');
 			let task = obj[getRandomInt(0, obj.length)];
 			// $front.html(task.front);
@@ -143,12 +143,12 @@ function inputHasValueClass() {
 				$.getJSON(config.tasksObj, function( data ) {
 					$.data($element, 'tasks-object', data);
 				}).done(function () {
-					randomPair();
+					createTaskRandomly();
 				});
 			}
 			if (typeof config.tasksObj === 'object'){
 				$.data($element, 'tasks-object', config.tasksObj);
-				randomPair();
+				createTaskRandomly();
 			}
 		}, main = function () {
 			$body.on(config.event, '.' + pluginClasses.switcher, function (event) {
@@ -156,7 +156,7 @@ function inputHasValueClass() {
 
 				if ($currentCard.hasClass(config.modifiers.activeClass)) {
 					$currentCard.removeClass(config.modifiers.activeClass);
-					randomPair();
+					createTaskRandomly();
 				} else {
 					$currentCard.addClass(config.modifiers.activeClass);
 				}
@@ -224,8 +224,8 @@ function wordsCards() {
 
 	if ($words.length) {
 		$words.words({
-			// tasksObj: myEnglishWords
-			tasksObj: "includes/json/takeOff.json"
+			// tasksObj: phrasal-verbs.json
+			tasksObj: "includes/json/phrasal-verbs.json"
 		});
 	}
 }
