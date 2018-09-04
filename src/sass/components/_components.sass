@@ -470,6 +470,7 @@
 	justify-content: flex-start
 	align-items: flex-start
 	padding: 10px
+	cursor: pointer
 
 	+media('<tab-lg')
 		flex-direction: column
@@ -484,7 +485,6 @@
 	max-width: 420px
 	height: 480px
 	padding: 40px 20px 20px
-	cursor: pointer
 	user-select: none !important
 	-webkit-tap-highlight-color: transparent !important
 
@@ -561,6 +561,17 @@
 		transform: rotateY(0.5turn)
 		transition:
 			duration: $animation-speed * 2
+
+.words__progress
+	position: absolute
+	left: 20px
+	top: 10px
+	width: calc(100% - 20px * 2)
+	font-size: 0.85em
+
+.words__progress__inner
+	height: 3px
+	background-color: lightgreen
 
 
 /* words end

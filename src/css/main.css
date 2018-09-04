@@ -3138,6 +3138,7 @@ form .success + .select2 + .error-note + .success-note {
 	-ms-flex-align: start;
 	    align-items: flex-start;
 	padding: 10px;
+	cursor: pointer;
 }
 
 @media (max-width: 991px) {
@@ -3160,7 +3161,6 @@ form .success + .select2 + .error-note + .success-note {
 	max-width: 420px;
 	height: 480px;
 	padding: 40px 20px 20px;
-	cursor: pointer;
 	-webkit-user-select: none !important;
 	   -moz-user-select: none !important;
 	    -ms-user-select: none !important;
@@ -3259,6 +3259,19 @@ form .success + .select2 + .error-note + .success-note {
 .active .words__cards__frame {
 	transform: rotateY(0.5turn);
 	transition-duration: 0.4s;
+}
+
+.words__progress {
+	position: absolute;
+	left: 20px;
+	top: 10px;
+	width: calc(100% - 20px * 2);
+	font-size: 0.85em;
+}
+
+.words__progress__inner {
+	height: 3px;
+	background-color: lightgreen;
 }
 
 /* words end */
