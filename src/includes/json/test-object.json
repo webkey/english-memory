@@ -1,0 +1,29 @@
+[
+  {
+	"tasksTitle": "Phrasal Verbs",
+	"tasksDescription": "A phrasal verb is a verb (go/look/be etc.) + in/out/up/down etc.",
+	"tasks": [
+	  {
+		"front": "wake up",
+		"back": "= stop sleeping",
+		"note": [
+		  "I often <strong>wake up</strong> in the middle of the night."
+		]
+	  },
+	  {
+		"front": "wash up",
+		"back": "= wash the plates etc. after a meal",
+		"note": [
+		  "Do you want me to <strong>wash up</strong>?<br> (<em>or</em> … to do the washing-up?)"
+		]
+	  },
+	  {
+		"front": "slow down",
+		"back": "= go more slowly",
+		"note": [
+		  "You’re driving too fast. <strong>Slow down</strong>!"
+		]
+	  }
+	]
+  }
+]

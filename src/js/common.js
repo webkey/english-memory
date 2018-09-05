@@ -97,8 +97,11 @@ function inputHasValueClass() {
 			dataTasksFullSave = 'tasks-object-full',
 			pluginClasses = {
 				initClass: pref + '--initialized',
-				switcher: pref + '__switcher'
-			};
+				switcher: pref + '__switcher',
+				complete: pref + '__complete'
+			},
+			$front = $(config.front, $element),
+			$back = $(config.back, $element);
 
 		let callbacks = function () {
 			/** track events */
@@ -135,37 +138,53 @@ function inputHasValueClass() {
 		}, getRandomInt = function (max, min) {
 			return Math.floor(Math.random() * (max - min)) + min;
 		}, createTaskRandomly = function () {
+			// Скрыть сообщение о завершении задания (если такое есть)
+			// $('.' + pluginClasses.complete, $element).remove();
+			$element.removeClass(config.modifiers.completeClass);
+
 			let obj = $.data($element, dataTasksSave);
 			let objTotal = $.data($element, dataTasksFullSave).length,
 				objLength = obj.length;
-			if(objLength === 0)
+			if (objLength === 0) {
+
+				console.log('object is empty');
 				obj = $.data($element, dataTasksFullSave);
+
+				// Показать сообщение о завершении задания
+				// $('<div>', {
+				// 	class: pluginClasses.complete,
+				// 	html: 'This task is complete <br> Click to continue'
+				// }).clone().appendTo($element);
+				$element.addClass(config.modifiers.completeClass);
+			}
+			console.log("obj: ", obj);
 			let randomIndex = getRandomInt(0, objLength);
 			let task = obj[randomIndex];
 			// Из объекта с заданиями удаляем текущее задание
-			let count = 0;
-			let newObj = $.map(obj, function (task) {
-				if (count !== randomIndex) {
+			let count = 0,
+				newObj = $.map(obj, function (task) {
+					if (count !== randomIndex) {
+						++count;
+						return task;
+					}
 					++count;
-					return task;
-				}
-				++count;
-				return null;
-			});
+					return null;
+				});
+			console.log("newObj: ", newObj);
 			// Перезаписываем новый в дата-атрибут вместо старого
 			$.data($element, dataTasksSave, newObj);
+
 			// Манипуляции с DOM
-			let currentProgress = Math.round(getProgress(objTotal, objLength) * 100) + '%';
+			let currentProgress = Math.round(getProgress(objTotal, newObj.length) * 100) + '%';
 			$(config.progress).css('width', currentProgress).html(currentProgress);
 			// $front.html(task.front);
 			// $back.html(task.back);
-			$(config.front).html(task.back);
-			$(config.back).html(task.front);
+			$front.html(task.back);
+			$back.html(task.front);
 			task.note && $('li', $(config.note)).html('<em>-</em>').html(task.note[0]);
 		}, saveTasksObj = function () {
 			if (typeof config.tasksObj === 'string'){
 				$.getJSON(config.tasksObj, function( data ) {
-					console.log(data[0].tasks);
 					$.data($element, dataTasksSave, data[0].tasks);
 					$.data($element, dataTasksFullSave, data[0].tasks);
 				}).done(function () {
@@ -241,7 +260,8 @@ function inputHasValueClass() {
 		event: 'click',
 		modifiers: {
 			initClass: null,
-			activeClass: 'active'
+			activeClass: 'active',
+			completeClass: 'completed'
 		}
 	}
 
@@ -251,10 +271,14 @@ function wordsCards() {
 	var $words = $('.words-js');
 
 	if ($words.length) {
-		$words.words({
-			// tasksObj: phrasal-verbs.json
-			tasksObj: "includes/json/phrasal-verbs.json"
-		});
+		$.each($words, function () {
+			$(this).words({
+				front: $('.words__card_front-js'),
+				back: $('.words__card_back-js'),
+				// tasksObj: phrasal-verbs.json
+				tasksObj: "includes/json/test-object.json"
+			});
+		})
 	}
 }
 

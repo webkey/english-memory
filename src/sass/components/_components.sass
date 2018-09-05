@@ -571,7 +571,32 @@
 
 .words__progress__inner
 	height: 3px
+	width: 0
 	background-color: lightgreen
+	// transition
+	$prop: width
+	will-change: $prop
+	transition:
+		property: $prop
+		duration: $animation-speed
+		timing-function: ease-in-out
 
+
+// task is complete
+.words__complete
+	position: absolute
+	left: 0
+	top: 0
+	width: 100%
+	height: 100%
+	display: flex
+	justify-content: center
+	align-items: center
+	text-align: center
+	background-color: rgba(white, 0.85)
+	user-select: none
+
+	.words:not(.completed) &
+		display: none
 
 /* words end
