@@ -185,30 +185,93 @@ function inputHasValueClass() {
 		}, saveTasksObj = function () {
 			if (typeof config.tasksObj === 'string'){
 				$.getJSON(config.tasksObj, function( data ) {
-					$.data($element, dataTasksSave, data[0].tasks);
+					// $.data($body, dataTasksSave, data[0].tasks);
+					$element.data(dataTasksSave, data[0].tasks);
+					// $.data($element, dataTasksSave, data[0].tasks);
 					$.data($element, dataTasksFullSave, data[0].tasks);
+					console.log("$element: ", $element);
 				}).done(function () {
-					createTaskRandomly();
+					// createTaskRandomly();
 				});
 			}
 			if (typeof config.tasksObj === 'object'){
+				$.data($body, dataTasksSave, config.tasksObj[0].tasks);
 				$.data($element, dataTasksSave, config.tasksObj[0].tasks);
 				$.data($element, dataTasksFullSave, config.tasksObj[0].tasks);
-				createTaskRandomly();
+				// createTaskRandomly();
 			}
 		}, main = function () {
 			$body.on(config.event, '.' + pluginClasses.switcher, function (event) {
-				let $currentCard = $(this);
+				event.preventDefault();
 
-				if ($currentCard.hasClass(config.modifiers.activeClass)) {
-					$currentCard.removeClass(config.modifiers.activeClass);
-					createTaskRandomly();
-				} else {
-					$currentCard.addClass(config.modifiers.activeClass);
+				let $currentElement = $(this); // Здесь $currentElement - это контекст. Так, на всякий случай :)
+
+				// if ($currentCard.hasClass(config.modifiers.activeClass)) {
+				// 	$currentCard.removeClass(config.modifiers.activeClass);
+				// 	createTaskRandomly();
+				// } else {
+				// 	$currentCard.addClass(config.modifiers.activeClass);
+				// }
+
+
+				if ($currentElement.hasClass(config.modifiers.activeClass)) {
+					// Удаляем класс, который показывает ответ
+					$currentElement.removeClass(config.modifiers.activeClass);
+
+					// Скрыть сообщение о завершении задания, если оно открыто
+					// $('.' + pluginClasses.complete, $currentElement).remove();
+					$currentElement.removeClass(config.modifiers.completeClass);
+
+					let obj = $.data($currentElement, dataTasksSave);
+					console.log("$currentElement (on click): ", $currentElement);
+					console.log("obj (on click): ", $element.data($currentElement));
+					let objTotal = $.data($currentElement, dataTasksFullSave).length,
+						objLength = obj.length;
+					if (objLength === 0) {
+
+						console.log('object is empty');
+						obj = $.data($currentElement, dataTasksFullSave);
+
+						// Показать сообщение о завершении задания
+						// $('<div>', {
+						// 	class: pluginClasses.complete,
+						// 	html: 'This task is complete <br> Click to continue'
+						// }).clone().appendTo($currentElement);
+						$currentElement.addClass(config.modifiers.completeClass);
+					}
+					console.log("obj: ", obj);
+					let randomIndex = getRandomInt(0, objLength);
+					let task = obj[randomIndex];
+					// Из объекта с заданиями удаляем текущее задание
+					let count = 0,
+						newObj = $.map(obj, function (task) {
+							if (count !== randomIndex) {
+								++count;
+								return task;
+							}
+							++count;
+							return null;
+						});
+					console.log("newObj: ", newObj);
+					// Перезаписываем новый в дата-атрибут вместо старого
+					$.data($currentElement, dataTasksSave, newObj);
+
+					// Манипуляции с DOM
+					let currentProgress = Math.round(getProgress(objTotal, newObj.length) * 100) + '%';
+					$(config.progress).css('width', currentProgress).html(currentProgress);
+					// $front.html(task.front);
+					// $back.html(task.back);
+					$front.html(task.back);
+					$back.html(task.front);
+					task.note && $('li', $(config.note)).html('<em>-</em>').html(task.note[0]);
+				}else {
+					$currentElement.addClass(config.modifiers.activeClass);
 				}
 
-				event.preventDefault();
+
 			});
+
+
 		}, init = function () {
 
 			$element.addClass(pluginClasses.switcher + ' ' + pluginClasses.initClass).addClass(config.modifiers.initClass);
