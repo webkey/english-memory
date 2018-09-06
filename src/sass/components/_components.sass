@@ -470,10 +470,15 @@
 	justify-content: flex-start
 	align-items: flex-start
 	padding: 10px
+	margin-bottom: 20px
+	background-color:
 	cursor: pointer
 
 	+media('<tab-lg')
 		flex-direction: column
+
+	&:last-child
+		margin-bottom: 0
 
 .words__cards
 	display: flex
@@ -512,7 +517,7 @@
 	+size(100%)
 	padding: 20px
 	background-color: rgba(lightslategray, 0.3)
-	border: 2px solid #000
+	//border: 2px solid #000
 	border-radius: 10px
 	display: flex
 	justify-content: center
@@ -562,24 +567,35 @@
 		transition:
 			duration: $animation-speed * 2
 
+// total
+.words__total
+	position: absolute
+	right: 20px
+	top: 10px
+
+// progress
 .words__progress
 	position: absolute
 	left: 20px
 	top: 10px
+	font-weight: bold
 	width: calc(100% - 20px * 2)
 	font-size: 0.85em
 
 .words__progress__inner
-	height: 3px
+	height: 2px
 	width: 0
-	background-color: lightgreen
+	//background-color: #9cff9c
 	// transition
-	$prop: width
+	$prop: width, background-color
 	will-change: $prop
 	transition:
 		property: $prop
 		duration: $animation-speed
 		timing-function: ease-in-out
+
+	// from 1% to 100%
+	+grad-per-value($color: #e8ff6d #009100, $val: 0 100)
 
 
 // task is complete

@@ -100,8 +100,12 @@ function inputHasValueClass() {
 				switcher: pref + '__switcher',
 				complete: pref + '__complete'
 			},
-			$front = $(config.front, $element),
-			$back = $(config.back, $element);
+			$front = $element.find(config.front),
+			$back = $element.find(config.back),
+			$note = $element.find(config.note),
+			$total = $element.find(config.total),
+			$progress = $element.find(config.progress),
+			objTotal;
 
 		let callbacks = function () {
 			/** track events */
@@ -136,29 +140,25 @@ function inputHasValueClass() {
 		}, getProgress = function (total, current) {
 			return Math.round((1 - current / total) * 100) / 100;
 		}, getRandomInt = function (max, min) {
+			// console.log('getRandomInt: ', Math.floor(Math.random() * (max - min)) + min);
 			return Math.floor(Math.random() * (max - min)) + min;
-		}, createTaskRandomly = function () {
-			// Скрыть сообщение о завершении задания (если такое есть)
-			// $('.' + pluginClasses.complete, $element).remove();
-			$element.removeClass(config.modifiers.completeClass);
+		}, createTaskRandomly = function ($elem) {
+			let obj = $elem.data(dataTasksSave);
+			// console.log("obj: ", obj);
+			if (obj.length === 0) {
+				// Add class show a warning about the task end
+				$elem.addClass(config.modifiers.completeClass);
 
-			let obj = $.data($element, dataTasksSave);
-			let objTotal = $.data($element, dataTasksFullSave).length,
-				objLength = obj.length;
-			if (objLength === 0) {
+				// Restore tasks object
+				$elem.data(dataTasksSave, $elem.data(dataTasksFullSave));
 
-				console.log('object is empty');
-				obj = $.data($element, dataTasksFullSave);
-
-				// Показать сообщение о завершении задания
-				// $('<div>', {
-				// 	class: pluginClasses.complete,
-				// 	html: 'This task is complete <br> Click to continue'
-				// }).clone().appendTo($element);
-				$element.addClass(config.modifiers.completeClass);
+				return false;
 			}
-			console.log("obj: ", obj);
-			let randomIndex = getRandomInt(0, objLength);
+
+			$elem.removeClass(config.modifiers.activeClass);
+
+			// console.log("obj: ", obj);
+			let randomIndex = getRandomInt(0, obj.length);
 			let task = obj[randomIndex];
 			// Из объекта с заданиями удаляем текущее задание
 			let count = 0,
@@ -170,108 +170,68 @@ function inputHasValueClass() {
 					++count;
 					return null;
 				});
-			console.log("newObj: ", newObj);
+			// console.log("newObj: ", newObj);
 			// Перезаписываем новый в дата-атрибут вместо старого
-			$.data($element, dataTasksSave, newObj);
+			$elem.data(dataTasksSave, newObj);
 
 			// Манипуляции с DOM
-			let currentProgress = Math.round(getProgress(objTotal, newObj.length) * 100) + '%';
-			$(config.progress).css('width', currentProgress).html(currentProgress);
 			// $front.html(task.front);
 			// $back.html(task.back);
 			$front.html(task.back);
 			$back.html(task.front);
-			task.note && $('li', $(config.note)).html('<em>-</em>').html(task.note[0]);
+			if (task.note) {
+				$note.html('<ul></ul>');
+				// $note.find('ul').html('<li><em>-</em></li>');
+				for(let i = 0; i < task.note.length; i++) {
+					// $note.find('ul').html('<em>-</em>').html('<li>-</li>');
+					$note.find('ul').append('<li>' + task.note[i] + '</li>');
+				}
+			}
 		}, saveTasksObj = function () {
 			if (typeof config.tasksObj === 'string'){
 				$.getJSON(config.tasksObj, function( data ) {
-					// $.data($body, dataTasksSave, data[0].tasks);
+					// $element.data(dataTasksSave, data[0].tasks);
 					$element.data(dataTasksSave, data[0].tasks);
-					// $.data($element, dataTasksSave, data[0].tasks);
-					$.data($element, dataTasksFullSave, data[0].tasks);
-					console.log("$element: ", $element);
+					// $element.data(dataTasksFullSave, data[0].tasks);
+					$element.data(dataTasksFullSave, data[0].tasks);
 				}).done(function () {
-					// createTaskRandomly();
+					objTotal = $element.data(dataTasksFullSave).length;
+					$total.html(objTotal);
+					createTaskRandomly($element);
 				});
 			}
 			if (typeof config.tasksObj === 'object'){
-				$.data($body, dataTasksSave, config.tasksObj[0].tasks);
-				$.data($element, dataTasksSave, config.tasksObj[0].tasks);
-				$.data($element, dataTasksFullSave, config.tasksObj[0].tasks);
-				// createTaskRandomly();
+				// $element.data(dataTasksSave, config.tasksObj[0].tasks);
+				$element.data(dataTasksSave, config.tasksObj[0].tasks);
+				// $element.data(dataTasksFullSave, config.tasksObj[0].tasks);
+				$element.data(dataTasksFullSave, config.tasksObj[0].tasks);
+				createTaskRandomly($element);
 			}
+		}, progress = function (length, progress) {
+			$progress.css('width', progress).html(length);
 		}, main = function () {
-			$body.on(config.event, '.' + pluginClasses.switcher, function (event) {
+			// $body.on(config.event, '.' + pluginClasses.switcher, function (event) {
+			$element.on(config.event, function (event) {
 				event.preventDefault();
 
-				let $currentElement = $(this); // Здесь $currentElement - это контекст. Так, на всякий случай :)
+				let $curCard = $(this);
 
-				// if ($currentCard.hasClass(config.modifiers.activeClass)) {
-				// 	$currentCard.removeClass(config.modifiers.activeClass);
-				// 	createTaskRandomly();
-				// } else {
-				// 	$currentCard.addClass(config.modifiers.activeClass);
-				// }
-
-
-				if ($currentElement.hasClass(config.modifiers.activeClass)) {
-					// Удаляем класс, который показывает ответ
-					$currentElement.removeClass(config.modifiers.activeClass);
-
-					// Скрыть сообщение о завершении задания, если оно открыто
-					// $('.' + pluginClasses.complete, $currentElement).remove();
-					$currentElement.removeClass(config.modifiers.completeClass);
-
-					let obj = $.data($currentElement, dataTasksSave);
-					console.log("$currentElement (on click): ", $currentElement);
-					console.log("obj (on click): ", $element.data($currentElement));
-					let objTotal = $.data($currentElement, dataTasksFullSave).length,
-						objLength = obj.length;
-					if (objLength === 0) {
-
-						console.log('object is empty');
-						obj = $.data($currentElement, dataTasksFullSave);
-
-						// Показать сообщение о завершении задания
-						// $('<div>', {
-						// 	class: pluginClasses.complete,
-						// 	html: 'This task is complete <br> Click to continue'
-						// }).clone().appendTo($currentElement);
-						$currentElement.addClass(config.modifiers.completeClass);
-					}
-					console.log("obj: ", obj);
-					let randomIndex = getRandomInt(0, objLength);
-					let task = obj[randomIndex];
-					// Из объекта с заданиями удаляем текущее задание
-					let count = 0,
-						newObj = $.map(obj, function (task) {
-							if (count !== randomIndex) {
-								++count;
-								return task;
-							}
-							++count;
-							return null;
-						});
-					console.log("newObj: ", newObj);
-					// Перезаписываем новый в дата-атрибут вместо старого
-					$.data($currentElement, dataTasksSave, newObj);
-
-					// Манипуляции с DOM
-					let currentProgress = Math.round(getProgress(objTotal, newObj.length) * 100) + '%';
-					$(config.progress).css('width', currentProgress).html(currentProgress);
-					// $front.html(task.front);
-					// $back.html(task.back);
-					$front.html(task.back);
-					$back.html(task.front);
-					task.note && $('li', $(config.note)).html('<em>-</em>').html(task.note[0]);
-				}else {
-					$currentElement.addClass(config.modifiers.activeClass);
+				if ($curCard.hasClass(config.modifiers.completeClass)) {
+					// Remove class show a warning about the task end
+					$curCard.removeClass(config.modifiers.completeClass);
+					progress(0, 0);
 				}
 
-
+				if ($curCard.hasClass(config.modifiers.activeClass)) {
+					createTaskRandomly($curCard);
+				} else {
+					$curCard.addClass(config.modifiers.activeClass);
+					// Progress bar
+					let objLength = $curCard.data(dataTasksSave).length;
+					let currentProgress = Math.round(getProgress(objTotal, objLength) * 100) + '%';
+					progress(objTotal - objLength, currentProgress);
+				}
 			});
-
-
 		}, init = function () {
 
 			$element.addClass(pluginClasses.switcher + ' ' + pluginClasses.initClass).addClass(config.modifiers.initClass);
@@ -319,6 +279,7 @@ function inputHasValueClass() {
 		front: '.words__card_front-js',
 		back: '.words__card_back-js',
 		note: '.words__note-js',
+		total: '.words__total-js',
 		progress: '.words__progress-js',
 		event: 'click',
 		modifiers: {
@@ -339,7 +300,7 @@ function wordsCards() {
 				front: $('.words__card_front-js'),
 				back: $('.words__card_back-js'),
 				// tasksObj: phrasal-verbs.json
-				tasksObj: "includes/json/test-object.json"
+				tasksObj: "includes/json/phrasal-verbs.json"
 			});
 		})
 	}

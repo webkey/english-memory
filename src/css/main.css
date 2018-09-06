@@ -3138,6 +3138,7 @@ form .success + .select2 + .error-note + .success-note {
 	-ms-flex-align: start;
 	    align-items: flex-start;
 	padding: 10px;
+	margin-bottom: 20px;
 	cursor: pointer;
 }
 
@@ -3146,6 +3147,10 @@ form .success + .select2 + .error-note + .success-note {
 		-ms-flex-direction: column;
 		    flex-direction: column;
 	}
+}
+
+.words:last-child {
+	margin-bottom: 0;
 }
 
 .words__cards {
@@ -3201,7 +3206,6 @@ form .success + .select2 + .error-note + .success-note {
 	height: 100%;
 	padding: 20px;
 	background-color: rgba(119, 136, 153, 0.3);
-	border: 2px solid #000;
 	border-radius: 10px;
 	display: -ms-flexbox;
 	display: flex;
@@ -3261,22 +3265,432 @@ form .success + .select2 + .error-note + .success-note {
 	transition-duration: 0.4s;
 }
 
+.words__total {
+	position: absolute;
+	right: 20px;
+	top: 10px;
+}
+
 .words__progress {
 	position: absolute;
 	left: 20px;
 	top: 10px;
+	font-weight: bold;
 	width: calc(100% - 20px * 2);
 	font-size: 0.85em;
 }
 
 .words__progress__inner {
-	height: 3px;
+	height: 2px;
 	width: 0;
-	background-color: lightgreen;
-	will-change: width;
-	transition-property: width;
+	will-change: width, background-color;
+	transition-property: width, background-color;
 	transition-duration: 0.2s;
 	transition-timing-function: ease-in-out;
+}
+
+.words__progress__inner[style*="0%"] {
+	background-color: #e8ff6d;
+}
+
+.words__progress__inner[style*="1%"] {
+	background-color: #e6fe6c;
+}
+
+.words__progress__inner[style*="2%"] {
+	background-color: #e3fd6b;
+}
+
+.words__progress__inner[style*="3%"] {
+	background-color: #e1fc6a;
+}
+
+.words__progress__inner[style*="4%"] {
+	background-color: #dffb69;
+}
+
+.words__progress__inner[style*="5%"] {
+	background-color: #dcfa68;
+}
+
+.words__progress__inner[style*="6%"] {
+	background-color: #daf866;
+}
+
+.words__progress__inner[style*="7%"] {
+	background-color: #d8f765;
+}
+
+.words__progress__inner[style*="8%"] {
+	background-color: #d5f664;
+}
+
+.words__progress__inner[style*="9%"] {
+	background-color: #d3f563;
+}
+
+.words__progress__inner[style*="10%"] {
+	background-color: #d1f462;
+}
+
+.words__progress__inner[style*="11%"] {
+	background-color: #cef361;
+}
+
+.words__progress__inner[style*="12%"] {
+	background-color: #ccf260;
+}
+
+.words__progress__inner[style*="13%"] {
+	background-color: #caf15f;
+}
+
+.words__progress__inner[style*="14%"] {
+	background-color: #c8f05e;
+}
+
+.words__progress__inner[style*="15%"] {
+	background-color: #c5ef5d;
+}
+
+.words__progress__inner[style*="16%"] {
+	background-color: #c3ed5c;
+}
+
+.words__progress__inner[style*="17%"] {
+	background-color: #c1ec5a;
+}
+
+.words__progress__inner[style*="18%"] {
+	background-color: #beeb59;
+}
+
+.words__progress__inner[style*="19%"] {
+	background-color: #bcea58;
+}
+
+.words__progress__inner[style*="20%"] {
+	background-color: #bae957;
+}
+
+.words__progress__inner[style*="21%"] {
+	background-color: #b7e856;
+}
+
+.words__progress__inner[style*="22%"] {
+	background-color: #b5e755;
+}
+
+.words__progress__inner[style*="23%"] {
+	background-color: #b3e654;
+}
+
+.words__progress__inner[style*="24%"] {
+	background-color: #b0e553;
+}
+
+.words__progress__inner[style*="25%"] {
+	background-color: #aee452;
+}
+
+.words__progress__inner[style*="26%"] {
+	background-color: #ace251;
+}
+
+.words__progress__inner[style*="27%"] {
+	background-color: #a9e150;
+}
+
+.words__progress__inner[style*="28%"] {
+	background-color: #a7e04e;
+}
+
+.words__progress__inner[style*="29%"] {
+	background-color: #a5df4d;
+}
+
+.words__progress__inner[style*="30%"] {
+	background-color: #a2de4c;
+}
+
+.words__progress__inner[style*="31%"] {
+	background-color: #a0dd4b;
+}
+
+.words__progress__inner[style*="32%"] {
+	background-color: #9edc4a;
+}
+
+.words__progress__inner[style*="33%"] {
+	background-color: #9bdb49;
+}
+
+.words__progress__inner[style*="34%"] {
+	background-color: #99da48;
+}
+
+.words__progress__inner[style*="35%"] {
+	background-color: #97d947;
+}
+
+.words__progress__inner[style*="36%"] {
+	background-color: #94d746;
+}
+
+.words__progress__inner[style*="37%"] {
+	background-color: #92d645;
+}
+
+.words__progress__inner[style*="38%"] {
+	background-color: #90d544;
+}
+
+.words__progress__inner[style*="39%"] {
+	background-color: #8ed442;
+}
+
+.words__progress__inner[style*="40%"] {
+	background-color: #8bd341;
+}
+
+.words__progress__inner[style*="41%"] {
+	background-color: #89d240;
+}
+
+.words__progress__inner[style*="42%"] {
+	background-color: #87d13f;
+}
+
+.words__progress__inner[style*="43%"] {
+	background-color: #84d03e;
+}
+
+.words__progress__inner[style*="44%"] {
+	background-color: #82cf3d;
+}
+
+.words__progress__inner[style*="45%"] {
+	background-color: #80ce3c;
+}
+
+.words__progress__inner[style*="46%"] {
+	background-color: #7dcc3b;
+}
+
+.words__progress__inner[style*="47%"] {
+	background-color: #7bcb3a;
+}
+
+.words__progress__inner[style*="48%"] {
+	background-color: #79ca39;
+}
+
+.words__progress__inner[style*="49%"] {
+	background-color: #76c938;
+}
+
+.words__progress__inner[style*="50%"] {
+	background-color: #74c837;
+}
+
+.words__progress__inner[style*="51%"] {
+	background-color: #72c735;
+}
+
+.words__progress__inner[style*="52%"] {
+	background-color: #6fc634;
+}
+
+.words__progress__inner[style*="53%"] {
+	background-color: #6dc533;
+}
+
+.words__progress__inner[style*="54%"] {
+	background-color: #6bc432;
+}
+
+.words__progress__inner[style*="55%"] {
+	background-color: #68c331;
+}
+
+.words__progress__inner[style*="56%"] {
+	background-color: #66c130;
+}
+
+.words__progress__inner[style*="57%"] {
+	background-color: #64c02f;
+}
+
+.words__progress__inner[style*="58%"] {
+	background-color: #61bf2e;
+}
+
+.words__progress__inner[style*="59%"] {
+	background-color: #5fbe2d;
+}
+
+.words__progress__inner[style*="60%"] {
+	background-color: #5dbd2c;
+}
+
+.words__progress__inner[style*="61%"] {
+	background-color: #5abc2b;
+}
+
+.words__progress__inner[style*="62%"] {
+	background-color: #58bb29;
+}
+
+.words__progress__inner[style*="63%"] {
+	background-color: #56ba28;
+}
+
+.words__progress__inner[style*="64%"] {
+	background-color: #54b927;
+}
+
+.words__progress__inner[style*="65%"] {
+	background-color: #51b826;
+}
+
+.words__progress__inner[style*="66%"] {
+	background-color: #4fb625;
+}
+
+.words__progress__inner[style*="67%"] {
+	background-color: #4db524;
+}
+
+.words__progress__inner[style*="68%"] {
+	background-color: #4ab423;
+}
+
+.words__progress__inner[style*="69%"] {
+	background-color: #48b322;
+}
+
+.words__progress__inner[style*="70%"] {
+	background-color: #46b221;
+}
+
+.words__progress__inner[style*="71%"] {
+	background-color: #43b120;
+}
+
+.words__progress__inner[style*="72%"] {
+	background-color: #41b01f;
+}
+
+.words__progress__inner[style*="73%"] {
+	background-color: #3faf1d;
+}
+
+.words__progress__inner[style*="74%"] {
+	background-color: #3cae1c;
+}
+
+.words__progress__inner[style*="75%"] {
+	background-color: #3aad1b;
+}
+
+.words__progress__inner[style*="76%"] {
+	background-color: #38ab1a;
+}
+
+.words__progress__inner[style*="77%"] {
+	background-color: #35aa19;
+}
+
+.words__progress__inner[style*="78%"] {
+	background-color: #33a918;
+}
+
+.words__progress__inner[style*="79%"] {
+	background-color: #31a817;
+}
+
+.words__progress__inner[style*="80%"] {
+	background-color: #2ea716;
+}
+
+.words__progress__inner[style*="81%"] {
+	background-color: #2ca615;
+}
+
+.words__progress__inner[style*="82%"] {
+	background-color: #2aa514;
+}
+
+.words__progress__inner[style*="83%"] {
+	background-color: #27a413;
+}
+
+.words__progress__inner[style*="84%"] {
+	background-color: #25a311;
+}
+
+.words__progress__inner[style*="85%"] {
+	background-color: #23a210;
+}
+
+.words__progress__inner[style*="86%"] {
+	background-color: #20a00f;
+}
+
+.words__progress__inner[style*="87%"] {
+	background-color: #1e9f0e;
+}
+
+.words__progress__inner[style*="88%"] {
+	background-color: #1c9e0d;
+}
+
+.words__progress__inner[style*="89%"] {
+	background-color: #1a9d0c;
+}
+
+.words__progress__inner[style*="90%"] {
+	background-color: #179c0b;
+}
+
+.words__progress__inner[style*="91%"] {
+	background-color: #159b0a;
+}
+
+.words__progress__inner[style*="92%"] {
+	background-color: #139a09;
+}
+
+.words__progress__inner[style*="93%"] {
+	background-color: #109908;
+}
+
+.words__progress__inner[style*="94%"] {
+	background-color: #0e9807;
+}
+
+.words__progress__inner[style*="95%"] {
+	background-color: #0c9705;
+}
+
+.words__progress__inner[style*="96%"] {
+	background-color: #099504;
+}
+
+.words__progress__inner[style*="97%"] {
+	background-color: #079403;
+}
+
+.words__progress__inner[style*="98%"] {
+	background-color: #059302;
+}
+
+.words__progress__inner[style*="99%"] {
+	background-color: #029201;
+}
+
+.words__progress__inner[style*="100%"] {
+	background-color: #009100;
 }
 
 .words__complete {
