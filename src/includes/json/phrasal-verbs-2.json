@@ -1,0 +1,24 @@
+[
+  {
+	"tasksTitle": "Phrasal Verbs (Part 2)",
+	"tasksDescription": "Sometimes a phrasal verb (<strong>put on</strong> / <strong>take off</strong> etc.) has an <em>object</em>",
+	"tasks": [
+	  {
+		"front": "put on",
+		"back": "= clothing / accessories on your body",
+		"note": [
+		  "<strong>put on</strong> your coat",
+		  "<em>or</em> <strong>put</strong> your coat <strong>on</strong>",
+		  "<em>But</em> <strong>it/them</strong> (<em>pronouns</em>) always go before <strong>on/off</strong> etc. :<br> put <strong>it on</strong> (<em>not</em> put on it)"
+		]
+	  },
+	  {
+		"front": "carry on",
+		"back": "= continue",
+		"note": [
+		  "Don't stop working. <strong>Carry on</strong>."
+		]
+	  }
+	]
+  }
+]

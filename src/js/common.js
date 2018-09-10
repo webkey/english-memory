@@ -296,11 +296,12 @@ function wordsCards() {
 
 	if ($words.length) {
 		$.each($words, function () {
-			$(this).words({
+			let $cur = $(this);
+			$cur.words({
 				front: $('.words__card_front-js'),
 				back: $('.words__card_back-js'),
-				// tasksObj: phrasal-verbs.json
-				tasksObj: "includes/json/phrasal-verbs.json"
+				// tasksObj: phrasal-verbs-1.json
+				tasksObj: $cur.attr('data-tasks')
 			});
 		})
 	}
