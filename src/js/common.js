@@ -232,6 +232,25 @@ function inputHasValueClass() {
 					progress(objTotal - objLength, currentProgress);
 				}
 			});
+			$(document).keydown(function(event) {
+				// console.log("event.keyCode: ", event.which);
+				switch (event.which) {
+					case 13: // Enter
+					case 32: // Space
+					case 37: // Left
+					case 38: // Top
+					case 39: // Right
+					case 40: // Bottom
+						$element.trigger('click');
+						break;
+
+					default: return;
+				}
+				// if (event.keyCode === 13 || event.keyCode === 32 || event.keyCode === 37 || event.keyCode === 38 || event.keyCode === 39 || event.keyCode === 40) {
+				// 	$element.trigger('click');
+				// }
+				event.preventDefault();
+			});
 		}, init = function () {
 
 			$element.addClass(pluginClasses.switcher + ' ' + pluginClasses.initClass).addClass(config.modifiers.initClass);
@@ -300,6 +319,7 @@ function wordsCards() {
 			$cur.words({
 				front: $('.words__card_front-js'),
 				back: $('.words__card_back-js'),
+				order: $('.words__order-js'),
 				// tasksObj: phrasal-verbs-1.json
 				tasksObj: $cur.attr('data-tasks')
 			});

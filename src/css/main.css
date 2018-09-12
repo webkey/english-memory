@@ -3173,7 +3173,7 @@ form .success + .select2 + .error-note + .success-note {
 	width: 420px;
 	max-width: 420px;
 	height: 480px;
-	padding: 40px 20px 20px;
+	padding: 40px 20px 40px;
 	-webkit-user-select: none !important;
 	   -moz-user-select: none !important;
 	    -ms-user-select: none !important;
@@ -3245,6 +3245,11 @@ form .success + .select2 + .error-note + .success-note {
 .words_invert .words__card_back {
 	font-weight: bold;
 	font-style: normal;
+}
+
+.words__card_back em {
+	font-weight: normal;
+	font-style: italic;
 }
 
 .words__note {
@@ -3699,6 +3704,10 @@ form .success + .select2 + .error-note + .success-note {
 
 .words__progress__inner[style*="100%"] {
 	background-color: #009100;
+}
+
+.words__order {
+	position: relative;
 }
 
 .words__complete {

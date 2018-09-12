@@ -1,11 +1,11 @@
 [
   {
 	"tasksTitle": "Phrasal Verbs (Part 2)",
-	"tasksDescription": "Sometimes a phrasal verb (<strong>put on</strong> / <strong>take off</strong> etc.) has an <em>object</em>",
+	"tasksDescriptionSave": "Sometimes a phrasal verb (<strong>put on</strong> / <strong>take off</strong> etc.) has an <em>object</em>",
 	"tasks": [
 	  {
 		"front": "put on",
-		"back": "= clothing / accessories on your body",
+		"back": "= clothe something on your body",
 		"note": [
 		  "<strong>put on</strong> your coat",
 		  "<em>or</em> <strong>put</strong> your coat <strong>on</strong>",
@@ -13,10 +13,164 @@
 		]
 	  },
 	  {
-		"front": "carry on",
-		"back": "= continue",
+		"front": "take <em>something</em> off",
+		"back": "= remove something (usually clothing)",
 		"note": [
-		  "Don't stop working. <strong>Carry on</strong>."
+		  "I’m going to <strong>take off</strong> my shoes.<br> <em>or</em> … <strong>take</strong> my shoes <strong>off</strong>",
+		  "<em>But</em> <strong>it/them</strong> (<em>pronouns</em>) always go before <strong>on/off</strong> etc. :<br> Your shoes are dirty. <strong>Take them off</strong>."
+		]
+	  },
+	  {
+		"front": "put on",
+		"back": "= To turn on, switch on",
+		"note": [
+		  "item"
+		]
+	  },
+	  {
+		"front": "turn on<br>switch on",
+		"back": "= activate lights, machines, taps etc.",
+		"note": [
+		  "It was dark, so I <strong>turned on</strong> the light.<br> <em>or</em> … I <strong>turned</strong> the light <strong>on</strong>."
+		]
+	  },
+	  {
+		"front": "turn off<br>switch off",
+		"back": "= inactivate lights, machines, taps etc.",
+		"note": [
+		  "I don’t want to watch this programme.<br> You can <strong>turn it off</strong>."
+		]
+	  },
+	  {
+		"front": "pick up",
+		"back": "= поднимать, подбирать",
+		"note": [
+		  "ho se are my keys on the floor.<br>Can you <strong>pick them up</strong> for me?"
+		]
+	  },
+	  {
+		"front": "put <em>something</em> down",
+		"back": "= to place (someone or something that you have been holding or carrying) on a table, on the floor, etc.",
+		"note": [
+		  "I stopped reading and <strong>put</strong> my book <strong>down</strong>.<br> <em>or</em> … <strong>put down</strong> my book."
+		]
+	  },
+	  {
+		"front": "bring back<br>take back<br>give back<br>put back",
+		"back": "= return something to its owner",
+		"note": [
+		  "You can take my umbrella, but please <strong>bring it back</strong>.",
+		  "I <strong>took</strong> my new sweater <strong>back</strong> to the shop. It was too small for me.",
+		  "I’ve got Rachel’s keys. I have to <strong>give them back</strong> to her.",
+		  "I read the letter and then <strong>put it back</strong> in the envelope."
+		]
+	  },
+	  {
+		"front": "fill in<br>fill out",
+		"back": "= complete a form",
+		"note": [
+		  "Can you <em>fill in this form</em>, please? <em>or</em><br>Can you <strong>fill out this form</strong>, please?"
+		]
+	  },
+	  {
+		"front": "put out",
+		"back": "= break fire of a fire, a cigarette etc.",
+		"note": [
+		  "The fir e brigade arrived and <strong>put the fir e out</strong>."
+		]
+	  },
+	  {
+		"front": "cross out",
+		"back": "= hide / paint a mistake, a word etc.",
+		"note": [
+		  "If you make a mistake, <strong>cross it out</strong>."
+		]
+	  },
+	  {
+		"front": "try on <em>clothes</em>",
+		"back": "= put on clothes to see if they fit you",
+		"note": [
+		  "<em>(in a shop)</em> Thi s is a nice jacket. Shall I <strong>try it on</strong>?"
+		]
+	  },
+	  {
+		"front": "give up <em>something</em>",
+		"back": "= stop doing it",
+		"note": [
+		  "Sue <strong>gave up her job</strong> when her baby was born. (= she stopped working)",
+		  "‘Are you still learning Italian?’<br>‘No, I <strong>gave it up</strong>.’"
+		]
+	  },
+	  {
+		"front": "look up <em>a word in a dictionary etc.</em>",
+		"back": "= see / search a word in a dictionary etc.",
+		"note": [
+		  "I didn’t know the meaning of the word, so I <strong>looked it up</strong> in a dictionary"
+		]
+	  },
+	  {
+		"front": "turn up <em>the TV, radio, music, heating etc.</em>",
+		"back": "= make it louder or warmer",
+		"note": [
+		  "Can you <strong>turn the radio up</strong>? I can’t hear it."
+		]
+	  },
+	  {
+		"front": "wake up <em>somebody who is sleeping</em>",
+		"back": "= stop a dream somebody who is sleeping",
+		"note": [
+		  "I have to get up early tomorrow. Can you <strong>wake me up</strong> at 6.30?"
+		]
+	  },
+	  {
+		"front": "knock down <em>a building</em>",
+		"back": "= demolish / damage a building",
+		"note": [
+		  "The y are going to <strong>knock down</strong> the school and build a new one."
+		]
+	  },
+	  {
+		"front": "turn down <em>the TV, radio, music, heating etc.</em>",
+		"back": "= make the TV, radio, music, heating etc. more quiet or less warm",
+		"note": [
+		  "The music is too loud. Can you <strong>turn it down</strong>?"
+		]
+	  },
+	  {
+		"front": "knock over <em>a cup, a glass, a person etc.</em>",
+		"back": "= ... (suddenly unbalance) a cup, a glass, a person etc.",
+		"note": [
+		  "Be careful. Don’t <strong>knock your cup over</strong>.",
+		  "The re was an accident at the end of the road. A man was <strong>knocked over</strong> by a car. (<em>or</em> A man was <strong>knocked down</strong> by a car.)"
+		]
+	  },
+	  {
+		"front": "throw away <em>rubbish, things you don’t want</em>",
+		"back": "= ... <em>rubbish, things you don’t want</em>",
+		"note": [
+		  "The se apples are bad. Shall I <strong>throw them away</strong>?",
+		  "Don’t <strong>throw away that picture</strong>. I want it."
+		]
+	  },
+	  {
+		"front": "put <em>something</em> away",
+		"back": "= put something in the place where you usually keep it",
+		"note": [
+		  "After they fi nished playing, the children <strong>put their toys away</strong>."
+		]
+	  },
+	  {
+		"front": "pay <em>somebody</em> back",
+		"back": "= give back money that you borrowed",
+		"note": [
+		  "Tha nk you for lending me the money. I’ll <strong>pay you back</strong> next week."
+		]
+	  },
+	  {
+		"front": "show <em>somebody</em> round/around",
+		"back": "= take somebody on a tour of a place",
+		"note": [
+		  "We visited a factory last week. The manager <strong>showed us round</strong>."
 		]
 	  }
 	]

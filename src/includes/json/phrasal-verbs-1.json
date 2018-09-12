@@ -1,15 +1,8 @@
 [
   {
 	"tasksTitle": "Phrasal Verbs (Part 1)",
-	"tasksDescription": "A phrasal verb is a verb (go/look/be etc.) + in/out/up/down etc.",
+	"tasksDescriptionSave": "A phrasal verb is a verb (go/look/be etc.) + in/out/up/down etc.",
 	"tasks": [
-	  {
-		"front": "fill in / fill out a form",
-		"back": "= complete a form",
-		"note": [
-		  "Can you <strong>fill in this form</strong>, please? or<br> Can you <strong>fill out this form</strong>, please?"
-		]
-	  },
 	  {
 		"front": "carry on",
 		"back": "= continue",
