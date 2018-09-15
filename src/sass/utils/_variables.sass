@@ -13,6 +13,8 @@ $breakpoints: ('desk-qhd': 2560px, 'desk-hd': 1920px, 'desk-lg': 1600px, 'desk-m
 // ==========================================================================
 $font-norm: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default
 $font-alt: Georgia, serif !default
+//$font-norm: Georgia, serif !default
+//$font-alt: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default
 
 // Reset font-weight and font-style
 // Use for font-face
@@ -145,19 +147,19 @@ $bottom-space--small: round-float($font-size*$line-height*0.75, 1) !default
 // ==========================================================================
 
 // Color of brands
-$base-color: #ffa43f !default
-$base-color-alt: lightskyblue !default
+$base-color: #51aca9 !default
+$base-color-alt: #e1ce48 !default
 // ----------------------------------------------------
-$bg-color: #e5e5e5 !default
-$bg-color-alt: #f3f3f3 !default
+$bg-color: #1b9290  !default
+$bg-color-alt: #f3faf8 !default
 // ----------------------------------------------------
 $text-color: #262626 !default
 $text-color-light: gray !default
-$title-color: #e6897d !default
+$title-color: #51aca9 !default
 // ----------------------------------------------------
-$link-color: blue !default
+$link-color: #51aca9 !default
 // ----------------------------------------------------
-$border-color: lightgray !default
+$border-color: #51aca9 !default
 // ----------------------------------------------------
 $mark-color: tomato !default
 
@@ -285,7 +287,7 @@ $form-gap: 40px !default
 
 // Checkboxes
 // Radio Buttons
-$checkbox-color: #ff3aa3 !default
+$checkbox-color: $base-color-alt !default
 
 // Select
 $select-space-v: 12px !default
@@ -327,3 +329,11 @@ $multiple-item-space: 3px !default
 // ==========================================================================
 $animation-speed: 0.2s !default
 $animation-speed-mouseleave: 0.35s !default
+
+
+// Words card
+// ==========================================================================
+$words-size: 480px 380px !default
+$randomMod: 'is-random' !default
+$activeMod: 'active' !default
+$backMod: 'is-back' !default

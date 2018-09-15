@@ -147,6 +147,15 @@ html
 	//height: 100vh
 	min-height: 100vh
 	position: relative
+	
+	&::before
+		display: block
+		content: ''
+		position: absolute
+		left: $sidebar-width + nth($page-layout-space, 2) * 2
+		top: 0
+		height: 100%
+		border-right: 1px solid $border-color
 
 /* === LAYOUT end ===
 
@@ -167,10 +176,11 @@ html
 	width: 100%
 
 .content
-	margin: 0 0 0 300px
+	margin: 0 0 0 $sidebar-width + nth($page-layout-space, 2) * 2
+	padding: 11px 0
 	min-height: 50px
 
-	background-color: whitesmoke
+	//background-color: whitesmoke
 
 	+media('<desk-lg')
 		margin-right: 0
@@ -183,7 +193,8 @@ html
 /* === HEADER ===
 .header
 	position: relative
-	//background-color: lightgreen
+	background-color: $bg-color
+	border-bottom: 1px solid $border-color
 
 .header__holder
 	position: relative
@@ -273,7 +284,7 @@ html
 	margin: 0 0 0 -100%
 	width: $sidebar-width
 
-	background-color: sandybrown
+	//background-color: $base-color-alt
 
 	+media('<tab-lg')
 		display: none
@@ -286,7 +297,7 @@ html
 	float: right
 	margin: 0 0 0 -#{$aside-width}
 	width: $aside-width
-	background-color: sandybrown
+	background-color: $base-color-alt
 
 	+media('<desk-lg')
 		display: none
@@ -303,7 +314,7 @@ html
 	color: $text-color
 	border-top: 1px solid $border-color
 
-	//background-color: lightgreen
+	background-color: $bg-color
 
 .footer__holder
 	overflow: hidden

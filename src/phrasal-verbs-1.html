@@ -63,22 +63,35 @@
 						<div class="content user-content">
 							<h1>Phrasal Verbs (Part 1)</h1>
 							<section class="words words-js words_invert" data-tasks="includes/json/phrasal-verbs-1.json">
-								<div class="words__cards">
-									<div class="words__progress">
-										<div class="words__progress__inner words__progress-js">0</div>
-									</div>
-									<div class="words__total words__total-js">&nbsp;</div>
-									<div class="words__cards__frame">
-										<div class="words__card words__card_back">
-											<div class="words__card_back-js">&nbsp;</div>
+								<div class="words__holder">
+									<div class="words__cards words__cards-js">
+										<div class="words__progress">
+											<div class="words__progress__inner words__progress-js">&nbsp;</div>
 										</div>
-										<div class="words__card words__card_front">
-											<div class="words__card_front-js">&nbsp;</div>
+										<div class="words__count">
+											<div class="words__current words__current-js">0</div>/<div class="words__total words__total-js">&nbsp;</div>
+										</div>
+										<div class="words__cards__frame">
+											<div class="words__card words__card_back">
+												<div class="words__card_back-js">&nbsp;</div>
+											</div>
+											<div class="words__card words__card_front">
+												<div class="words__card_front-js">&nbsp;</div>
+											</div>
 										</div>
 									</div>
+									<div class="words__note words__note-js">&nbsp;</div>
 								</div>
-								<div class="words__note words__note-js">&nbsp;</div>
-								<div class="words__complete">This task is complete<br> Click to continue</div>
+								<div class="words__tools">
+									<label class="check-label">
+										<input type="checkbox" disabled checked name="random" class="words__tools_random-js">
+										<i></i>
+										<span>В случайном порядке</span>
+									</label>
+									<button class="words__tools_prev words__tools_prev-js" data-alt="или <" data-prev="< Пред." data-turn="Перевернуть"></button>
+									<button class="words__tools_next words__tools_next-js" data-alt="или >" data-next="След. >" data-look-at="Проверить"></button>
+								</div>
+								<div class="words__complete words__complete-js">This task is complete<br> Click to continue</div>
 							</section>
 						</div>
 					</div>

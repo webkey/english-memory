@@ -100,11 +100,17 @@ function inputHasValueClass() {
 				switcher: pref + '__switcher',
 				complete: pref + '__complete'
 			},
+			$cards = $element.find(config.cards),
 			$front = $element.find(config.front),
 			$back = $element.find(config.back),
 			$note = $element.find(config.note),
+			$current = $element.find(config.current),
 			$total = $element.find(config.total),
 			$progress = $element.find(config.progress),
+			$complete = $element.find(config.complete),
+			$toolsRandom = $element.find(config.toolsRandom),
+			$toolsPrev = $element.find(config.toolsPrev),
+			$toolsNext = $element.find(config.toolsNext),
 			objTotal;
 
 		let callbacks = function () {
@@ -134,7 +140,7 @@ function inputHasValueClass() {
 				} else {
 					// Если второй аргумент false, то удаляем класс
 					// Если второй аргумент не false, то добавляем класс
-					$(currentElem).toggleClass(config.modifiers.activeClass, !!condRemove)
+					$(currentElem).toggleClass(config.modifiers.activeMod, !!condRemove)
 				}
 			});
 		}, getProgress = function (total, current) {
@@ -147,7 +153,7 @@ function inputHasValueClass() {
 			// console.log("obj: ", obj);
 			if (obj.length === 0) {
 				// Add class show a warning about the task end
-				$elem.addClass(config.modifiers.completeClass);
+				$elem.addClass(config.modifiers.completeMod);
 
 				// Restore tasks object
 				$elem.data(dataTasksSave, $elem.data(dataTasksFullSave));
@@ -155,7 +161,7 @@ function inputHasValueClass() {
 				return false;
 			}
 
-			$elem.removeClass(config.modifiers.activeClass);
+			$elem.removeClass(config.modifiers.activeMod);
 
 			// console.log("obj: ", obj);
 			let randomIndex = getRandomInt(0, obj.length);
@@ -190,9 +196,7 @@ function inputHasValueClass() {
 		}, saveTasksObj = function () {
 			if (typeof config.tasksObj === 'string'){
 				$.getJSON(config.tasksObj, function( data ) {
-					// $element.data(dataTasksSave, data[0].tasks);
 					$element.data(dataTasksSave, data[0].tasks);
-					// $element.data(dataTasksFullSave, data[0].tasks);
 					$element.data(dataTasksFullSave, data[0].tasks);
 				}).done(function () {
 					objTotal = $element.data(dataTasksFullSave).length;
@@ -207,48 +211,76 @@ function inputHasValueClass() {
 				$element.data(dataTasksFullSave, config.tasksObj[0].tasks);
 				createTaskRandomly($element);
 			}
-		}, progress = function (length, progress) {
-			$progress.css('width', progress).html(length);
+		}, changeProgress = function (length, progress) {
+			$progress.css('width', progress);
+			$current.html(length);
 		}, main = function () {
-			// $body.on(config.event, '.' + pluginClasses.switcher, function (event) {
-			$element.on(config.event, function (event) {
+			$toolsNext.on(config.event, function (event) {
 				event.preventDefault();
 
-				let $curCard = $(this);
+				let $curCard = $(this).closest($element);
 
-				if ($curCard.hasClass(config.modifiers.completeClass)) {
-					// Remove class show a warning about the task end
-					$curCard.removeClass(config.modifiers.completeClass);
-					progress(0, 0);
-				}
+				if ($toolsRandom.prop('checked')){
+					if ($curCard.hasClass(config.modifiers.completeMod)) {
+						// Remove class show a warning about the task end
+						$curCard.removeClass(config.modifiers.completeMod);
+						changeProgress(0, 0);
+					}
 
-				if ($curCard.hasClass(config.modifiers.activeClass)) {
-					createTaskRandomly($curCard);
-				} else {
-					$curCard.addClass(config.modifiers.activeClass);
-					// Progress bar
-					let objLength = $curCard.data(dataTasksSave).length;
-					let currentProgress = Math.round(getProgress(objTotal, objLength) * 100) + '%';
-					progress(objTotal - objLength, currentProgress);
+					if ($curCard.hasClass(config.modifiers.activeMod)) {
+						createTaskRandomly($curCard);
+					} else {
+						$curCard.removeClass(config.modifiers.backMod);
+						$curCard.addClass(config.modifiers.activeMod);
+						// Progress bar
+						let objLength = $curCard.data(dataTasksSave).length;
+						let currentProgress = Math.round(getProgress(objTotal, objLength) * 100) + '%';
+						changeProgress(objTotal - objLength, currentProgress);
+					}
 				}
 			});
+			$toolsPrev.on(config.event, function (event) {
+				let $curCard = $(this).closest($element);
+
+				if ($toolsRandom.prop('checked')) {
+					$curCard.addClass(config.modifiers.backMod);
+					$curCard.removeClass(config.modifiers.activeMod);
+				}
+
+				event.preventDefault();
+			});
+			// Random tool change
+			$element.toggleClass(config.modifiers.randomMod, $toolsRandom.prop('checked'));
+			$toolsRandom.on('change', function () {
+				$element.toggleClass(config.modifiers.randomMod, $toolsRandom.prop('checked'));
+			});
+			// Complete cover / Cards on click
+			$complete.add($cards).on('click', function () {
+				$toolsNext.click();
+			});
+			// Key
 			$(document).keydown(function(event) {
-				// console.log("event.keyCode: ", event.which);
 				switch (event.which) {
 					case 13: // Enter
 					case 32: // Space
-					case 37: // Left
 					case 38: // Top
 					case 39: // Right
 					case 40: // Bottom
-						$element.trigger('click');
+						$toolsNext.click();
 						break;
 
 					default: return;
 				}
-				// if (event.keyCode === 13 || event.keyCode === 32 || event.keyCode === 37 || event.keyCode === 38 || event.keyCode === 39 || event.keyCode === 40) {
-				// 	$element.trigger('click');
-				// }
+				event.preventDefault();
+			});
+			$(document).keydown(function(event) {
+				switch (event.which) {
+					case 37: // Left
+						$toolsPrev.click();
+						break;
+
+					default: return;
+				}
 				event.preventDefault();
 			});
 		}, init = function () {
@@ -295,16 +327,28 @@ function inputHasValueClass() {
 
 	$.fn.words.defaultOptions = {
 		tasksObj: [{'front': 'back!', 'back': 'front!', 'note': ['This one is for an example']}],
+		cards: '.words__cards-js',
 		front: '.words__card_front-js',
 		back: '.words__card_back-js',
 		note: '.words__note-js',
+		// count and progress
+		current: '.words__current-js',
 		total: '.words__total-js',
 		progress: '.words__progress-js',
+		// complete cover
+		complete: '.words__complete-js',
+		// tools
+		toolsRandom: '.words__tools_random-js',
+		toolsPrev: '.words__tools_prev-js',
+		toolsNext: '.words__tools_next-js',
+		// event
 		event: 'click',
 		modifiers: {
 			initClass: null,
-			activeClass: 'active',
-			completeClass: 'completed'
+			activeMod: 'active',
+			backMod: 'is-back',
+			completeMod: 'completed',
+			randomMod: 'is-random'
 		}
 	}
 

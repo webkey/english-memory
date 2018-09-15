@@ -21,13 +21,6 @@
 		]
 	  },
 	  {
-		"front": "put on",
-		"back": "= To turn on, switch on",
-		"note": [
-		  "item"
-		]
-	  },
-	  {
 		"front": "turn on<br>switch on",
 		"back": "= activate lights, machines, taps etc.",
 		"note": [
@@ -45,7 +38,7 @@
 		"front": "pick up",
 		"back": "= поднимать, подбирать",
 		"note": [
-		  "ho se are my keys on the floor.<br>Can you <strong>pick them up</strong> for me?"
+		  "Those are my keys on the floor.<br>Can you <strong>pick them up</strong> for me?"
 		]
 	  },
 	  {
@@ -69,14 +62,14 @@
 		"front": "fill in<br>fill out",
 		"back": "= complete a form",
 		"note": [
-		  "Can you <em>fill in this form</em>, please? <em>or</em><br>Can you <strong>fill out this form</strong>, please?"
+		  "Can you <strong>fill in this form</strong>, please? <em>or</em><br>Can you <strong>fill out this form</strong>, please?"
 		]
 	  },
 	  {
 		"front": "put out",
-		"back": "= break fire of a fire, a cigarette etc.",
+		"back": "= enable a fire, a cigarette etc.",
 		"note": [
-		  "The fir e brigade arrived and <strong>put the fir e out</strong>."
+		  "The fire brigade arrived and <strong>put the fire out</strong>."
 		]
 	  },
 	  {
@@ -90,7 +83,7 @@
 		"front": "try on <em>clothes</em>",
 		"back": "= put on clothes to see if they fit you",
 		"note": [
-		  "<em>(in a shop)</em> Thi s is a nice jacket. Shall I <strong>try it on</strong>?"
+		  "<em>(in a shop)</em> This is a nice jacket. Shall I <strong>try it on</strong>?"
 		]
 	  },
 	  {
@@ -126,7 +119,7 @@
 		"front": "knock down <em>a building</em>",
 		"back": "= demolish / damage a building",
 		"note": [
-		  "The y are going to <strong>knock down</strong> the school and build a new one."
+		  "They are going to <strong>knock down</strong> the school and build a new one."
 		]
 	  },
 	  {
@@ -141,14 +134,14 @@
 		"back": "= ... (suddenly unbalance) a cup, a glass, a person etc.",
 		"note": [
 		  "Be careful. Don’t <strong>knock your cup over</strong>.",
-		  "The re was an accident at the end of the road. A man was <strong>knocked over</strong> by a car. (<em>or</em> A man was <strong>knocked down</strong> by a car.)"
+		  "There was an accident at the end of the road. A man was <strong>knocked over</strong> by a car. (<em>or</em> A man was <strong>knocked down</strong> by a car.)"
 		]
 	  },
 	  {
 		"front": "throw away <em>rubbish, things you don’t want</em>",
 		"back": "= ... <em>rubbish, things you don’t want</em>",
 		"note": [
-		  "The se apples are bad. Shall I <strong>throw them away</strong>?",
+		  "These apples are bad. Shall I <strong>throw them away</strong>?",
 		  "Don’t <strong>throw away that picture</strong>. I want it."
 		]
 	  },
@@ -156,14 +149,14 @@
 		"front": "put <em>something</em> away",
 		"back": "= put something in the place where you usually keep it",
 		"note": [
-		  "After they fi nished playing, the children <strong>put their toys away</strong>."
+		  "After they finished playing, the children <strong>put their toys away</strong>."
 		]
 	  },
 	  {
 		"front": "pay <em>somebody</em> back",
 		"back": "= give back money that you borrowed",
 		"note": [
-		  "Tha nk you for lending me the money. I’ll <strong>pay you back</strong> next week."
+		  "Thank you for lending me the money. I’ll <strong>pay you back</strong> next week."
 		]
 	  },
 	  {
