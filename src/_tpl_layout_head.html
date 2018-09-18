@@ -8,7 +8,7 @@
 	<!--Mobile optimized-->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.2">
 	<!--Theme color-->
-	<meta name="theme-color" content="#fff">
+	<meta name="theme-color" content="#51aca9">
 	<!--SEO-->
 	<meta name="description" content="description">
 	<meta name="keywords" content="english memory learn words repeat">
@@ -37,4 +37,18 @@
 <body@@if(context.pageClass){ class="@@pageClass"}>
 <noscript><div class="no-js-warning">Для корректной работы сайта <b>включите JavaScript</b> в браузере</div></noscript>
 <!--[if lt IE 9]> <div class="browserupgrade"><p>You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p></div> <![endif]-->
-<!-- >>> head.tpl END <<< -->
+
+@@include('_tpl_PAGE_WRAP.html', {"pageWrap": "START" })
+
+<!--HEADER-->
+@@include("_tpl_layout_header.html", {"currentItem": "@@title"})
+<!--HEADER end-->
+
+<!--MAIN-->
+<div class="main">
+	<div class="max-wrap">
+		<div class="main__holder">
+			<!--CONTENT-->
+			<div class="content-wrap">
+				<div class="content layout user-content">
+				<!-- >>> head.tpl END <<< -->

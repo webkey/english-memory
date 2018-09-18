@@ -1,3 +1,22 @@
+				<!-- >>> foot.tpl START <<< -->
+				</div>
+			</div>
+			<!--CONTENT end-->
+
+			<!--SIDEBAR-->
+			@@include("_tpl_layout_sidebar.html", {"currentItem": "@@currentItemByNav"})
+			<!--SIDEBAR-->
+		</div>
+	</div>
+</div>
+<!--MAIN end-->
+
+<!--FOOTER-->
+@@include('_tpl_layout_footer.html')
+<!--FOOTER end-->
+
+@@include('_tpl_PAGE_WRAP.html', {"pageWrap": "END" })
+
 <script src="js/jquery.min.js"></script>
 <script src="js/libs.min.js"></script>
 <script src="js/common.js?rev=@@hash"></script>

@@ -15,7 +15,10 @@ html
 
 /* === LAYOUT ===
 .max-wrap
-	max-width: #{$page-layout-width +  nth($page-layout-space, 2)*2}
+	max-width: $page-layout-width
+
+	&.layout
+		max-width: #{$page-layout-width + nth($page-layout-space, 2)*2}
 
 .layout
 	+padding-horizontal(nth($page-layout-space, 2))
@@ -152,10 +155,13 @@ html
 		display: block
 		content: ''
 		position: absolute
-		left: $sidebar-width + nth($page-layout-space, 2) * 2
+		left:  $sidebar-width
 		top: 0
 		height: 100%
 		border-right: 1px solid $border-color
+
+		+media('<desk-sm')
+			display: none
 
 /* === LAYOUT end ===
 
@@ -165,7 +171,6 @@ html
 	flex-grow: 1
 	position: relative
 	clear: both
-	z-index: 4
 
 .main__holder
 	width: 100%
@@ -176,12 +181,21 @@ html
 	width: 100%
 
 .content
-	margin: 0 0 0 $sidebar-width + nth($page-layout-space, 2) * 2
-	padding: 11px 0
+	//margin: 0 0 0 $sidebar-width + nth($page-layout-space, 2) * 2
+	margin: 0 0 0 $sidebar-width
+	padding-bottom: $bottom-space
 	min-height: 50px
 
 	+media('<desk-sm')
 		margin-left: 0
+
+.heading
+	+padding-vertical($bottom-space)
+	margin-bottom: $bottom-space
+	border-bottom: 1px solid $border-color
+
+	&.layout
+		+margin-horizontal(-#{nth($page-layout-space, 2)})
 
 /* === CONTENT end ===
 
@@ -194,7 +208,6 @@ html
 .header__holder
 	position: relative
 	padding: 10px 0
-	z-index: 5
 	+clear
 
 /* logo
@@ -202,75 +215,16 @@ html
 	position: relative
 	float: left
 	z-index: 5
+	+font-bold
+	color: inherit
+	text-decoration: none
+	cursor: default
+
+a.logo
+	cursor: pointer
 
 /* logo end
 /* === HEADER end ===
-
-/* === NAVIGATION ===
-.nav
-	position: relative
-
-.nav__list
-	+clear
-
-	li
-		position: relative
-
-		&.has-drop
-			padding-right: 2rem
-
-			.nav__angle
-				position: absolute
-				right: 0
-				top: 50%
-				transform: translate(0, -50%)
-				line-height: 0
-				pointer-events: none
-
-	a
-		display: block
-
-	& > li
-		float: left
-		margin-right: 2rem
-
-		&.has-drop > .nav__tab .nav__angle i
-			display: inline-block
-			vertical-align: top
-			+triangle(bottom, tomato, 5px, 2)
-
-.nav__drop
-	position: absolute
-	left: 0
-	top: 100%
-	background-color: white
-	border: 1px solid $border-color
-	padding: 2rem
-	width: $page-layout-min
-	opacity: 0
-	visibility: hidden
-	z-index: 10
-
-	li:hover > &
-		opacity: 1
-		visibility: visible
-
-	li
-		margin-bottom: 1rem
-		font-size: 1.4rem
-		line-height: 1.5
-
-		&.has-drop > .nav__tab .nav__angle i
-			display: inline-block
-			vertical-align: top
-			+triangle(right, tomato, 5px, 2)
-
-
-	.nav__drop
-		top: 0
-		left: 100%
-
-/* === NAVIGATION end ===
 
 /* === ASIDE ===
 .aside
@@ -290,7 +244,6 @@ html
 	//margin: 0 auto
 	position: relative
 	clear: both
-	z-index: 5
 	+font(16px, round-float(24/16, 3))
 	color: $text-color
 	border-top: 1px solid $border-color

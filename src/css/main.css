@@ -3128,6 +3128,10 @@ form .success + .select2 + .error-note + .success-note {
 
 /* feature list end */
 /* menu */
+.menu__list li.current {
+	color: #e1ce48;
+}
+
 .menu__list li.current a {
 	text-decoration: none;
 	cursor: default;
@@ -3838,23 +3842,20 @@ form .success + .select2 + .error-note + .success-note {
 	float: left;
 	margin: 0 0 0 -100%;
 	width: 260px;
-}
-
-.sidebar {
-	margin: 0;
+	background-color: #1b9290;
 	will-change: transform, opacity;
 	transition-property: transform, opacity;
 	transition-duration: 0.2s;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1199px) {
 	.sidebar {
+		margin: 0;
 		position: fixed;
 		width: 320px;
 		height: 100%;
 		left: 0;
 		top: 0;
-		background-color: lightsteelblue;
 		z-index: 9999;
 		-ms-transform: translate(-100%, 0);
 		    transform: translate(-100%, 0);
@@ -3869,22 +3870,22 @@ form .success + .select2 + .error-note + .success-note {
 	}
 }
 
+/* navigation opener button / burger */
 a.nav-opener {
 	display: none;
 	position: absolute;
-	right: 10px;
-	top: 10px;
-	margin-top: -30px;
-	width: 60px;
-	height: 60px;
-	z-index: 5;
-	text-decoration: none;
+	right: 0;
+	top: 0;
+	width: 44px;
+	height: 44px;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-	font-size: 1.6rem;
-	line-height: 1.5;
-	letter-spacing: normal;
-	color: #262626;
-	background-color: transparent;
+	font-size: inherit;
+	line-height: inherit;
+	letter-spacing: inherit;
+	color: inherit;
+	text-decoration: none;
+	background-color: #51aca9;
+	z-index: 9999;
 	-webkit-user-select: none;
 	   -moz-user-select: none;
 	    -ms-user-select: none;
@@ -3892,15 +3893,9 @@ a.nav-opener {
 	-webkit-tap-highlight-color: transparent;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1199px) {
 	a.nav-opener {
 		display: block;
-	}
-}
-
-@media (max-width: 639px) {
-	a.nav-opener {
-		right: 7px;
 	}
 }
 
@@ -3911,8 +3906,6 @@ a.nav-opener > span {
 	height: 100%;
 	padding-right: 5px;
 	padding-left: 5px;
-	font-weight: bold;
-	line-height: 1;
 	display: none;
 }
 
@@ -3922,11 +3915,11 @@ a.nav-opener::before, a.nav-opener::after {
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	width: 7px;
-	height: 43px;
-	margin-top: -4px;
-	margin-left: -22px;
-	background-color: #e1ce48;
+	height: 4px;
+	width: 24px;
+	margin-top: -2px;
+	margin-left: -12px;
+	background-color: #1b9290;
 	opacity: 0;
 	will-change: transform, opacity, background-color;
 	transition-property: transform, opacity, background-color;
@@ -3937,10 +3930,10 @@ a.nav-opener::before, a.nav-opener::after {
 
 @media (max-width: 991px) {
 	a.nav-opener::before, a.nav-opener::after {
-		width: 4px;
-		height: 25px;
+		height: 4px;
+		width: 24px;
 		margin-top: -2px;
-		margin-left: -13px;
+		margin-left: -12px;
 	}
 }
 
@@ -3948,11 +3941,11 @@ a.nav-opener > i {
 	position: absolute;
 	left: 50%;
 	top: 50%;
-	width: 7px;
-	height: 53px;
-	margin-top: -4px;
-	margin-left: -22px;
-	background-color: #e1ce48;
+	height: 4px;
+	width: 24px;
+	margin-top: -2px;
+	margin-left: -12px;
+	background-color: #1b9290;
 	will-change: transform, opacity, background-color, max-width;
 	transition-property: transform, opacity, background-color, max-width;
 	transition-duration: 0.2s;
@@ -3961,10 +3954,10 @@ a.nav-opener > i {
 
 @media (max-width: 991px) {
 	a.nav-opener > i {
-		width: 4px;
-		height: 30px;
+		height: 4px;
+		width: 24px;
 		margin-top: -2px;
-		margin-left: -13px;
+		margin-left: -12px;
 	}
 }
 
@@ -3973,8 +3966,8 @@ a.nav-opener > i::before, a.nav-opener > i::after {
 	display: block;
 	position: absolute;
 	left: 0;
-	width: 7px;
-	height: 43px;
+	height: 4px;
+	width: 24px;
 	background-color: inherit;
 	will-change: transform, max-width;
 	transition-property: transform, max-width;
@@ -3984,25 +3977,25 @@ a.nav-opener > i::before, a.nav-opener > i::after {
 
 @media (max-width: 991px) {
 	a.nav-opener > i::before, a.nav-opener > i::after {
-		width: 4px;
-		height: 25px;
+		height: 4px;
+		width: 24px;
 	}
 }
 
 a.nav-opener > i::before {
-	top: -14px;
-	max-width: 38px;
+	top: -8px;
+	max-width: 24px;
 }
 
 @media (max-width: 991px) {
 	a.nav-opener > i::before {
 		top: -8px;
-		max-width: 20px;
+		max-width: 24px;
 	}
 }
 
 a.nav-opener > i::after {
-	top: 14px;
+	top: 8px;
 }
 
 @media (max-width: 991px) {
@@ -4046,7 +4039,7 @@ a.nav-opener.nav-is-open > i::before, a.nav-opener.nav-is-open > i::after {
 }
 
 a.nav-opener.nav-is-open > i::before {
-	transform: translate(0, 14px) translateZ(0);
+	transform: translate(0, 8px) translateZ(0);
 }
 
 @media (max-width: 991px) {
@@ -4056,7 +4049,7 @@ a.nav-opener.nav-is-open > i::before {
 }
 
 a.nav-opener.nav-is-open > i::after {
-	transform: translate(0, -14px) translateZ(0);
+	transform: translate(0, -8px) translateZ(0);
 }
 
 @media (max-width: 991px) {
@@ -4065,6 +4058,7 @@ a.nav-opener.nav-is-open > i::after {
 	}
 }
 
+/* navigation opener button / burger end */
 .nav-overlay {
 	position: fixed;
 	left: 0;
@@ -4080,7 +4074,7 @@ a.nav-opener.nav-is-open > i::after {
 	transition-duration: 0.2s;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1200px) {
 	.nav-overlay {
 		display: none;
 	}
@@ -4122,6 +4116,10 @@ html.css-scroll-fixed:not(.open-only-mob) {
 
 /* === LAYOUT === */
 .max-wrap {
+	max-width: 1920px;
+}
+
+.max-wrap.layout {
 	max-width: 1960px;
 }
 
@@ -4293,10 +4291,16 @@ html.css-scroll-fixed:not(.open-only-mob) {
 	display: block;
 	content: '';
 	position: absolute;
-	left: 300px;
+	left: 260px;
 	top: 0;
 	height: 100%;
 	border-right: 1px solid #51aca9;
+}
+
+@media (max-width: 1199px) {
+	.wrapper::before {
+		display: none;
+	}
 }
 
 /* === LAYOUT end === */
@@ -4308,7 +4312,6 @@ html.css-scroll-fixed:not(.open-only-mob) {
 	    flex-grow: 1;
 	position: relative;
 	clear: both;
-	z-index: 4;
 }
 
 .main__holder {
@@ -4327,8 +4330,8 @@ html.css-scroll-fixed:not(.open-only-mob) {
 }
 
 .content {
-	margin: 0 0 0 300px;
-	padding: 11px 0;
+	margin: 0 0 0 260px;
+	padding-bottom: 2.4rem;
 	min-height: 50px;
 }
 
@@ -4336,6 +4339,18 @@ html.css-scroll-fixed:not(.open-only-mob) {
 	.content {
 		margin-left: 0;
 	}
+}
+
+.heading {
+	padding-top: 2.4rem;
+	padding-bottom: 2.4rem;
+	margin-bottom: 2.4rem;
+	border-bottom: 1px solid #51aca9;
+}
+
+.heading.layout {
+	margin-right: -20px;
+	margin-left: -20px;
 }
 
 /* === CONTENT end === */
@@ -4349,7 +4364,6 @@ html.css-scroll-fixed:not(.open-only-mob) {
 .header__holder {
 	position: relative;
 	padding: 10px 0;
-	z-index: 5;
 }
 
 .header__holder::after {
@@ -4363,100 +4377,18 @@ html.css-scroll-fixed:not(.open-only-mob) {
 	position: relative;
 	float: left;
 	z-index: 5;
+	font-weight: bold;
+	color: inherit;
+	text-decoration: none;
+	cursor: default;
+}
+
+a.logo {
+	cursor: pointer;
 }
 
 /* logo end */
 /* === HEADER end === */
-/* === NAVIGATION === */
-.nav {
-	position: relative;
-}
-
-.nav__list::after {
-	content: '';
-	display: table;
-	clear: both;
-}
-
-.nav__list li {
-	position: relative;
-}
-
-.nav__list li.has-drop {
-	padding-right: 2rem;
-}
-
-.nav__list li.has-drop .nav__angle {
-	position: absolute;
-	right: 0;
-	top: 50%;
-	-ms-transform: translate(0, -50%);
-	    transform: translate(0, -50%);
-	line-height: 0;
-	pointer-events: none;
-}
-
-.nav__list a {
-	display: block;
-}
-
-.nav__list > li {
-	float: left;
-	margin-right: 2rem;
-}
-
-.nav__list > li.has-drop > .nav__tab .nav__angle i {
-	display: inline-block;
-	vertical-align: top;
-	width: 0;
-	height: 0;
-	z-index: 2;
-	border-top: 10px solid tomato;
-	border-left: 5px solid transparent;
-	border-right: 5px solid transparent;
-}
-
-.nav__drop {
-	position: absolute;
-	left: 0;
-	top: 100%;
-	background-color: white;
-	border: 1px solid #51aca9;
-	padding: 2rem;
-	width: 320px;
-	opacity: 0;
-	visibility: hidden;
-	z-index: 10;
-}
-
-li:hover > .nav__drop {
-	opacity: 1;
-	visibility: visible;
-}
-
-.nav__drop li {
-	margin-bottom: 1rem;
-	font-size: 1.4rem;
-	line-height: 1.5;
-}
-
-.nav__drop li.has-drop > .nav__tab .nav__angle i {
-	display: inline-block;
-	vertical-align: top;
-	width: 0;
-	height: 0;
-	z-index: 2;
-	border-left: 10px solid tomato;
-	border-bottom: 5px solid transparent;
-	border-top: 5px solid transparent;
-}
-
-.nav__drop .nav__drop {
-	top: 0;
-	left: 100%;
-}
-
-/* === NAVIGATION end === */
 /* === ASIDE === */
 .aside {
 	display: inline;
@@ -4477,7 +4409,6 @@ li:hover > .nav__drop {
 .footer {
 	position: relative;
 	clear: both;
-	z-index: 5;
 	font-size: 16px;
 	line-height: 1.5;
 	color: #262626;

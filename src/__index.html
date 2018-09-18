@@ -1,40 +1,15 @@
 @@include('_tpl_layout_head.html', {
 	"title": "Главная",
-	"pageClass": ""
+	"pageClass": "home-page"
 })
 
-@@include('_tpl_PAGE_WRAP.html', {"pageWrap": "START" })
 
-<!--HEADER-->
-@@include('_tpl_layout_header.html', {
-	"currentItem": "Главная"
-})
-<!--HEADER end-->
+<!-- >>> main content START <<< -->
 
-<!--MAIN-->
-<div class="main">
-	<div class="max-wrap layout">
-		<div class="main__holder">
-			<!--CONTENT-->
-			<div class="content-wrap">
-				<div class="content user-content">
-					@@include("_tpl_nav-constructor.html", {"bsKey": "menu", "currentItem": ""})
-				</div>
-			</div>
-			<!--CONTENT end-->
+@@include("_tpl_nav-constructor.html", {"bsKey": "menu", "currentItem": "Главная"})
 
-			<!--SIDEBAR-->
-			@@include('_tpl_layout_sidebar.html')
-			<!--SIDEBAR-->
-		</div>
-	</div>
-</div>
-<!--MAIN end-->
+<!-- >>> main content END <<< -->
 
-<!--FOOTER-->
-@@include('_tpl_layout_footer.html')
-<!--FOOTER end-->
 
-@@include('_tpl_PAGE_WRAP.html', {"pageWrap": "END" })
 
-@@include('_tpl_layout_foot.html')
+@@include("_tpl_layout_foot.html", {"currentItemByNav": "Главная"})

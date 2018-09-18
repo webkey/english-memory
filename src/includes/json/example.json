@@ -1,0 +1,17 @@
+[
+  {
+	"tasksTitle": "Name of tasks",
+	"tasksDescriptionSave": "Description of tasks",
+	"tasks": [
+	  {
+		"front": "new word",
+		"back": "= description word",
+		"tcr": "[ trænˈskrɪp.ʃən ]",
+		"sound": "",
+		"note": [
+		  "no example"
+		]
+	  }
+	]
+  }
+]

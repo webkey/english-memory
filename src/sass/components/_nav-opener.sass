@@ -1,0 +1,176 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+/* navigation opener button / burger
+a.nav-opener
+	$burger-bg: $border-color
+	$burger-size: 44px
+	$burger-size--mob: 44px
+	$layer-width: 24px
+	$layer-width--mob: 24px
+	$layer-height: 4px
+	$layer-height--mob: 4px
+	$layer-space: 4px
+	$layer-space--mob: 4px
+	$layer-color: $bg-color
+	$burger-animation-speed: $animation-speed
+	$burger-animation-delay: round-float($animation-speed*0.5, 2)
+
+	$cross-width: $layer-width
+	$cross-width--mob: $layer-width--mob
+	$cross-height: $layer-height
+	$cross-height--mob: $layer-height--mob
+	$cross-color: $layer-color
+
+	// =====================
+
+	display: none
+	position: absolute
+	right: 0
+	top: 0
+	+size($burger-size)
+	+font-normal
+	+font(inherit, inherit)
+	letter-spacing: inherit
+	color: inherit
+	text-decoration: none
+	background-color: $burger-bg
+	z-index: 9999
+	user-select: none
+	-webkit-tap-highlight-color: transparent
+
+	+media('<desk-sm')
+		display: block
+
+	& > span
+		position: absolute
+		left: 100%
+		top: 0
+		height: 100%
+		+padding-horizontal(5px)
+		display: none
+
+	// крест
+	&::before, &::after
+		+pseudo()
+		+position(50%)
+		height: $cross-height
+		width: $cross-width
+		margin-top: -#{round($cross-height / 2)}
+		margin-left: -#{round($cross-width / 2)}
+		background-color: $cross-color
+		opacity: 0
+		$prop: transform, opacity, background-color
+		will-change: $prop
+		transition:
+			property: $prop
+			duration: $burger-animation-speed
+			delay: 0s
+			timing-function: cubic-bezier(0.65, 0.05, 0.36, 1)
+
+		+media('<tab-lg')
+			height: $cross-height--mob
+			width: $cross-width--mob
+			margin-top: -#{round($cross-height--mob / 2)}
+			margin-left: -#{round($cross-width--mob / 2)}
+
+	// бутерброд
+	& > i
+		position: absolute
+		left: 50%
+		top: 50%
+		height: $layer-height
+		width: $layer-width
+		margin-top: -#{round($layer-height / 2)}
+		margin-left: -#{round($layer-width / 2)}
+		background-color: $layer-color
+		$prop: transform, opacity, background-color, max-width
+		will-change: $prop
+		transition:
+			property: $prop
+			duration: $burger-animation-speed
+			delay: $burger-animation-delay
+
+		+media('<tab-lg')
+			height: $layer-height--mob
+			width: $layer-width--mob
+			margin-top: -#{round($layer-height--mob / 2)}
+			margin-left: -#{round($layer-width--mob / 2)}
+
+		&::before, &::after
+			+pseudo()
+			left: 0
+			height: $layer-height
+			width: $layer-width
+			background-color: inherit
+			$prop: transform, max-width
+			will-change: $prop
+			transition:
+				property: $prop
+				duration: $burger-animation-speed
+				delay: $burger-animation-delay
+
+			+media('<tab-lg')
+				height: $layer-height--mob
+				width: $layer-width--mob
+
+		//first line menu
+		&::before
+			top: -#{$layer-height + $layer-space}
+			max-width: $layer-width
+
+			+media('<tab-lg')
+				top: -#{$layer-height--mob + $layer-space--mob}
+				max-width: $layer-width--mob
+
+		//third line menu
+		&::after
+			top: #{$layer-height + $layer-space}
+
+			+media('<tab-lg')
+				top: #{$layer-height--mob + $layer-space--mob}
+
+	// hover
+	.no-touchevents &:hover
+		&::before, &::after
+			background-color: $base-color
+
+		& > i
+			background-color: $base-color
+
+			&::before, &::after
+				background-color: inherit
+
+	// active
+	&.nav-is-open
+		&::before, &::after
+			transition-delay: $burger-animation-delay
+			opacity: 1
+
+		&::before
+			transform: rotate(45deg) translateZ(0)
+
+		&::after
+			transform: rotate(-45deg) translateZ(0)
+
+		& > i
+			opacity: 0
+			transition-delay: 0s
+
+			&::before, &::after
+				transition-delay: 0s
+
+			&::before
+				transform: translate(0, #{$layer-height + $layer-space}) translateZ(0)
+
+				+media('<tab-lg')
+					transform: translate(0, #{$layer-height--mob + $layer-space--mob}) translateZ(0)
+
+			&::after
+				transform: translate(0, -#{$layer-height + $layer-space}) translateZ(0)
+
+				+media('<tab-lg')
+					transform: translate(0, -#{$layer-height--mob + $layer-space--mob}) translateZ(0)
+
+/* navigation opener button / burger end

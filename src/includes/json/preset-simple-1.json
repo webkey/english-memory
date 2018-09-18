@@ -1,0 +1,71 @@
+[
+  {
+	"tasksTitle": "Preset Simple",
+	"tasksDescriptionSave": "Preset Simple",
+	"tasks": [
+	  {
+		"front": "<em>I</em> apologise",
+		"back": "принести извинения",
+		"tcr": "[ -ˈpɑː.lə- ]",
+		"sound": "",
+		"note": [
+		  "no example"
+		]
+	  },
+	  {
+		"front": "<em>I</em> promise",
+		"back": "обещать",
+		"tcr": "[ ˈprɑːmɪs ]",
+		"sound": "",
+		"note": [
+		  "<strong>I promise</strong> I won’t be late. (<em>not</em> I’m promising)"
+		]
+	  },
+	  {
+		"front": "<em>I</em> suggest",
+		"back": "предлагать",
+		"tcr": "[ səˈdʒest ]",
+		"sound": "",
+		"note": [
+		  "‘What do you <strong>suggest</strong> I do?’ ‘<strong>I suggest</strong> that you …’\n"
+		]
+	  },
+	  {
+		"front": "<em>I</em> advice",
+		"back": "советовать",
+		"tcr": "[ ədˈvaɪz ]",
+		"sound": "",
+		"note": [
+		  "no example"
+		]
+	  },
+	  {
+		"front": "<em>I</em> insist",
+		"back": "настаивать",
+		"tcr": "[ ɪnˈsɪst ]",
+		"sound": "",
+		"note": [
+		  "no example"
+		]
+	  },
+	  {
+		"front": "<em>I</em> agree ",
+		"back": "дать согласие, соглашаться",
+		"tcr": "[ əˈɡriː ]",
+		"sound": "",
+		"note": [
+		  "no example"
+		]
+	  },
+	  {
+		"front": "<em>I</em> refuse",
+		"back": "express regret for something that one has done wrong",
+		"tcr": "[ rɪˈfjuːz ]",
+		"sound": "",
+		"note": [
+		  "no example"
+		]
+	  }
+	]
+  }
+]

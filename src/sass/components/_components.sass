@@ -466,6 +466,8 @@
 
 	li
 		&.current
+			color: $base-color-alt
+
 			a
 				text-decoration: none
 				cursor: default
@@ -735,22 +737,21 @@
 	float: left
 	margin: 0 0 0 -100%
 	width: $sidebar-width
+	background-color: $bg-color
 
-.sidebar
-	margin: 0
 	$prop: transform, opacity
 	will-change: $prop
 	transition:
 		property: transform, opacity
 		duration: $animation-speed
 
-	+media('<tab-lg')
+	+media('<desk-sm')
+		margin: 0
 		position: fixed
 		width: 320px
 		height: 100%
 		left: 0
 		top: 0
-		background-color: lightsteelblue
 		z-index: 9999
 		$x: -100%
 		transform: translate($x, 0) // for old browser
@@ -761,185 +762,7 @@
 			transform: translate($x, 0) // for old browser
 			transform: translateX($x)
 
-// nav opener btn
-a.nav-opener
-	$burger-bg: transparent
-	$burger-size: 60px
-	$burger-size--mob: 40px
-	$layer-width: 43px
-	$layer-width--mob: 25px
-	$layer-height: 7px
-	$layer-height--mob: 4px
-	$layer-space: 7px
-	$layer-space--mob: 4px
-	$layer-color: $base-color-alt
-	$burger-animation-speed: $animation-speed
-	$burger-animation-delay: round-float($animation-speed*0.5, 2)
-
-	$cross-width: $layer-width
-	$cross-width--mob: $layer-width--mob
-	$cross-height: $layer-height
-	$cross-height--mob: $layer-height--mob
-	$cross-color: $layer-color
-
-	// =====================
-
-	display: none
-	position: absolute
-	right: 10px
-	top: 10px
-	margin-top: -#{round($burger-size/2)}
-	+size($burger-size)
-	z-index: 5
-	text-decoration: none
-	+font-normal
-	+font($font-size, $line-height)
-	letter-spacing: $letter-spacing
-	color: $text-color
-	background-color: $burger-bg
-	user-select: none
-	-webkit-tap-highlight-color: transparent
-
-	+media('<tab-lg')
-		display: block
-
-	+media('<mob-lg')
-		right: 7px
-
-	& > span
-		position: absolute
-		left: 100%
-		top: 0
-		height: 100%
-		+padding-horizontal(5px)
-		+font-bold
-		line-height: 1
-		display: none
-
-	// крест
-	&::before, &::after
-		+pseudo()
-		+position(50%)
-		+size($cross-height, $cross-width)
-		margin-top: -#{round($cross-height / 2)}
-		margin-left: -#{round($cross-width / 2)}
-		background-color: $cross-color
-		opacity: 0
-		$prop: transform, opacity, background-color
-		will-change: $prop
-		transition:
-			property: $prop
-			duration: $burger-animation-speed
-			delay: 0s
-			timing-function: cubic-bezier(0.65, 0.05, 0.36, 1)
-
-		+media('<tab-lg')
-			+size($cross-height--mob, $cross-width--mob)
-			margin-top: -#{round($cross-height--mob / 2)}
-			margin-left: -#{round($cross-width--mob / 2)}
-
-	// бутерброд
-	& > i
-		position: absolute
-		left: 50%
-		top: 50%
-		+size($layer-height, $layer-width + 10)
-		margin-top: -#{round($layer-height / 2)}
-		margin-left: -#{round($layer-width / 2)}
-		background-color: $layer-color
-		$prop: transform, opacity, background-color, max-width
-		will-change: $prop
-		transition:
-			property: $prop
-			duration: $burger-animation-speed
-			delay: $burger-animation-delay
-
-		+media('<tab-lg')
-			+size($layer-height--mob, $layer-width--mob + 5)
-			margin-top: -#{round($layer-height--mob / 2)}
-			margin-left: -#{round($layer-width--mob / 2)}
-
-		&::before, &::after
-			+pseudo()
-			left: 0
-			+size($layer-height, $layer-width)
-			background-color: inherit
-			$prop: transform, max-width
-			will-change: $prop
-			transition:
-				property: $prop
-				duration: $burger-animation-speed
-				delay: $burger-animation-delay
-
-			+media('<tab-lg')
-				+size($layer-height--mob, $layer-width--mob)
-
-		//first line menu
-		&::before
-			top: -#{$layer-height + $layer-space}
-			max-width: $layer-width - 5
-
-			+media('<tab-lg')
-				top: -#{$layer-height--mob + $layer-space--mob}
-				max-width: $layer-width--mob - 5
-
-		//third line menu
-		&::after
-			top: #{$layer-height + $layer-space}
-
-			+media('<tab-lg')
-				top: #{$layer-height--mob + $layer-space--mob}
-
-	// hover
-	.no-touchevents &:hover
-		//background-color: #f3f3f3
-
-		&::before, &::after
-			background-color: $base-color
-
-		& > i
-			background-color: $base-color
-			//max-width: $layer-width
-
-			&::before, &::after
-				background-color: inherit
-
-	//&::before
-		max-width: $layer-width
-
-	// active
-	&.nav-is-open
-
-		&::before, &::after
-			transition-delay: $burger-animation-delay
-			//background-color: $base-color
-
-			opacity: 1
-
-		&::before
-			transform: rotate(45deg) translateZ(0)
-
-		&::after
-			transform: rotate(-45deg) translateZ(0)
-
-		& > i
-			opacity: 0
-			transition-delay: 0s
-
-			&::before, &::after
-				transition-delay: 0s
-
-			&::before
-				transform: translate(0, #{$layer-height + $layer-space}) translateZ(0)
-
-				+media('<tab-lg')
-					transform: translate(0, #{$layer-height--mob + $layer-space--mob}) translateZ(0)
-
-			&::after
-				transform: translate(0, -#{$layer-height + $layer-space}) translateZ(0)
-
-				+media('<tab-lg')
-					transform: translate(0, -#{$layer-height--mob + $layer-space--mob}) translateZ(0)
+@import nav-opener
 
 // overlay
 
@@ -959,7 +782,7 @@ a.nav-opener
 		property: $prop
 		duration: $animation-speed
 
-	+media('>=tab-lg')
+	+media('>=desk-sm')
 		display: none
 
 	&.#{$nav-is-open-class}
