@@ -693,12 +693,22 @@
 
 /* words end
 
+.words__tools
+	display: flex
+	justify-content: flex-start
+	align-items: center
+
+	.check-label
+		margin-right: 10px
+
 .words__tools_prev,
-.words__tools_next
+.words__tools_next,
+.words__tools_reset
 	position: relative
 	display: inline-block
 	vertical-align: top
 	width: 150px
+	margin-right: 10px
 
 	&::after
 		display: block
@@ -707,9 +717,14 @@
 		width: 100%
 		top: 100%
 		left: 0
-		font-size: 0.8em
+		font-size: 12px
 		line-height: 1.2
+		letter-spacing: normal
 		text-align: center
+		margin-top: 10px
+		pointer-events: none
+		user-select: none
+		-webkit-tap-highlight-color: transparent
 
 .words__tools_prev
 	&::before
@@ -720,8 +735,10 @@
 			content: attr(data-turn)
 
 	.#{$randomMod}:not(.#{$activeMod}) &
-		color: graytext
+		//color: graytext
 		cursor: default
+		background: $btn-bg-color
+		opacity: 0.5
 
 .words__tools_next
 	&::before
@@ -788,3 +805,21 @@
 	&.#{$nav-is-open-class}
 		opacity: 1
 		visibility: visible
+
+.words__card_tcr,
+.words__card_trl
+	position: absolute
+	width: 100%
+	bottom: 30px
+	text-align: center
+	font-size: 14px
+	font-weight: normal
+	color: $bg-color
+
+	& > div
+		display: inline
+		border-bottom: 1px dashed currentColor
+		cursor: pointer
+
+.words__card_tcr
+	bottom: 70px

@@ -1,0 +1,16 @@
+@@include("_tpl_layout_head.html", {
+	"title": "Present Simple 1",
+	"pageClass": ""
+})
+
+
+<!-- >>> main content START <<< -->
+
+@@loop("_tpl_heading.html", "includes/json/present-simple-1.json")
+@@include("_tpl_card.html", {"tasks": "includes/json/present-simple-1.json"})
+
+<!-- >>> main content END <<< -->
+
+
+
+@@include("_tpl_layout_foot.html", {"currentItemByNav": "Present Simple 1"})

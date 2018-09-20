@@ -1,7 +1,7 @@
 [
   {
-	"tasksTitle": "Phrasal Verbs (Part 1)",
-	"tasksDescriptionSave": "A phrasal verb is a verb (go/look/be etc.) + in/out/up/down etc.",
+	"title": "Phrasal Verbs (Part 1)",
+	"description": "A phrasal verb is a verb (go/look/be etc.) + in/out/up/down etc.",
 	"tasks": [
 	  {
 		"front": "carry on",

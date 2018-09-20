@@ -1,11 +1,12 @@
 [
   {
-	"tasksTitle": "Name of tasks",
-	"tasksDescriptionSave": "Description of tasks",
+	"title": "Name of tasks",
+	"description": "Description of tasks",
 	"tasks": [
 	  {
 		"front": "new word",
 		"back": "= description word",
+		"ru": "перевод",
 		"tcr": "[ trænˈskrɪp.ʃən ]",
 		"sound": "",
 		"note": [

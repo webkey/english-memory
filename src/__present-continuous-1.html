@@ -1,0 +1,16 @@
+@@include("_tpl_layout_head.html", {
+	"title": "Preset Continuous 1",
+	"pageClass": ""
+})
+
+
+<!-- >>> main content START <<< -->
+
+@@loop("_tpl_heading.html", "includes/json/present-continuous-1.json")
+@@include("_tpl_card.html", {"tasks": "includes/json/present-continuous-1.json"})
+
+<!-- >>> main content END <<< -->
+
+
+
+@@include("_tpl_layout_foot.html", {"currentItemByNav": "Present Continuous 1"})

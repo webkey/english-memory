@@ -1,0 +1,84 @@
+[
+  {
+	"title": "Present Simple 1",
+	"description": "These words use only in Present Simple (<em>not</em> Present Continuous)",
+	"tasks": [
+	  {
+		"front": "<em>I</em> apologise",
+		"back": "express regret for something that one has done wrong",
+		"ru": "принести извинения",
+		"tcr": "[ -ˈpɑː.lə- ]",
+		"sound": "",
+		"note": [
+		  "I <strong>apologise</strong> for taking your time.",
+		  "I won't <strong>apologise</strong> to him."
+		]
+	  },
+	  {
+		"front": "<em>I</em> promise",
+		"back": "assure someone that one will definitely do something",
+		"ru": "обещать",
+		"tcr": "[ ˈprɑːmɪs ]",
+		"sound": "",
+		"note": [
+		  "<strong>I promise</strong> I won’t be late. (<em>not</em> I’m promising)."
+		]
+	  },
+	  {
+		"front": "<em>I</em> suggest",
+		"back": "put forward for consideration",
+		"ru": "предлагать",
+		"tcr": "[ səˈdʒest ]",
+		"sound": "",
+		"note": [
+		  "‘What do you <strong>suggest</strong> I do?’ ‘<strong>I suggest</strong> that you …’",
+		  "I <strong>suggest</strong> that we wait a day or two."
+		]
+	  },
+	  {
+		"front": "<em>I</em> advise",
+		"back": "offer suggestions about the best course of action to someone",
+		"ru": "советовать, консультировать",
+		"tcr": "[ ədˈvaɪz ]",
+		"sound": "",
+		"note": [
+		  "I <strong>advise</strong> everybody to be nice to their teacher.",
+		  "I <strong>advised</strong> him to go home."
+		]
+	  },
+	  {
+		"front": "<em>I</em> insist",
+		"back": "demand something forcefully, not accepting refusal",
+		"ru": "настаивать",
+		"tcr": "[ ɪnˈsɪst ]",
+		"sound": "",
+		"note": [
+		  "She <strong>insisted</strong> on carrying her own bag"
+		]
+	  },
+	  {
+		"front": "<em>I</em> agree ",
+		"back": "have the same opinion about something",
+		"ru": "дать согласие, соглашаться",
+		"tcr": "[ əˈɡriː ]",
+		"sound": "",
+		"note": [
+		  "I completely <strong>agree</strong> with your recent editorial",
+		  "Because everyone must <strong>agree</strong>, nothing is agreed",
+		  "We must <strong>agree</strong> on common values for common survival"
+		]
+	  },
+	  {
+		"front": "<em>I</em> refuse",
+		"back": "indicate or show that one is not willing to do something",
+		"ru": "отказаться",
+		"tcr": "[ rɪˈfjuːz ]",
+		"sound": "",
+		"note": [
+		  "I can <strong>refuse</strong> you nothing today.",
+		  "You know I can't <strong>refuse</strong>."
+		]
+	  }
+	]
+  }
+]

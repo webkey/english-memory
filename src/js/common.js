@@ -371,6 +371,7 @@ if ($nav.length) {
 			$toolsRandom = $element.find(config.toolsRandom),
 			$toolsPrev = $element.find(config.toolsPrev),
 			$toolsNext = $element.find(config.toolsNext),
+			$toolsReset = $element.find(config.toolsReset),
 			objTotal;
 
 		let callbacks = function () {
@@ -416,6 +417,7 @@ if ($nav.length) {
 			},
 			createTaskRandomly = function ($elem) {
 				let obj = $elem.data(dataTasksSave);
+				// console.log("$elem: ", $elem);
 				// console.log("obj: ", obj);
 				if (obj.length === 0) {
 					// Add class show a warning about the task end
@@ -554,6 +556,28 @@ if ($nav.length) {
 					}
 					event.preventDefault();
 				});
+			}, reset = function () {
+				$toolsReset.on('click', function () {
+					let $curCard = $(this).closest($element);
+					// $curCard.removeClass(config.modifiers.completeMod);
+					// $curCard.removeClass(config.modifiers.activeMod);
+					changeProgress(0, 0);
+					$curCard.data(dataTasksSave, $curCard.data(dataTasksFullSave));
+					createTaskRandomly($curCard);
+				});
+
+				$(document).keydown(function (event) {
+					// console.log("event.which: ", event.which);
+					switch (event.which) {
+						case 82: // Left
+							$toolsReset.click();
+							break;
+
+						default:
+							return;
+					}
+					event.preventDefault();
+				});
 			},
 			init = function () {
 
@@ -567,6 +591,7 @@ if ($nav.length) {
 		self = {
 			callbacks: callbacks,
 			main: main,
+			reset: reset,
 			init: init
 		};
 
@@ -586,6 +611,7 @@ if ($nav.length) {
 				elem[i].words.init();
 				elem[i].words.callbacks();
 				elem[i].words.main();
+				elem[i].words.reset();
 			}
 			else {
 				ret = elem[i].words[opt].apply(elem[i].words, args);
@@ -613,6 +639,7 @@ if ($nav.length) {
 		toolsRandom: '.words__tools_random-js',
 		toolsPrev: '.words__tools_prev-js',
 		toolsNext: '.words__tools_next-js',
+		toolsReset: '.words__tools_reset-js',
 		// event
 		event: 'click',
 		modifiers: {

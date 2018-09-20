@@ -7,7 +7,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>List of pages</title>
+	<title>Present Simple 1</title>
 	<!--Mobile optimized-->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.2">
 	<!--Theme color-->
@@ -21,7 +21,7 @@
 	<meta property="og:type" content="website">
 	<meta property="og:locale" content="ru_RU">
 	<meta property="og:url" content="http://localhost:3000/index.html">
-	<meta property="og:title" content="List of pages">
+	<meta property="og:title" content="Present Simple 1">
 	<meta property="og:image" content="http://localhost:3000/apple-touch-icon.png">
 	<meta property="og:image:height" content="256">
 	<meta property="og:image:width" content="256">
@@ -62,31 +62,48 @@
 					<div class="content-wrap">
 						<div class="content layout user-content">
 							<!-- >>> head.tpl END <<< -->
-							<div class="wrapper">
-								<!--MAIN-->
-								<div class="main">
-									<div class="max-wrap layout user-content">
-										<ul>
-											<li><a href="index.html">index.html</a></li>
-											<li><a href="typography.html">typography.html</a></li>
-											<li><a href="inner.html">inner.html</a></li>
-											<li><a href="forms.html">forms.html</a></li>
-											<li><a href="test-mixins.html">test-mixins.html</a></li>
-											<li><a href="404.html">404.html</a></li>
-										</ul>
-									</div>
-								</div>
-								<!--MAIN end-->
-								<!--FOOTER-->
-								<footer class="footer">
-									<div class="max-wrap layout">
-										<div class="footer__holder">
-											<span class="copyright">&copy; Essential Grammar in Use, 2018</span>
+							<!-- >>> main content START <<< -->
+							<div class="heading layout">
+								<h1>Preset Simple 1</h1>
+								<h2>These words use only in Preset Simple (<em>not</em> Present Continuous)</h2>
+							</div>
+							<section class="words words-js words_invert" data-tasks="includes/json/present-simple-1.json">
+								<div class="words__holder">
+									<div class="words__cards words__cards-js">
+										<div class="words__progress">
+											<div class="words__progress__inner words__progress-js">&nbsp;</div>
+										</div>
+										<div class="words__count">
+											<div class="words__current words__current-js">0</div>/<div class="words__total words__total-js">&nbsp;</div>
+										</div>
+										<div class="words__cards__frame">
+											<div class="words__card words__card_back">
+												<div class="words__card_back-js">&nbsp;</div>
+											</div>
+											<div class="words__card words__card_front">
+												<div class="words__card_front-js">&nbsp;</div>
+												<!--<div class="words__card_tcr"><div class="words__card_tcr-js">transcription</div></div>
+					<div class="words__card_trl"><div class="words__card_trl-js">translate</div></div>-->
+											</div>
 										</div>
 									</div>
-								</footer>
-								<!--FOOTER end-->
-							</div>
+									<div class="words__note words__note-js">&nbsp;</div>
+								</div>
+								<div class="words__tools">
+									<label class="check-label">
+										<input type="checkbox" disabled checked name="random" class="words__tools_random-js">
+										<i></i>
+										<span>В случайном порядке</span>
+									</label>
+									<button class="btn-default words__tools_prev words__tools_prev-js" data-alt="key '<'" data-prev="< Пред." data-turn="Перевернуть"></button>
+									<button class="btn-default words__tools_next words__tools_next-js" data-alt="key '>'" data-next="След. >" data-look-at="Проверить"></button>
+									<button class="btn-default btn-with-icon words__tools_reset words__tools_reset-js" data-alt="key 'R'"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+											<path d="M12 6v3l4-4-4-4v3c-4.42 0-8 3.58-8 8 0 1.57.46 3.03 1.24 4.26L6.7 14.8c-.45-.83-.7-1.79-.7-2.8 0-3.31 2.69-6 6-6zm6.76 1.74L17.3 9.2c.44.84.7 1.79.7 2.8 0 3.31-2.69 6-6 6v-3l-4 4 4 4v-3c4.42 0 8-3.58 8-8 0-1.57-.46-3.03-1.24-4.26z"></path>
+										</svg><span>Сбросить</span></button>
+								</div>
+								<div class="words__complete words__complete-js">This task is complete<br> Click to continue</div>
+							</section>
+							<!-- >>> main content END <<< -->
 							<!-- >>> foot.tpl START <<< -->
 						</div>
 					</div>
@@ -104,7 +121,7 @@
 								<li class="">
 									<a href="present-continuous-1.html"><span>Present Continuous 1</span></a>
 								</li>
-								<li class="">
+								<li class="current">
 									<a href="present-simple-1.html"><span>Present Simple 1</span></a>
 								</li>
 							</ul>

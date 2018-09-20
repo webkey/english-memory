@@ -1,7 +1,7 @@
 [
   {
-	"tasksTitle": "Phrasal Verbs (Part 2)",
-	"tasksDescriptionSave": "Sometimes a phrasal verb (<strong>put on</strong> / <strong>take off</strong> etc.) has an <em>object</em>",
+	"title": "Phrasal Verbs (Part 2)",
+	"description": "Sometimes a phrasal verb (<strong>put on</strong> / <strong>take off</strong> etc.) has an <em>object</em>",
 	"tasks": [
 	  {
 		"front": "put on",
