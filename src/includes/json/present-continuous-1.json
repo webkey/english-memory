@@ -65,7 +65,7 @@
 	  },
 	  {
 		"front": "suppose",
-		"back": "= предполагать",
+		"back": "предполагать",
 		"ru": "предполагать",
 		"tcr": "[ trænˈskrɪp.ʃən ]",
 		"sound": "",
@@ -163,6 +163,46 @@
 		  "She <strong>seemed</strong> happy enough.",
 		  "It <strong>seemed</strong> like a good idea at the time.",
 		  "There doesn't <strong>seem</strong> to be any real solution."
+		]
+	  },
+	  {
+		"front": "see",
+		"back": "видеть",
+		"ru": "видеть",
+		"tcr": "[ trænˈskrɪp.ʃən ]",
+		"sound": "",
+		"note": [
+		  "no example"
+		]
+	  },
+	  {
+		"front": "hear",
+		"back": "слушать",
+		"ru": "слушать",
+		"tcr": "[ trænˈskrɪp.ʃən ]",
+		"sound": "",
+		"note": [
+		  "no example"
+		]
+	  },
+	  {
+		"front": "smell",
+		"back": "пахнуть",
+		"ru": "пахнуть",
+		"tcr": "[ trænˈskrɪp.ʃən ]",
+		"sound": "",
+		"note": [
+		  "no example"
+		]
+	  },
+	  {
+		"front": "taste",
+		"back": "пробовать на вкус",
+		"ru": "пробовать на вкус",
+		"tcr": "[ trænˈskrɪp.ʃən ]",
+		"sound": "",
+		"note": [
+		  "no example"
 		]
 	  }
 	]
